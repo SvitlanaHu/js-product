@@ -1,0 +1,334 @@
+.footer {
+  background-color: var(--olive);
+  height: 652px;
+}
+.footer-block {
+  display: flex;
+  flex-direction: column;
+  max-width: 335px;
+  margin: 0 auto;
+}
+@media only screen and (min-width: 768px) {
+  .footer-block {
+    max-width: 768px;
+  }
+  .footer-main-info {
+    display: flex;
+    gap: 78px;
+  }
+  .footer {
+    height: 602px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .footer {
+    height: 386px;
+  }
+  .footer-block {
+    max-width: 1440px;
+  }
+  .footer-main-info {
+    display: flex;
+    gap: 149px;
+  }
+  .tablet-disc-form {
+    display: flex;
+    gap: 148px;
+  }
+}
+/*  */
+/* LOGO */
+/*  */
+.footer-logo-block {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding-top: 40px;
+}
+.footer-logo {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.footer-icon {
+  background-color: var(--main-background-color);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.footer-icon-svg {
+  fill: #6d8434;
+  stroke: #6d8434;
+  width: 16px;
+  height: 16px;
+}
+.footer-logo-text {
+  color: #e8e8e2;
+  font-family: Neue Montreal;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 1.11; /* 111.111% */
+  letter-spacing: -0.023em;
+}
+
+@media only screen and (min-width: 768px) {
+  .footer-icon {
+    width: 32px;
+    height: 32px;
+  }
+  .footer-logo-text {
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    width: 157px;
+  }
+}
+
+/*  */
+/* SOCIAL LINKS */
+/*  */
+.social {
+  margin-top: 20px;
+}
+.social-list {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.social-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgba(232, 232, 226, 0.3);
+}
+.social-link:hover,
+.social-link:focus {
+  border-radius: 10px;
+  border: 1px solid rgba(232, 232, 226, 0.3);
+  background: rgba(232, 232, 226, 0.2);
+}
+.social-link-icons {
+  width: 24px;
+  height: 24px;
+  opacity: 0.8;
+}
+
+@media only screen and (min-width: 768px) {
+  .social-link {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/*  */
+/* DESCRIPTION */
+/*  */
+.footer-desc-block {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+.footer-sub-title {
+  color: #e8e8e2;
+  font-family: Neue Montreal;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.17; /* 116.667% */
+  letter-spacing: -0.03em;
+}
+.footer-desc-text {
+  margin-top: 14px;
+  color: rgba(232, 232, 226, 0.7);
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.29; /* 128.571% */
+  max-width: 335px;
+}
+
+@media only screen and (min-width: 768px) {
+  .footer-sub-title {
+    font-size: 40px;
+    line-height: 1.1; /* 110% */
+    letter-spacing: -0.05em;
+    width: 429px;
+  }
+  .footer-desc-text {
+    font-size: 18px;
+    line-height: 1.33; /* 133.333% */
+    height: 72px;
+    max-width: 429px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .footer-sub-title {
+    width: 410px;
+  }
+  .footer-desc-text {
+    width: 410px;
+  }
+}
+/*  */
+/* SUB FORM */
+/*  */
+.footer-sub-form-block {
+  margin-top: 80px;
+  max-width: 375px;
+  /* max-width: 335px; */
+}
+.form-title {
+  color: #e8e8e2;
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.29; /* 128.571% */
+}
+.footer-sub-form {
+  margin-top: 20px;
+  display: flex;
+  /* align-items: center; */
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-email-input {
+  width: 100%;
+
+  border-radius: 30px;
+  border: 1px solid #e8e8e2;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 18px;
+  height: 42px;
+
+  margin: 0;
+
+  background-color: transparent;
+}
+
+.footer-email-input::placeholder {
+  font-family: Neue Montreal;
+  color: #e8e8e299;
+  /* opacity: 0.6; */
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.29; /* 128.571% */
+}
+
+.footer-email-input:hover,
+.footer-email-input:focus,
+.footer-email-input:active {
+  color: #e8e8e2;
+  font-family: Neue Montreal;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5; /* 150% */
+}
+.footer-sub-btn {
+  border-radius: 30px;
+  background: #e8e8e2;
+  width: 100%;
+  height: 42px;
+  border-color: transparent;
+
+  color: #010101;
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.29; /* 128.571% */
+  transition: var(--animation);
+}
+.footer-sub-btn:hover,
+.footer-sub-btn:focus {
+  color: #6d8434;
+}
+
+@media only screen and (min-width: 768px) {
+  .form-title {
+    font-size: 18px;
+    line-height: 1.34; /* 133.333% */
+  }
+  .footer-email-input {
+    width: 336px;
+    height: 48px;
+    font-size: 16px;
+  }
+  .footer-sub-btn {
+    width: 336px;
+    height: 48px;
+  }
+  .footer-sub-form {
+    align-items: start;
+    gap: 20px;
+  }
+  .footer-sub-form-block {
+    margin-top: 64px;
+  }
+  .footer-email-input::placeholder {
+    color: rgba(232, 232, 226, 0.6);
+
+    font-family: Neue Montreal;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5; /* 150% */
+  }
+}
+/*  */
+/* ADITIONAL INFO */
+/*  */
+.sec-info {
+  display: flex;
+  margin-top: 80px;
+  flex-direction: column;
+  gap: 8px;
+}
+.footer-serv {
+  color: #e8e8e2;
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.29; /* 128.571% */
+  opacity: 0.9;
+}
+.pr-term {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+
+  color: #e8e8e2;
+  text-align: right;
+  font-family: Neue Montreal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.29; /* 128.571% */
+}
+@media only screen and (min-width: 768px) {
+  .sec-info {
+    margin-top: 120px;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: space-between;
+  }
+  .sec-info {
+    margin-top: 128px;
+  }
+}
