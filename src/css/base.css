@@ -29,8 +29,28 @@ html {
   |============================
 */
 
+@font-face {
+  font-family: 'Neue Montreal';
+  src: local('Neue Montreal Regular'), local('Neue-Montreal-Regular'),
+    url('NeueMontreal-Regular.woff2') format('woff2'),
+    url('NeueMontreal-Regular.woff') format('woff'),
+    url('NeueMontreal-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: local('Neue Montreal Medium'), local('Neue-Montreal-Medium'),
+    url('NeueMontreal-Medium.woff2') format('woff2'),
+    url('NeueMontreal-Medium.woff') format('woff'),
+    url('NeueMontreal-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Neue Montreal', 'DM Sans', sans-serif;
   color: var(--white);
   background-color: var(--black);
 }
