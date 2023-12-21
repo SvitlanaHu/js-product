@@ -12,6 +12,12 @@
 @import url('./popular.css');
 @import url('./discount.css');
 @import url('./footer.css');
+@import url('./buttons-paginations.css');
+@import url('./filters.css');
+@import url('./home-page.css');
+@import url('./local-storage.css');
+@import url('./modal-window.css');
+@import url('./products-list.css');
 
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
