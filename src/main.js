@@ -6,5 +6,3 @@ import './js/discount';
 import './js/header';
 import './js/hiro';
 import './js/popular';
-
-
