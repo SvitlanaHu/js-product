@@ -27,7 +27,15 @@ const mainProductCard = document.querySelector('.main-container')
 
 async function renderProducts() {
     let page = 1;
-    let limit = window.innerWidth >= 768 ? 8 : 6;
+    let limit;
+
+    if (window.innerWidth >= 1440) {
+      limit = 9;
+    } else if (window.innerWidth >= 768) {
+      limit = 8;
+    } else {
+      limit = 6;
+    } 
 
     try {
       const { data } = await getProducts(page, limit);
@@ -74,7 +82,7 @@ async function renderProducts() {
                             <h2 class="product-price-list">$${item.price}</h2>
                             <button class='cart-btn-list' type="button">          
                                 <svg class='list-cart-svg-list' width="18" height="18" >
-                                    <use href="./img/icone/symbol-defs.svg#icon-heroicons-solid_shopping-cart-18x18"></use>
+                                    <use href="../img/icone/symbol-defs.svg#icon-heroicons-solid_shopping-cart-18x18"></use>
                                 </svg>
                             </button>
                         </div>
