@@ -21,8 +21,9 @@ import{a as l}from"./assets/vendor-a61d8330.js";(function(){const t=document.cre
                         <div class="price-and-btn-list">
                             <h2 class="product-price-list">$${t.price}</h2>
                             <button class='cart-btn-list' type="button">          
-                                <svg class='list-cart-svg-list' width="18" height="18" >
-                                    <use href="../img/icone/symbol-defs.svg#icon-heroicons-solid_shopping-cart-18x18"></use>
+                                <svg class="list-cart-svg-list" width="18" height="18">
+                                    <use href="./img/icone/symbol-defs.svg#icon-heroicons-solid_shopping-cart-18x18">
+                                    </use>
                                 </svg>
                             </button>
                         </div>
