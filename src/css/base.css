@@ -50,6 +50,8 @@ html {
 }
 
 body {
+  margin: 0;
+  padding: 0;
   font-family: 'Neue Montreal', 'DM Sans', sans-serif;
   color: var(--main-text-color);
   background-color: var(--main-background-color);
