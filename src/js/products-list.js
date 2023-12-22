@@ -1,4 +1,5 @@
 import axios from 'axios';
+import icons from '../img/icone/symbol-defs.svg'
 
 /**
   |============================
@@ -56,11 +57,11 @@ async function renderProducts() {
     renderProducts();
     
    function createMarkup(arr) {
-    return `<div class="card-container-list">${arr.map(item => {
+    return `<ul class="card-container-list">${arr.map(item => {
         const categoryWithoutUnderscore = item.category.split('_').join(' ');
         return `
-            <div class="photo-card-list">
-                <a class="product-modal-list" href="МОДАЛЬНЕ ВІКНО">
+            <li class="photo-card-list">
+                <a class="product-modal-list" href="МОДАЛЬНЕ ВІКНО"> </a>
                     <div class="img-container-list">
                         <img class="product-image-list" src="${item.img}" alt="${item.name} photo" width=140 height=140 loading="lazy" />
                     </div>
@@ -82,14 +83,14 @@ async function renderProducts() {
                             <h2 class="product-price-list">$${item.price}</h2>
                             <button class='cart-btn-list' type="button">          
                                 <svg class="list-cart-svg-list" width="18" height="18">
-                                    <use href="./img/icone/symbol-defs.svg#icon-heroicons-solid_shopping-cart-18x18">
+                                    <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18">
                                     </use>
                                 </svg>
                             </button>
                         </div>
                     </div>
-                </a>
-            </div>
+               
+            </li>
         `;
-    }).join('')}</div>`;
+    }).join('')}</ul>`;
 }
