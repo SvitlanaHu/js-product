@@ -288,6 +288,16 @@
 /*  */
 /* ADITIONAL INFO */
 /*  */
+.privacy,
+.terms {
+  transition: var(--animation);
+}
+.privacy:hover,
+.privacy:focus,
+.terms:hover,
+.terms:focus {
+  color: #ffa500;
+}
 .sec-info {
   display: flex;
   margin-top: 80px;
