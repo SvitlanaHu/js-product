@@ -154,7 +154,3 @@ width: 296px;
     background: var(--olive);
     border: none;
 }
-
-.list-cart-svg-list {
-    fill: var(--main-background-color);
-}
