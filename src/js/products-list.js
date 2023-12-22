@@ -1,28 +1,7 @@
-import axios from 'axios';
 import icons from '../img/icone/symbol-defs.svg'
+import { getProducts } from './products-api';
 
-/**
-  |============================
-  | API (але це не точно, бо тут чомусь одразу по алфавіту)
-  |============================
-*/
-const BASE_URL = 'https://food-boutique.b.goit.study/api/products';
 
-export function getProducts(page, limit) {
-    return axios.get(`${BASE_URL}`, {
-        params: {
-            page: page,
-            limit: limit,
-        },
-    });
-};
-
-// getProducts(1, 6).then(data => console.log(data))
-/**
-  |============================
-  | ОСНОВНИЙ КОД
-  |============================
-*/
 const mainProductCard = document.querySelector('.main-container')
 // const formEl = document.querySelector('.search-form')
 
