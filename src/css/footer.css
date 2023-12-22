@@ -5,13 +5,8 @@
 .footer-block {
   display: flex;
   flex-direction: column;
-  max-width: 335px;
-  margin: 0 auto;
 }
 @media only screen and (min-width: 768px) {
-  .footer-block {
-    max-width: 768px;
-  }
   .footer-main-info {
     display: flex;
     gap: 78px;
@@ -145,7 +140,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: 1.17; /* 116.667% */
-  letter-spacing: -0.03em;
+  letter-spacing: 0.02em;
 }
 .footer-desc-text {
   margin-top: 14px;
