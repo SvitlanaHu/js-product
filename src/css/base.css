@@ -51,8 +51,8 @@ html {
 
 body {
   font-family: 'Neue Montreal', 'DM Sans', sans-serif;
-  color: var(--white);
-  background-color: var(--black);
+  color: var(--main-text-color);
+  background-color: var(--main-background-color);
 }
 
 .link {
