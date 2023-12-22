@@ -9,7 +9,7 @@
   }
 }
 
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1440px) {
   .hero {
     padding-top: 78px;
   }
@@ -35,7 +35,7 @@
   }
 }
 
-@media only screen and (min-width: 1240px) {
+@media only screen and (min-width: 1440px) {
   .hero-title {
     max-width: 1074px;
     font-size: 80px;
@@ -49,7 +49,7 @@
 }
 
 .hero-subtitle {
-  color: var(--add-text-color);
+  color: rgba(1, 1, 1, 0.8);
   text-align: center;
   font-size: 14px;
   font-weight: 400;
@@ -71,4 +71,28 @@
 .hero-img img {
   border-radius: 30px;
   margin: 0 auto;
+}
+
+.hero-img {
+  position: relative;
+}
+
+.icon-organic-food {
+  position: absolute;
+  top: -8px;
+  right: 8px;
+}
+
+@media only screen and (min-width: 768px) {
+  .icon-organic-food {
+    top: -30px;
+    right: 10px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .icon-organic-food {
+    top: -50px;
+    right: 20px;
+  }
 }
