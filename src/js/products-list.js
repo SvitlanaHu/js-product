@@ -27,7 +27,7 @@ const mainProductCard = document.querySelector('.main-container')
 
 async function renderProducts() {
     let page = 1;
-    let limit = 6;
+    let limit = window.innerWidth >= 768 ? 8 : 6;
 
     try {
       const { data } = await getProducts(page, limit);
@@ -38,6 +38,7 @@ async function renderProducts() {
 
      
     mainProductCard.innerHTML += createMarkup(results);
+    
 } catch (error) {
         console.error('Error fetching products', error);
       }
@@ -47,32 +48,32 @@ async function renderProducts() {
     renderProducts();
     
    function createMarkup(arr) {
-    return `<div class="card-container">${arr.map(item => {
+    return `<div class="card-container-list">${arr.map(item => {
         const categoryWithoutUnderscore = item.category.split('_').join(' ');
         return `
-            <div class="photo-card">
-                <a class="product-modal" href="МОДАЛЬНЕ ВІКНО">
-                    <div class="img-container">
-                        <img class="product-image" src="${item.img}" alt="${item.name} photo" width=140 height=140 loading="lazy" />
+            <div class="photo-card-list">
+                <a class="product-modal-list" href="МОДАЛЬНЕ ВІКНО">
+                    <div class="img-container-list">
+                        <img class="product-image-list" src="${item.img}" alt="${item.name} photo" width=140 height=140 loading="lazy" />
                     </div>
-                    <div class="product-info">
-                        <h2 class="product-name">${item.name}</h2>
-                        <div class='product-atributes'>
-                            <p class="atributes-info">
-                                <b class="atributes">Category:</b> ${categoryWithoutUnderscore}
+                    <div class="product-info-list">
+                        <h2 class="product-name-list">${item.name}</h2>
+                        <div class='product-atributes-list'>
+                            <p class="atributes-info-list">
+                                <b class="atributes-list">Category:</b> ${categoryWithoutUnderscore}
                             </p>
-                            <p class="atributes-info">
-                                <b class="atributes">Size:</b> ${item.size}
+                            <p class="atributes-info-list">
+                                <b class="atributes-list">Size:</b> ${item.size}
                             </p>
-                            <p class="atributes-info">
-                                <b class="atributes">Popularity:</b> ${item.popularity}
+                            <p class="atributes-info-list">
+                                <b class="atributes-list">Popularity:</b> ${item.popularity}
                             </p>
                         </div>
                         
-                        <div class="price-and-btn">
-                            <h2 class="product-price">$${item.price}</h2>
-                            <button class='cart-btn' type="button">          
-                                <svg class='list-cart-svg' width="18" height="18" >
+                        <div class="price-and-btn-list">
+                            <h2 class="product-price-list">$${item.price}</h2>
+                            <button class='cart-btn-list' type="button">          
+                                <svg class='list-cart-svg-list' width="18" height="18" >
                                     <use href="./img/icone/symbol-defs.svg#icon-heroicons-solid_shopping-cart-18x18"></use>
                                 </svg>
                             </button>
