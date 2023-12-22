@@ -83,16 +83,25 @@ width: 296px;
 .product-atributes-list {
     display: flex;
     gap: 8px;
+    height: 14px;
     /* margin-top: auto; */
     flex-wrap: wrap;
+    margin-bottom: 40px;
 }
-@media only screen and (min-width: 768px) {
+/* @media only screen and (min-width: 375px) {
     .product-atributes-list {
-        /* margin-bottom: 40px; */
+        margin-bottom: 40px;
     }
-}
+} */
+/* @media only screen and (min-width: 768px) {
+    .product-atributes-list {
+    margin-bottom: 40px;
+    }
+} */
 @media only screen and (min-width: 1440px) {
     .product-atributes-list {
+        margin-bottom: 20px;
+        height: 37px;
     }
 }
 
