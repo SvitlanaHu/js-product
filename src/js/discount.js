@@ -29,16 +29,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function createProductCard(product) {
         return `
-    <div class="photo-card-list">
-                <a class="product-modal-list" href="МОДАЛЬНЕ ВІКНО">
-                    <div class="img-container-list">
-                        <img class="product-image-list" src="${product.img}" alt="${product.name} photo" width=140 height=140 loading="lazy" />
+        <div class="card-container-list-discount">
+        <div class="photo-card-list-discount">
+                <a class="product-modal-list-discount" href="МОДАЛЬНЕ ВІКНО">
+                    <div class="img-container-list-discount">
+                        <svg class='list-cart-svg-list' width="18" height="18" >
+                            <use href="./img/icone/symbol-defs.svg#icon-heroicons-solid_shopping-cart-18x18"></use>
+                         </svg>
+                        <img class="product-image-list-discount" src="${product.img}" alt="${product.name} photo" width=140 height=140 loading="lazy" />
                     </div>
                     <div class="product-info-list">
-                        <h2 class="product-name-list">${product.name}</h2>
-                        <div class="price-and-btn-list">
-                            <h2 class="product-price-list">$${product.price}</h2>
-                            <button class='cart-btn-list' type="button">          
+                        <div class="price-and-btn-list-discount">
+                            <h2 class="product-name-list-discount">${product.name}</h2>
+                            <h2 class="price-discount">$${product.price}</h2>
+                            <button class='cart-btn-list-discount' type="button">          
                                 <svg class='list-cart-svg-list' width="18" height="18" >
                                     <use href="./img/icone/symbol-defs.svg#icon-heroicons-solid_shopping-cart-18x18"></use>
                                 </svg>
@@ -47,6 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                 </a>
             </div>
+        </div>
+    
         `
     }
     // Функція для додавання продукту до кошика
