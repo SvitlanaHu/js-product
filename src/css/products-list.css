@@ -154,3 +154,11 @@ width: 296px;
     background: var(--olive);
     border: none;
 }
+
+/* Робимо в пагінації ... неактивними */
+/* .tui-prev-is-ellip, .tui-first-child, .tui-next-is-ellip, .tui-last-child { */
+    /* pointer-events: none;  Заборона взаємодії з елементами */
+    /* user-select: none;     Заборона виділення тексту на елементі */
+    /* cursor: not-allowed;   Зміна курсора на 'not-allowed' для позначення неактивності */
+    /* opacity: 0.5; */
+/* } */

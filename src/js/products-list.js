@@ -28,19 +28,28 @@ async function renderProducts(page = 1) {
     `;
 
     const container = document.getElementById('tui-pagination-container');
-    const pagination = new Pagination(container, {
-      totalItems: totalItems,
-      itemsPerPage: limit,
-      visiblePages: 4,
-      centerAlign: true,
-      currentPage: page,
-    });
-
-    pagination.on('beforeMove', event => {
-      const currentPage = event.page;
-      renderProducts(currentPage);
-    });
-
+    if (totalPages > 1) {
+      console.log('Total pages:', totalPages);
+      const visiblePages = totalPages > 4 ? 4 : totalPages; 
+      console.log('Visible pages:', visiblePages); 
+      const pagination = new Pagination(container, {
+        totalItems: totalItems,
+        itemsPerPage: limit,
+        visiblePages: visiblePages,
+        centerAlign: true,
+        page: page,
+      });
+  
+      pagination.on('beforeMove', event => {
+        const currentPage = event.page;
+        renderProducts(currentPage);
+      });
+    } else {
+      // Приховати або видалити контейнер пагінації
+      container.style.display = 'none';
+      // або container.innerHTML = '';
+    }
+  
     updateCartButtonIcons();
   } catch (error) {
     console.error('Error fetching products', error);
@@ -48,7 +57,7 @@ async function renderProducts(page = 1) {
 }
 
 // Call the renderProducts function to automatically render the first page on page load
-renderProducts();
+await renderProducts();
 
 function createMarkup(arr) {
   const markup = `<ul class="card-container-list">${arr
