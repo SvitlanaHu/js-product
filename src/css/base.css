@@ -96,28 +96,29 @@ body {
 @media screen and (min-width: 1440px) {
   .container {
     max-width: 1440px;
-    padding-left: 100px;
-    padding-right: 100px;
+    margin: 0 auto;
   }
-  /* .main-box {
+  .main-box {
+    max-width: 1440px;
     display: flex;
     flex-direction: row;
-
+    margin: 0 auto;
+    justify-content: center;
+    gap: 40px;
     outline: 2px solid purple;
     outline-offset: -2px;
   }
 
   .products-list-and-pagination {
-    width: 925px;
     outline: 2px solid green;
     outline-offset: -2px;
   }
 
   .side-bar {
-    width: 275px;
+    max-width: 275px;
     outline: 2px solid greenyellow;
     outline-offset: -2px;
-  } */
+  }
 }
 
 /* Приховані елементи */
