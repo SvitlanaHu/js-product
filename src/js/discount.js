@@ -33,9 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="photo-card-list-discount">
                 <a class="product-modal-list-discount" href="МОДАЛЬНЕ ВІКНО">
                     <div class="img-container-list-discount">
-                        <svg class='list-cart-svg-list' width="18" height="18" >
-                            <use href="./img/icone/symbol-defs.svg#icon-heroicons-solid_shopping-cart-18x18"></use>
-                         </svg>
                         <img class="product-image-list-discount" src="${product.img}" alt="${product.name} photo" width=140 height=140 loading="lazy" />
                     </div>
                     <div class="product-info-list">
