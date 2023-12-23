@@ -106,11 +106,18 @@ function createMarkup(arr) {
 }
 
 function handleCartButtonClick(product, arr) {
+  const cart = getCart();
+  const productInCart = cart.find(item => item._id === product._id);
 
-  addToCart(product);
-  updateCartButtonIcons(arr);
+  if (productInCart) {
+    // Якщо продукт вже є у кошику, виведіть повідомлення і не додавайте його знову
+    console.log('Product is already in the cart');
+  } else {
+    // Якщо продукт немає у кошику, додайте його
+    addToCart(product);
+    updateCartButtonIcons(arr);
+  }
 }
-
 
 function updateCartButtonIcons(arr) {
   const cart = getCart();
@@ -121,15 +128,18 @@ function updateCartButtonIcons(arr) {
     if (productInCart) {
       button.innerHTML = `
         <svg class="list-cart-svg-list" width="18" height="18">
-          <use href="${icons}#check"></use>
+          <use href="${icons}#icon-check"></use>
         </svg>
       `;
+      button.disabled = true; // Заборонити кліки на кнопку
     } else {
       button.innerHTML = `
         <svg class="list-cart-svg-list" width="18" height="18">
           <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
         </svg>
       `;
+      button.disabled = false; // Дозволити кліки на кнопку
     }
   });
 }
+
