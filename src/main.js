@@ -10,7 +10,6 @@ import "./js/filters";
 import './js/products-list';
 import './js/buttons-paginations';
 import './js/modal-window';
-import './js/cart-page';
 
 
 
