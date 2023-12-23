@@ -51,7 +51,7 @@ async function renderProducts() {
 // Call the renderProducts function to automatically render the first page on page load
 renderProducts();
 
-function createMarkup(arr) {
+export function createMarkup(arr) {
   return `<ul class="card-container-list">${arr
     .map(item => {
       const categoryWithoutUnderscore = item.category.split('_').join(' ');
