@@ -9,7 +9,7 @@
 .popular-product-list {
   max-width: 335px;
   display: flex;
-  gap: 14px;
+  margin-bottom: 14px;
   flex-direction: column;
   margin: 0 auto;
 }
@@ -26,6 +26,7 @@
 .popular-img {
   display: flex;
   align-items: center;
+  justify-content: center;
   max-width: 74px;
   height: 74px;
   border-radius: 10px;
@@ -40,6 +41,8 @@
   width: 152px;
   height: 14px;
   flex-wrap: wrap;
+  display: flex;
+  gap: 9px;
 }
 .name-popular-product {
   color: var(--main-text-color);
@@ -68,6 +71,6 @@
   justify-content: center;
   align-items: center;
   border-radius: 30px;
-  background: var(--olive);
+  background: var(--main-background-color);
   border: none;
 }

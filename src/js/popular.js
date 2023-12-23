@@ -23,7 +23,7 @@ function renderPopularProducts(products) {
           </ul>
           <button class='popular-cart-btn' type="button">
           <svg class="list-cart-svg-list" width="12" height="12">
-<use href="'${icons}'#icon-heroicons-solid_shopping-cart-18x18 "></use>
+<use href="'${icons}'#icon-heroicons-solid_shopping-cart-12x12 "></use>
          </svg></button>
         </a>
     `;
