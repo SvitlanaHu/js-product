@@ -80,8 +80,8 @@ body {
   padding-right: 20px;
 
   /* Рамки, які підсвічують наш контейнер */
-  /* outline: 2px solid red;
-  outline-offset: -2px; */
+  outline: 2px solid red;
+  outline-offset: -2px;
 }
 /* Tablet screens */
 @media screen and (min-width: 768px) {
@@ -98,6 +98,25 @@ body {
     max-width: 1440px;
     padding-left: 100px;
     padding-right: 100px;
+  }
+  .main-box {
+    display: flex;
+    flex-direction: row;
+
+    outline: 2px solid purple;
+    outline-offset: -2px;
+  }
+
+  .products-list-and-pagination {
+    width: 925px;
+    outline: 2px solid green;
+    outline-offset: -2px;
+  }
+
+  .side-bar {
+    width: 275px;
+    outline: 2px solid greenyellow;
+    outline-offset: -2px;
   }
 }
 
