@@ -59,7 +59,7 @@ async function renderProducts() {
 
 renderProducts();
 
-function createMarkup(arr) {
+export function createMarkup(arr) {
   const markup = `<ul class="card-container-list">${arr
     .map(item => {
       const categoryWithoutUnderscore = item.category.split('_').join(' ');
