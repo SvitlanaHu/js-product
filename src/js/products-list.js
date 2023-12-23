@@ -1,13 +1,13 @@
 import icons from '../img/icone/symbol-defs.svg';
 import { getProducts } from './products-api';
+import { addToCart, getCart } from './local-storage';
 import 'tui-pagination/dist/tui-pagination.css';
 import Pagination from 'tui-pagination';
 
 const mainProductCard = document.querySelector('.main-box');
 // const formEl = document.querySelector('.search-form')
 
-async function renderProducts() {
-  let page = 1;
+async function renderProducts(page = 1) {
   let limit;
 
   if (window.innerWidth >= 1440) {
@@ -20,18 +20,12 @@ async function renderProducts() {
 
   try {
     const { data } = await getProducts(page, limit);
-    console.log(data);
-      const { perPage, totalPages, results } = data;
-      const totalItems = perPage * totalPages;
-    console.log(results);
-    createMarkup(results);
+    const { perPage, totalPages, results } = data;
+    const totalItems = perPage * totalPages;
 
-    mainProductCard.innerHTML =
-      createMarkup(results) +
-      `
-  <div id="tui-pagination-container" class="tui-pagination"></div>
-</div>
-`;
+    mainProductCard.innerHTML = createMarkup(results) + `
+      <div id="tui-pagination-container" class="tui-pagination"></div>
+    `;
 
     const container = document.getElementById('tui-pagination-container');
     const pagination = new Pagination(container, {
@@ -39,10 +33,15 @@ async function renderProducts() {
       itemsPerPage: limit,
       visiblePages: 4,
       centerAlign: true,
+      currentPage: page,
     });
-    pagination.on('change', page => {
-      renderProducts(page);
+
+    pagination.on('beforeMove', event => {
+      const currentPage = event.page;
+      renderProducts(currentPage);
     });
+
+    updateCartButtonIcons();
   } catch (error) {
     console.error('Error fetching products', error);
   }
@@ -52,12 +51,12 @@ async function renderProducts() {
 renderProducts();
 
 function createMarkup(arr) {
-  return `<ul class="card-container-list">${arr
+  const markup = `<ul class="card-container-list">${arr
     .map(item => {
       const categoryWithoutUnderscore = item.category.split('_').join(' ');
       return `
             <li class="photo-card-list">
-                <a class="product-modal-list" href="МОДАЛЬНЕ ВІКНО">
+                <a class="product-modal-list" href="#">
                     <div class="img-container-list">
                         <img class="product-image-list" src="${item.img}" alt="${item.name} photo" width=140 height=140 loading="lazy" />
                     </div>
@@ -74,22 +73,63 @@ function createMarkup(arr) {
                                 <b class="atributes-list">Popularity:</b> ${item.popularity}
                             </p>
                         </div>
-                        
+                        </a>
                         <div class="price-and-btn-list">
                             <h2 class="product-price-list">$${item.price}</h2>
-                            <button class='cart-btn-list' type="button">          
-                                <svg class="list-cart-svg-list" width="18" height="18">
+                            <button class='cart-btn-list' type="button" data-product-id="${item._id}">          
+                                <svg class="list-cart-svg-list" width="18" height="18" >
                                     <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18">
                                     </use>
                                 </svg>
                             </button>
                         </div>
                     </div>
-                </a>
             </li>
         `;
     })
-    .join('')}
+    .join('')}</ul>`;
+    setTimeout(() => {
+      document.querySelectorAll('.cart-btn-list').forEach(button => {
+        button.addEventListener('click', (e) => {
+          const productId = e.currentTarget.dataset.productId;
+          const product = arr.find(item => item._id === productId);
+          if (product) {
+            handleCartButtonClick(product, arr);
+          } else {
+            console.error('Product not found for ID:', productId);
+          }
+        });
+      });
+    }, 0);
 
-	 `;
+  return markup;
+}
+
+function handleCartButtonClick(product, arr) {
+
+  addToCart(product);
+  updateCartButtonIcons(arr);
+}
+
+
+function updateCartButtonIcons(arr) {
+  const cart = getCart();
+  document.querySelectorAll('.cart-btn-list').forEach(button => {
+    const productId = button.dataset.productId;
+    const productInCart = cart.find(item => item._id === productId);
+
+    if (productInCart) {
+      button.innerHTML = `
+        <svg class="list-cart-svg-list" width="18" height="18">
+          <use href="${icons}#check"></use>
+        </svg>
+      `;
+    } else {
+      button.innerHTML = `
+        <svg class="list-cart-svg-list" width="18" height="18">
+          <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
+        </svg>
+      `;
+    }
+  });
 }

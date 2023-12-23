@@ -34,16 +34,21 @@ export function getCart() {
 }
 
 // Додавання продукту до кошика
-export function addToCart(product) {
+export function addToCart(productToAdd) {
     const cart = getCart();
-    const productIndex = cart.findIndex(item => item.id === product.id);
-    if (productIndex > -1) {
-        cart[productIndex].quantity += 1; // Збільшуємо кількість, якщо продукт вже є у кошику
+    const existingProductIndex = cart.findIndex(item => item._id === productToAdd._id);
+
+    if (existingProductIndex > -1) {
+        // Збільшуємо кількість існуючого продукту в кошику
+        cart[existingProductIndex].quantity += 1;
     } else {
-        cart.push({...product, quantity: 1}); // Додаємо новий продукт
+        // Додаємо новий продукт в кошик з кількістю 1
+        cart.push({ ...productToAdd, quantity: 1 });
     }
+
     saveCart(cart);
 }
+
 
 // Видалення продукту з кошика
 export function removeFromCart(productId) {
