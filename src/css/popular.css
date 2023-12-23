@@ -19,6 +19,7 @@
   border-radius: 10px;
   background: var(--gray98);
   padding: 12px;
+  margin-bottom: 14px;
 }
 .popular-modal {
   display: flex;
@@ -27,7 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 74px;
+  width: 74px;
   height: 74px;
   border-radius: 10px;
   background-color: var(--main-background-color);
@@ -49,7 +50,7 @@
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11;
-  margin-bottom: 12px;
+  margin-bottom: 3px;
 }
 .subname-popular-product {
   color: var(--add-text-color);
@@ -73,4 +74,9 @@
   border-radius: 30px;
   background: var(--main-background-color);
   border: none;
+  margin-left: 55px;
+}
+
+.list-cart-svg-list {
+  fill: black;
 }
