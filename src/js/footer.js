@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const subscriptionForm = document.querySelector('.footer-sub-form');
+    const successModal = document.querySelector('.success-modal');
+    const failureModal = document.querySelector('.failure-modal');
 
     subscriptionForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -27,9 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 const data = await response.json();
-                alert(data.message);
+                successModal.classList.add("open");
             } else if (response.status === 409) {
-                alert('This email is already subscribed.');
+                failureModal.classList.add("open");
             } else {
                 throw new Error('Failed to subscribe.');
             }
