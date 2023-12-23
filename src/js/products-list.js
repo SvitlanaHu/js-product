@@ -3,7 +3,7 @@ import { getProducts } from './products-api';
 import 'tui-pagination/dist/tui-pagination.css';
 import Pagination from 'tui-pagination';
 
-const mainProductCard = document.querySelector('.main-container');
+const mainProductCard = document.querySelector('.main-box');
 // const formEl = document.querySelector('.search-form')
 
 async function renderProducts() {
@@ -52,11 +52,11 @@ async function renderProducts() {
 renderProducts();
 
 function createMarkup(arr) {
-  return `<div class="card-container-list">${arr
+  return `<ul class="card-container-list">${arr
     .map(item => {
       const categoryWithoutUnderscore = item.category.split('_').join(' ');
       return `
-            <div class="photo-card-list">
+            <li class="photo-card-list">
                 <a class="product-modal-list" href="МОДАЛЬНЕ ВІКНО">
                     <div class="img-container-list">
                         <img class="product-image-list" src="${item.img}" alt="${item.name} photo" width=140 height=140 loading="lazy" />
@@ -78,14 +78,15 @@ function createMarkup(arr) {
                         <div class="price-and-btn-list">
                             <h2 class="product-price-list">$${item.price}</h2>
                             <button class='cart-btn-list' type="button">          
-                                <svg class='list-cart-svg-list' width="18" height="18" >
-                                    <use href="../img/icone/symbol-defs.svg#icon-heroicons-solid_shopping-cart-18x18"></use>
+                                <svg class="list-cart-svg-list" width="18" height="18">
+                                    <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18">
+                                    </use>
                                 </svg>
                             </button>
                         </div>
                     </div>
                 </a>
-            </div>
+            </li>
         `;
     })
     .join('')}
