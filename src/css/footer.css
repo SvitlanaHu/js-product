@@ -201,7 +201,7 @@
 
 .footer-email-input {
   width: 100%;
-
+  color: #e8e8e2;
   border-radius: 30px;
   border: 1px solid #e8e8e2;
   padding-top: 12px;
@@ -227,12 +227,12 @@
 .footer-email-input:hover,
 .footer-email-input:focus,
 .footer-email-input:active {
-  color: #e8e8e2;
   font-family: Neue Montreal;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5; /* 150% */
+  outline: none;
 }
 .footer-sub-btn {
   border-radius: 30px;
