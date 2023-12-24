@@ -22,7 +22,7 @@
   .card-container-list {
     max-width: 925px;
     padding-left: 0px;
-    padding-top: 60px;
+    padding-top: 0;
     row-gap: 40px;
     column-gap: 20px;
     padding-right: 0;

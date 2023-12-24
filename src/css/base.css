@@ -120,6 +120,7 @@ body {
     outline-offset: -2px; */
     padding-left: 100px;
     padding-right: 100px;
+    padding-top: 60px;
   }
 
   .products-list-and-pagination {

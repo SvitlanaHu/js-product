@@ -2,7 +2,7 @@
 }
 
 .header-container {
-  padding: 24px 100px;
+  padding: 24px 32px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -46,7 +46,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
 }
 
 .home-btn {
@@ -71,4 +71,15 @@
   font-weight: 500;
   line-height: 1.33;
   text-transform: uppercase;
+}
+
+/* Desctop screens */
+@media screen and (min-width: 1440px) {
+  .header-container {
+    padding: 24px 100px;
+  }
+
+  .header-nav {
+    gap: 24px;
+  }
 }

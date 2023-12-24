@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <h2 class="price-discount">$${product.price}</h2>
                             <button class='cart-btn-list-discount' type="button">          
                                 <svg class='list-cart-svg-list' width="18" height="18" >
-                                    <use href="./img/icone/symbol-defs.svg#icon-heroicons-solid_shopping-cart-18x18"></use>
+                                    <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
                                 </svg>
                             </button>
                         </div>
