@@ -38,4 +38,4 @@ import{a as P,P as C}from"./vendor-b592f4c5.js";(function(){const i=document.cre
           <use href="${l}#icon-heroicons-solid_shopping-cart-18x18"></use>
         </svg>
       `,t.disabled=!1)})}export{E as c,l as i};
-//# sourceMappingURL=products-list-eefdb7dd.js.map
+//# sourceMappingURL=products-list-8583acea.js.map

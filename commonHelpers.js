@@ -1,4 +1,4 @@
-import{c as e,i}from"./assets/products-list-eefdb7dd.js";import"./assets/vendor-b592f4c5.js";const a="/js-product/assets/basket_1x-791cbee1.png",n="/js-product/assets/basket_2x-6131b909.png",s=document.querySelector(".cart"),r=()=>{const t=JSON.parse(localStorage.getItem("shoppingCart"))||[];if(t.length>0)s.innerHTML="",s.insertAdjacentHTML("afterbegin",e(t)),e();else{s.innerHTML="";const c=document.querySelector(".cart");c.innerHTML+=`<div class="container">
+import{c as e,i}from"./assets/products-list-8583acea.js";import"./assets/vendor-b592f4c5.js";const a="/js-product/assets/basket_1x-791cbee1.png",n="/js-product/assets/basket_2x-6131b909.png",s=document.querySelector(".cart"),r=()=>{const t=JSON.parse(localStorage.getItem("shoppingCart"))||[];if(t.length>0)s.innerHTML="",s.insertAdjacentHTML("afterbegin",e(t)),e();else{s.innerHTML="";const c=document.querySelector(".cart");c.innerHTML+=`<div class="container">
     <div class="empty-basket">
       <div class="basket_container">
         <ul class="basket_list">
