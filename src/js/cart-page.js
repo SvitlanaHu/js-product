@@ -6,6 +6,7 @@ const cartProductList = document.querySelector('.js-cart-list');
 const deleteAllBtn = document.querySelector('.js-delete-all-btn');
 const allContentWrap = document.querySelector('.all-content-wrap');
 const numberOfProducts = document.querySelector('.js-number-of-products');
+const cartAmount = document.querySelector('.js-cart-amount');
 
 renderCartMarkup();
 getNumberOfProducts();
@@ -33,7 +34,9 @@ function onClickDeleteProduct(evt) {
   parent.style.display = 'none';
 
   getNumberOfProducts();
+
   checkLS();
+  countTotalAmount();
 }
 
 function checkLS() {
@@ -106,3 +109,12 @@ function getNumberOfProducts() {
   const lsData = getCart();
   numberOfProducts.textContent = lsData.length;
 }
+
+function countTotalAmount() {
+  const lsData = getCart();
+
+  const amount = lsData.reduce((acc, { price }) => (acc += price), 0);
+  cartAmount.textContent = amount;
+}
+
+countTotalAmount();

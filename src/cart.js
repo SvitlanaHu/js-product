@@ -9,12 +9,12 @@
 // export function displayByBuyModal() {
 //   modalCartByBuy.classList.remove('is-hidden');
 //   document.body.style.overflow = 'hidden';
-// } 
+// }
 
 // const createNewOrder = async orderObj => {
 //   const res = await axios.post(`${BASE_URL}orders/`, orderObj);
 //   return await res.data;
-// }; 
+// };
 
 // const showError = message => {
 //   swal('Error!', `${message}`, {
