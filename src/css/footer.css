@@ -55,21 +55,29 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  fill: #6d8434;
+  stroke: #6d8434;
+  padding: 6px;
+}
+.logo-icon {
+  width: 100%;
+  height: 100%;
+}
+.logo {
+  align-content: center;
 }
 
 .footer-icon-svg {
-  fill: #6d8434;
-  stroke: #6d8434;
   width: 16px;
   height: 16px;
 }
 .footer-logo-text {
   color: #e8e8e2;
-  font-family: Neue Montreal;
+  font-family: 'Baskerville Bold', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 900;
-  line-height: 1.11; /* 111.111% */
+  line-height: 0.6; /* 111.111% */
   letter-spacing: -0.023em;
 }
 
@@ -83,6 +91,10 @@
     line-height: 1;
     letter-spacing: -0.03em;
     width: 157px;
+  }
+  .footer-icon-svg {
+    width: 20px;
+    height: 20px;
   }
 }
 
