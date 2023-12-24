@@ -1,57 +1,120 @@
-import icons from '/img/icone/symbol-defs.svg';
-import basket_1 from '../img/basket_1x.png';
-import basket_2 from '../img/basket_2x.png';
-import { createMarkup } from './products-list';
+import { getCart } from './local-storage';
+import { clearCart } from './local-storage';
+import { saveCart } from './local-storage';
 
-export const cartFullMarkup = document.querySelector('.cart');
+const cartProductList = document.querySelector('.js-cart-list');
+const deleteAllBtn = document.querySelector('.js-delete-all-btn');
+const allContentWrap = document.querySelector('.all-content-wrap');
+const numberOfProducts = document.querySelector('.js-number-of-products');
+const cartAmount = document.querySelector('.js-cart-amount');
 
-export const renderCartProducts = () => {
-  const productsArr =
-    JSON.parse(localStorage.getItem('shoppingCart')) || [];
-  if (productsArr.length > 0) {
-    cartFullMarkup.innerHTML = '';
-    cartFullMarkup.insertAdjacentHTML('afterbegin', createMarkup(productsArr));
-    createMarkup();
-  } else {
-    cartFullMarkup.innerHTML = '';
-    const cartContainer = document.querySelector('.cart');
-    cartContainer.innerHTML += `<div class="container">
-    <div class="empty-basket">
-      <div class="basket_container">
-        <ul class="basket_list">
-        <span class="cart-page-shop-icon"
-          <li class="basket_item">
-            <svg class="" width="18" height="18">
-            <use
-            href="${icons}#icon-heroicons-solid_shopping-cart-18x18"
-          ></use>            </svg>
-          </span>
-          </li>
-          <li class="basket_item">
-            <p class="basket_text">Cart&nbsp;<span class="basket_span">(0)</span></p>
-          </li>
-        </ul>
-      </div>
-      <img
-        class="basket_img"
-        srcset="${basket_1}, ${basket_2}"
-        src="${basket_1}"
-        alt="yellow shopping basket"
-        width="132"
-        height="114"
-      />
-      <div class="basket_container_text">
-        <h3 class="basket_title">
-          Your basket is <span class="basket_title_span">empty...</span>
-        </h3>
-        <p class="basket-text">
-          Go to the main page to select your favorite products and add them to the
-          cart.
-        </p>
-      </div>
-    </div>
-  </div>`;
+renderCartMarkup();
+getNumberOfProducts();
+
+function renderCartMarkup() {
+  const arrSavedCart = getCart();
+  allContentWrap.classList.add('is-visible-main-content');
+  renderCartTpl(arrSavedCart);
+  cartProductList.addEventListener('click', onClickDeleteProduct);
+}
+
+function onClickDeleteProduct(evt) {
+  if (!evt.target.classList.contains('js-delete-product-btn')) {
+    return;
   }
-};
 
-renderCartProducts();
+  const parent = evt.target.closest('.js-cart-item');
+  const productId = parent.dataset.id;
+
+  const productsCartInLS = getCart();
+  const findProduct = productsCartInLS.filter(({ _id }) => productId !== _id);
+
+  saveCart(findProduct);
+
+  parent.style.display = 'none';
+
+  getNumberOfProducts();
+
+  checkLS();
+  countTotalAmount();
+}
+
+function checkLS() {
+  const lsData = getCart();
+  if (!lsData.length) {
+    allContentWrap.classList.replace(
+      'is-visible-main-content',
+      'is-hidden-main-content'
+    );
+  }
+}
+
+// Розмітка cartProductList
+function renderCartTpl(arr) {
+  if (!arr.length) {
+    allContentWrap.classList.add('is-hidden-main-content');
+    return;
+  }
+
+  const markup = arr
+    .map(({ _id, name, img, category, price, size }) => {
+      return `<li class="cart-item js-cart-item" data-id = ${_id}>
+       <span class="delete-product-btn js-delete-product-btn">
+              <svg width="12" height="12" class='js-delete-product-btn'>
+                <use class='js-delete-product-btn' href="img/icone/symbol-defs.svg#close-button"></use></svg
+            ></span>
+          <div class="cart-item-info-wrap">
+            <div class="cart-img-wrap-bgc">
+              <div class="cart-img-thumb">
+              <img
+                src="${img}"
+                alt="${name}"
+                width="100"
+                height="100"
+              />
+              </div>
+            </div>
+            <div class="cart-item-descr">
+              <h3 class="cart-item-title">${name}</h3>
+              <div class="cart-text-wrap">
+                <p class="cart-item-text">
+                  <span class="cart-light-text">Category:</span
+                  >&nbsp;&nbsp;${category}
+                </p>
+                <p class="cart-item-text">
+                  <span class="cart-light-text">Size:</span>&nbsp;&nbsp;${size}
+                </p>
+              </div>
+              <p class="cart-item-price">${price}</p>
+            </div>
+          </div>
+        </li>`;
+    })
+    .join('');
+
+  return (cartProductList.innerHTML = markup);
+}
+
+// Кнопка видалення усіх продуктів
+deleteAllBtn.addEventListener('click', () => {
+  clearCart();
+  getNumberOfProducts();
+  allContentWrap.classList.replace(
+    'is-visible-main-content',
+    'is-hidden-main-content'
+  );
+});
+
+function getNumberOfProducts() {
+  const lsData = getCart();
+  numberOfProducts.textContent = lsData.length;
+}
+
+function countTotalAmount() {
+  const lsData = getCart();
+
+  const amount = lsData.reduce((acc, { price }) => (acc += price), 0);
+  cartAmount.textContent = amount;
+}
+
+countTotalAmount();
