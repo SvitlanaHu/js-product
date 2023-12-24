@@ -1,4 +1,5 @@
 import axios from 'axios';
+import icons from '../img/icone/symbol-defs.svg';
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -16,10 +17,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
             discountProductsContainer.innerHTML = '';
 
-            discountProducts.forEach(product => {
-                const card = createProductCard(product)
+                // Вибірка тільки 2 продуктів для відображення
+            const productsToDisplay = discountProducts.slice(0, 2);
+
+            productsToDisplay.forEach(product => {
+                const card = createProductCard(product);
                 discountProductsContainer.innerHTML += card;
             });
+            // discountProducts.forEach(product => {
+            //     const card = createProductCard(product)
+            //     discountProductsContainer.innerHTML += card;
+            // });
         } catch(error) {
              console.error('Error fetching discount products:', error);
         }
@@ -29,11 +37,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function createProductCard(product) {
         return `
-        <div class="card-container-list-discount">
+        <li class="card-container-list-discount">
         <div class="photo-card-list-discount">
                 <a class="product-modal-list-discount" href="МОДАЛЬНЕ ВІКНО">
                     <div class="img-container-list-discount">
-                        <img class="product-image-list-discount" src="${product.img}" alt="${product.name} photo" width=140 height=140 loading="lazy" />
+                        <img class="product-image-list-discount" src="${product.img}" alt="${product.name} photo" width=114 height=114 loading="lazy" />
                     </div>
                     <div class="product-info-list">
                         <div class="price-and-btn-list-discount">
@@ -48,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                 </a>
             </div>
-        </div>
+        </li>
     
         `
     }
