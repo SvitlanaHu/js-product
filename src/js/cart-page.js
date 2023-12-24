@@ -1,12 +1,17 @@
+import icons from '../img/icone/symbol-defs.svg';
 import { getCart } from './local-storage';
 import { clearCart } from './local-storage';
 import { saveCart } from './local-storage';
+// import axios from 'axios';
+
+// const BASE_URL = 'https://food-boutique.b.goit.study/api/products';
 
 const cartProductList = document.querySelector('.js-cart-list');
 const deleteAllBtn = document.querySelector('.js-delete-all-btn');
 const allContentWrap = document.querySelector('.all-content-wrap');
 const numberOfProducts = document.querySelector('.js-number-of-products');
 const cartAmount = document.querySelector('.js-cart-amount');
+const orderForm = document.querySelector('.order-form');
 
 renderCartMarkup();
 getNumberOfProducts();
@@ -16,6 +21,7 @@ function renderCartMarkup() {
   allContentWrap.classList.add('is-visible-main-content');
   renderCartTpl(arrSavedCart);
   cartProductList.addEventListener('click', onClickDeleteProduct);
+  // orderForm.addEventListener('submit', onOrderFormSubmit);
 }
 
 function onClickDeleteProduct(evt) {
@@ -61,7 +67,7 @@ function renderCartTpl(arr) {
       return `<li class="cart-item js-cart-item" data-id = ${_id}>
        <span class="delete-product-btn js-delete-product-btn">
               <svg width="12" height="12" class='js-delete-product-btn'>
-                <use class='js-delete-product-btn' href="img/icone/symbol-defs.svg#close-button"></use></svg
+                <use class='js-delete-product-btn' href="${icons}#close-button"></use></svg
             ></span>
           <div class="cart-item-info-wrap">
             <div class="cart-img-wrap-bgc">
@@ -118,3 +124,24 @@ function countTotalAmount() {
 }
 
 countTotalAmount();
+
+// ================================================
+
+// function onOrderFormSubmit(evt) {
+//   evt.preventDefault();
+//   const email = evt.currentTarget.elements.email.value;
+
+//   if (!email) {
+//     alert('Please, write your email!');
+//     return;
+//   }
+//   console.log(email);
+//   console.log('Отправили заказ');
+// }
+
+// const createNewOrder = async orderObj => {
+//   const res = await axios.post(`${BASE_URL}orders/`, orderObj);
+//   return await res.data;
+// };
+
+// createNewOrder();
