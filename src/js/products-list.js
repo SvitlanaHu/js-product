@@ -1,6 +1,7 @@
 import icons from '../img/icone/symbol-defs.svg';
 import { getProducts } from './products-api';
-import { addToCart, getCart, getFilters, updateFilter, removeFromCart} from './local-storage';
+import { getFilters, updateFilter, removeFromCart, handleCartButtonClick, updateCartButtonIcons, setCartButtonEventListeners} from './local-storage';
+
 import 'tui-pagination/dist/tui-pagination.css';
 import Pagination from 'tui-pagination';
 
@@ -29,60 +30,6 @@ function updatePageSize() {
   }
 }
 
-
-
-
-// Функція, яка викликається при кліку на кнопку додавання продукту до кошика
-function handleCartButtonClick(productId, arr) {
-  const cart = getCart();
-  const productInCart = cart.find(item => item._id === productId);
-  const product = arr.find(item => item._id === productId); // Знаходимо продукт у масиві
-
-  if (productInCart) {
-    // Якщо продукт вже є у кошику, видаляємо його з кошика
-    removeFromCart(productId);
-  } else if (product) {
-    // Якщо продукт немає у кошику, але він існує в масиві, додаємо його
-    addToCart(product);
-  }
-  updateCartButtonIcons(arr);
-}
-
-// Оновлення іконок кнопок кошика
-function updateCartButtonIcons(arr) {
-  const cart = getCart();
-  document.querySelectorAll('.cart-btn-list').forEach(button => {
-    const productId = button.dataset.productId;
-    const productInCart = cart.find(item => item._id === productId);
-
-    if (productInCart) {
-      // Якщо продукт є у кошику, показуємо іконку з галочкою
-      button.innerHTML = `
-        <svg class="list-cart-svg-list" width="18" height="18">
-          <use href="${icons}#icon-check"></use>
-        </svg>
-      `;
-    } else {
-      // Якщо продукт немає у кошику, показуємо іконку кошика
-      button.innerHTML = `
-        <svg class="list-cart-svg-list" width="18" height="18">
-          <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
-        </svg>
-      `;
-    }
-  });
-}
-
-// Встановлення обробників подій на кнопки додавання до кошика
-function setCartButtonEventListeners(arr) {
-  document.querySelectorAll('.cart-btn-list').forEach(button => {
-    button.addEventListener('click', (e) => {
-      const productId = e.currentTarget.dataset.productId;
-      handleCartButtonClick(productId, arr);
-    });
-  });
-}
-
 function removeAndRecreatePaginationContainer() {
   const container = document.getElementById('tui-pagination-container');
   if (container) {
@@ -108,7 +55,8 @@ async function renderProducts() {
 
        
     productsListContainer.innerHTML = createMarkup(results); // Оновлюємо тільки список продуктів
-    setCartButtonEventListeners(results); // Встановлення обробників подій на нові кнопки
+    
+    setCartButtonEventListeners(results, '.cart-btn-list', icons); // Використання уніфікованої функції
 
     removeAndRecreatePaginationContainer();
 
@@ -136,7 +84,7 @@ async function renderProducts() {
               }
             });
 
-    updateCartButtonIcons();
+    updateCartButtonIcons(results, '.cart-btn-list', icons); // Використання уніфікованої функції
   } catch (error) {
     console.error('Error fetching products', error);
   }
