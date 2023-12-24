@@ -72,3 +72,50 @@ export function removeFromCart(productId) {
 export function clearCart() {
     saveCart([]);
 }
+
+// Уніфікована функція для обробки кліку на кнопку додавання продукту до кошика
+export function handleCartButtonClick(productId, arr, buttonClass, icons) {
+    const cart = getCart();
+    const productInCart = cart.find(item => item._id === productId);
+    const product = arr.find(item => item._id === productId);
+  
+    if (productInCart) {
+      removeFromCart(productId);
+    } else if (product) {
+      addToCart(product);
+    }
+    updateCartButtonIcons(arr, buttonClass, icons);
+  }
+  
+  // Уніфікована функція для оновлення іконок кнопок кошика
+  export function updateCartButtonIcons(arr, buttonClass, icons) {
+    const cart = getCart();
+    document.querySelectorAll(buttonClass).forEach(button => {
+      const productId = button.dataset.productId;
+      const productInCart = cart.find(item => item._id === productId);
+  
+      if (productInCart) {
+        button.innerHTML = `
+          <svg class="list-cart-svg-list" width="18" height="18">
+            <use href="${icons}#icon-check"></use>
+          </svg>
+        `;
+      } else {
+        button.innerHTML = `
+          <svg class="list-cart-svg-list" width="18" height="18">
+            <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
+          </svg>
+        `;
+      }
+    });
+  }
+  
+  // Уніфікована функція для встановлення обробників подій на кнопки додавання до кошика
+  export function setCartButtonEventListeners(arr, buttonClass, icons) {
+    document.querySelectorAll(buttonClass).forEach(button => {
+      button.addEventListener('click', (e) => {
+        const productId = e.currentTarget.dataset.productId;
+        handleCartButtonClick(productId, arr, buttonClass, icons);
+      });
+    });
+  }
