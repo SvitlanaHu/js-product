@@ -15,31 +15,46 @@
     
     <script type="module" crossorigin src="/js-product/commonHelpers2.js"></script>
     <link rel="modulepreload" crossorigin href="/js-product/assets/vendor-b592f4c5.js">
-    <link rel="modulepreload" crossorigin href="/js-product/assets/products-list-6470f097.js">
-    <link rel="stylesheet" href="/js-product/assets/products-list-11fd256f.css">
+    <link rel="modulepreload" crossorigin href="/js-product/assets/products-list-39a0f548.js">
+    <link rel="stylesheet" href="/js-product/assets/products-list-6d85cd1b.css">
     <link rel="stylesheet" href="/js-product/assets/vendor-a0b14d8a.css">
   </head>
   <body>
-    <header class="header">
+    <!-- <header class="header">
   <a
     href="cart-page.html"
     style="font-size: 25px; color: red; display: block; padding: 20px"
     >CART PAGE</a
   >
+</header> -->
+
+<header class="header">
+  <nav class="container header-container">
+    <a class="header-logo" href="../index.html">
+      <svg class="header-logo-box">
+        <use
+          class="logo"
+          href="../img/icone/symbol-defs.svg#icon-tdesign_cabbage"
+          width="20"
+          hight="20"
+        ></use>
+      </svg>
+      <span class="text-logo">Food Boutique</span>
+    </a>
+
+    <ul class="list header-nav">
+      <li>
+        <a href="../index.html" class="home-btn"
+          ><span class="home-btn-text">Home</span></a
+        >
+      </li>
+      <li>
+        <a href="cart-page.html"> <span class="cart-btn">Cart (0)</span></a>
+      </li>
+    </ul>
+  </nav>
 </header>
 
-    <!-- <div class="intro">
-  <div class="video">
-    <video
-      src="./img/slow-falling-snow-VB-green-NO-LOGO.mp4"
-      autoplay
-      muted
-      loop
-      class="video-media"
-    ></video>
-  </div>
-</div>
- -->
 
     <main class="main-container intro-content">
       <div>
@@ -85,28 +100,28 @@
         <div class="main-box">
           
           <div class="all-products-container">
-          <div class="products-list-and-pagination">
-            <div id="products-list-container">
+            <div class="products-list-and-pagination">
+              <div id="products-list-container">
     <!-- Тут буде рендеритися список продуктів -->
 </div>
     <!-- Контейнер для пагінації -->
    <div id="tui-pagination-container" class="tui-pagination"></div>
 </div>
-          </div>
-          <div class="side-bar">
-            <div>
+            </div>
+            <div class="side-bar">
+              <div>
   <h2 class="popular-products-title">Popular products</h2>
 
   <ul class="popular-product-list"></ul>
 </div>
 
-            <div class="container-discount">
+              <div class="container-discount">
   <h1 class="discount-title">Discount products</h1>
   <ul id="discount-products"></ul>
   <div id="pagination" class="pagination"></div>
 </div>
 
-          </div>
+            </div>
           </div>
         </div>
       </div>
