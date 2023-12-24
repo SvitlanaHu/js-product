@@ -1,3 +1,30 @@
+.popular-container {
+  min-width: 320px;
+  max-width: 375px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1439px) {
+  .popular-container {
+    max-width: 768px;
+
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .popular-container {
+    padding: 0;
+    min-width: 275px;
+  }
+}
+
 .popular-products-title {
   color: var(--main-text-color);
   font-size: 28px;
@@ -13,6 +40,23 @@
   flex-direction: column;
   margin: 0 auto;
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1439px) {
+  .popular-product-list {
+    max-width: 564px;
+    height: 320px;
+    flex-wrap: wrap;
+    gap: 13px;
+    margin: 0;
+
+    margin-bottom: 40px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .popular-product-list {
+    margin-bottom: 40px;
+  }
+}
 .popular-product-item {
   max-width: 335px;
   height: 98px;
@@ -21,6 +65,19 @@
   padding: 12px;
   margin-bottom: 14px;
 }
+@media only screen and (min-width: 768px) and (max-width: 1439px) {
+  .popular-product-item {
+    max-width: 275px;
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .popular-product-item:last-child {
+    margin-bottom: 0;
+  }
+}
+
 .popular-modal {
   display: flex;
 }
@@ -45,6 +102,13 @@
   display: flex;
   gap: 9px;
 }
+
+@media only screen and (min-width: 768px) {
+  .about-popular {
+    gap: 6px;
+  }
+}
+
 .name-popular-product {
   color: var(--main-text-color);
   font-size: 18px;
@@ -52,6 +116,16 @@
   line-height: 1.11;
   margin-bottom: 3px;
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1439px) {
+  .name-popular-product {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2; /* 120% */
+    margin-bottom: 0;
+  }
+}
+
 .subname-popular-product {
   color: var(--add-text-color);
   font-size: 12px;
@@ -77,6 +151,8 @@
   margin-left: 55px;
 }
 
-.list-cart-svg-list {
-  fill: black;
+@media only screen and (min-width: 768px) {
+  .popular-cart-btn {
+    margin-left: 0;
+  }
 }
