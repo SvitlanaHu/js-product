@@ -1,6 +1,6 @@
 import icons from '../img/icone/symbol-defs.svg';
 import { getProducts } from './products-api';
-import { addToCart, getCart, getFilters, updateFilter } from './local-storage';
+import { addToCart, getCart, getFilters, updateFilter, saveFilters } from './local-storage';
 import 'tui-pagination/dist/tui-pagination.css';
 import Pagination from 'tui-pagination';
 
@@ -11,10 +11,19 @@ const productsListContainer = document.getElementById('products-list-container')
 let pagination;
 
 async function renderProducts() {
-    const filters = getFilters();
-    let page = filters.page || 1;
-    let limit = filters.limit || 6; // Використання значення за замовчуванням, якщо воно відсутнє в локальному сховищі
+  let filters = getFilters();
+  let page = filters.page || 1;
+  let limit;
 
+  if (window.innerWidth >= 1440) {
+    limit = filters.limit = 9;
+  } else if (window.innerWidth >= 768) {
+    limit = filters.limit = 8;
+  } else {
+    limit = filters.limit = 6;
+  }
+    // localStorage.setItem('productFilters', JSON.stringify(filters));
+    saveFilters(filters)
     try {
         const { data } = await getProducts(page, limit);
         const { perPage, totalPages, results } = data;
