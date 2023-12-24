@@ -38,4 +38,4 @@ import{a as w,P as L}from"./vendor-b592f4c5.js";(function(){const i=document.cre
                     </div>
             </li>
         `}).join("")}</ul>`;return setTimeout(()=>{document.querySelectorAll(".cart-btn-list").forEach(e=>{e.addEventListener("click",n=>{const s=n.currentTarget.dataset.productId,r=t.find(o=>o._id===s);r?v(r,t):console.error("Product not found for ID:",s)})})},0),I(t),i}export{O as c,u as i};
-//# sourceMappingURL=products-list-9df6fae9.js.map
+//# sourceMappingURL=products-list-c2653c1e.js.map
