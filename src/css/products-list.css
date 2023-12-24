@@ -20,11 +20,12 @@
 }
 @media only screen and (min-width: 1440px) {
   .card-container-list {
-    max-width: 1065px;
-    padding-left: 100px;
+    max-width: 925px;
+    padding-left: 0px;
     padding-top: 60px;
     row-gap: 40px;
     column-gap: 20px;
+    padding-right: 0;
   }
 }
 

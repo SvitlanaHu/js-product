@@ -102,11 +102,13 @@ body {
     max-width: 1440px;
     display: flex;
     flex-direction: row;
-    margin: 0 auto;
-    justify-content: center;
+    /* margin: 0 auto; */
+    /* justify-content: center; */
     gap: 40px;
     outline: 2px solid purple;
     outline-offset: -2px;
+    padding-left: 100px;
+    padding-right: 100px;
   }
 
   .products-list-and-pagination {
