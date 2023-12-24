@@ -34,7 +34,7 @@
 
 .text-logo {
   font-family: 'Baskerville Bold', sans-serif;
-  font-size: 24px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 700;
   line-height: 0.6;
@@ -46,31 +46,55 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: 6px;
 }
 
 .home-btn {
   display: flex;
-  padding: 12px 28px;
+  padding: 10px 20px;
   background-color: var(--olive);
   border-radius: 30px;
 }
 
 .home-btn-text {
   color: var(--main-background-color);
-  font-size: 18px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 1.33; /* 133.333% */
 }
 
 .cart-btn {
-  color: var(--main-text-color);
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.33;
-  text-transform: uppercase;
+  display: none;
+}
+
+/* Tablet screens */
+@media screen and (min-width: 768px) {
+  .text-logo {
+    font-size: 24px;
+  }
+
+  .header-nav {
+    gap: 16px;
+  }
+
+  .home-btn {
+    padding: 12px 28px;
+  }
+
+  .cart-btn {
+    font-size: 18px;
+  }
+
+  .cart-btn {
+    display: block;
+    color: var(--main-text-color);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.33;
+    text-transform: uppercase;
+  }
 }
 
 /* Desctop screens */
