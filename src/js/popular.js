@@ -9,7 +9,9 @@ function renderPopularProducts(products) {
   products.forEach(product => {
     const listItem = document.createElement('li');
     listItem.classList.add('popular-product-item');
-
+    const popularCategoryWithoutUnderscore = product.category
+      .split('_')
+      .join(' ');
     listItem.innerHTML = `
       <a class="popular-modal">
                  <div class="popular-img">
@@ -17,13 +19,13 @@ function renderPopularProducts(products) {
           </div>  
           <ul class="about-popular">
             <li class="name-popular-product">${product.name}</li>
-            <li class="subname-popular-product">Category: <span class="id-subname">${product.category}</span></li>
+            <li class="subname-popular-product">Category: <span class="id-subname">${popularCategoryWithoutUnderscore}</span></li>
             <li class="subname-popular-product">Size: <span class="id-subname">${product.size}</span></li>
             <li class="subname-popular-product">Popularity: <span class="id-subname">${product.popularity}</span></li>
           </ul>
           <button class='popular-cart-btn' type="button">
           <svg class="list-cart-svg-list" width="12" height="12">
-<use href="'${icons}'#icon-heroicons-solid_shopping-cart-12x12 "></use>
+<use href="${icons}#icon-heroicons-solid_shopping-cart-12x12 "></use>
          </svg></button>
         </a>
     `;
