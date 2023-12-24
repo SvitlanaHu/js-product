@@ -53,8 +53,19 @@ export function addToCart(productToAdd) {
 // Видалення продукту з кошика
 export function removeFromCart(productId) {
     const cart = getCart();
-    const updatedCart = cart.filter(item => item.id !== productId);
-    saveCart(updatedCart);
+    const productIndex = cart.findIndex(item => item._id === productId);
+
+    if (productIndex > -1) {
+        if (cart[productIndex].quantity > 1) {
+            // Якщо кількість більше 1, зменшуємо її
+            cart[productIndex].quantity -= 1;
+        } else {
+            // Якщо кількість дорівнює 1, видаляємо продукт з кошика
+            cart.splice(productIndex, 1);
+        }
+    }
+
+    saveCart(cart);
 }
 
 // Очищення кошика

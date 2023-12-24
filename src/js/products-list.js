@@ -1,29 +1,89 @@
 import icons from '../img/icone/symbol-defs.svg';
 import { getProducts } from './products-api';
-import { addToCart, getCart, getFilters, updateFilter, saveFilters } from './local-storage';
+import { addToCart, getCart, getFilters, updateFilter, removeFromCart} from './local-storage';
 import 'tui-pagination/dist/tui-pagination.css';
 import Pagination from 'tui-pagination';
 
-// const mainProductCard = document.querySelector('.main-box');
 const productsListContainer = document.getElementById('products-list-container');
-// const formEl = document.querySelector('.search-form')
 
 let pagination;
 
-async function renderProducts() {
-  let filters = getFilters();
-  let page = filters.page || 1;
-  let limit;
+// Обробка зміни розміру вікна
+window.addEventListener('resize', updatePageSize);
 
+// Функція для оновлення ліміту продуктів на сторінці
+function updatePageSize() {
+  let limit;
   if (window.innerWidth >= 1440) {
-    limit = filters.limit = 9;
+    limit = 9;
   } else if (window.innerWidth >= 768) {
-    limit = filters.limit = 8;
+    limit = 8;
   } else {
-    limit = filters.limit = 6;
+    limit = 6;
   }
-    // localStorage.setItem('productFilters', JSON.stringify(filters));
-    saveFilters(filters)
+  const currentFilters = getFilters();
+  if (currentFilters.limit !== limit) {
+    updateFilter('limit', limit);
+    renderProducts();
+  }
+}
+
+// Функція, яка викликається при кліку на кнопку додавання продукту до кошика
+function handleCartButtonClick(productId, arr) {
+  const cart = getCart();
+  const productInCart = cart.find(item => item._id === productId);
+  const product = arr.find(item => item._id === productId); // Знаходимо продукт у масиві
+
+  if (productInCart) {
+    // Якщо продукт вже є у кошику, видаляємо його з кошика
+    removeFromCart(productId);
+  } else if (product) {
+    // Якщо продукт немає у кошику, але він існує в масиві, додаємо його
+    addToCart(product);
+  }
+  updateCartButtonIcons(arr);
+}
+
+// Оновлення іконок кнопок кошика
+function updateCartButtonIcons(arr) {
+  const cart = getCart();
+  document.querySelectorAll('.cart-btn-list').forEach(button => {
+    const productId = button.dataset.productId;
+    const productInCart = cart.find(item => item._id === productId);
+
+    if (productInCart) {
+      // Якщо продукт є у кошику, показуємо іконку з галочкою
+      button.innerHTML = `
+        <svg class="list-cart-svg-list" width="18" height="18">
+          <use href="${icons}#icon-check"></use>
+        </svg>
+      `;
+    } else {
+      // Якщо продукт немає у кошику, показуємо іконку кошика
+      button.innerHTML = `
+        <svg class="list-cart-svg-list" width="18" height="18">
+          <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
+        </svg>
+      `;
+    }
+  });
+}
+
+// Встановлення обробників подій на кнопки додавання до кошика
+function setCartButtonEventListeners(arr) {
+  document.querySelectorAll('.cart-btn-list').forEach(button => {
+    button.addEventListener('click', (e) => {
+      const productId = e.currentTarget.dataset.productId;
+      handleCartButtonClick(productId, arr);
+    });
+  });
+}
+
+async function renderProducts() {
+    const filters = getFilters();
+    let page = filters.page || 1;
+    let limit = filters.limit || 6;
+
     try {
         const { data } = await getProducts(page, limit);
         const { perPage, totalPages, results } = data;
@@ -31,6 +91,7 @@ async function renderProducts() {
 
        
     productsListContainer.innerHTML = createMarkup(results); // Оновлюємо тільки список продуктів
+    setCartButtonEventListeners(results); // Встановлення обробників подій на нові кнопки
 
         const container = document.getElementById('tui-pagination-container');
         
@@ -120,44 +181,8 @@ export function createMarkup(arr) {
       });
     }, 0);
 
-  return markup;
+    setCartButtonEventListeners(arr); // Встановлення обробників подій після створення розмітки
+    return markup;
 }
 
-function handleCartButtonClick(product, arr) {
-  const cart = getCart();
-  const productInCart = cart.find(item => item._id === product._id);
-
-  if (productInCart) {
-    // Якщо продукт вже є у кошику, виведіть повідомлення і не додавайте його знову
-    console.log('Product is already in the cart');
-  } else {
-    // Якщо продукт немає у кошику, додайте його
-    addToCart(product);
-    updateCartButtonIcons(arr);
-  }
-}
-
-function updateCartButtonIcons(arr) {
-  const cart = getCart();
-  document.querySelectorAll('.cart-btn-list').forEach(button => {
-    const productId = button.dataset.productId;
-    const productInCart = cart.find(item => item._id === productId);
-
-    if (productInCart) {
-      button.innerHTML = `
-        <svg class="list-cart-svg-list" width="18" height="18">
-          <use href="${icons}#icon-check"></use>
-        </svg>
-      `;
-      button.disabled = true; // Заборонити кліки на кнопку
-    } else {
-      button.innerHTML = `
-        <svg class="list-cart-svg-list" width="18" height="18">
-          <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
-        </svg>
-      `;
-      button.disabled = false; // Дозволити кліки на кнопку
-    }
-  });
-}
 
