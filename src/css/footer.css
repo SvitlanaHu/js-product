@@ -349,8 +349,8 @@
 }
 
 .success-modal-interface {
-  min-width: 335px;
-  min-height: 400px;
+  width: 335px;
+  height: 400px;
   z-index: 1;
   box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
   position: absolute;
@@ -370,6 +370,7 @@
     align-items: center;
     text-align: center;
     margin-top: 100px;
+    gap: 14px;
 }
 
 .success-title {
@@ -380,7 +381,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: 24px;
-  margin-bottom: 14px;
   max-width: 245px;
 }
 
@@ -453,6 +453,7 @@
   align-items: center;
   text-align: center;
   margin-top: 80px;
+  gap: 14px;
 }
 
 .failure-title {
@@ -464,7 +465,6 @@
   font-weight: 500;
   line-height: 24px;
   max-width: 245px;
-  margin-bottom: 14px;
 }
 
 .failure-color {
@@ -480,4 +480,29 @@
   font-weight: 400;
   line-height: 18px;
   max-width: 248px;
+}
+
+@media only screen and (min-width: 768px) {
+  .success-modal-interface {
+    width: 490px;
+    height: 400px; 
+  }
+  .success-text {
+    gap: 20px;
+    margin-top: 90px;
+  }
+  .success-p {
+    width: 328px;
+  }
+  .failure-modal-interface {
+    width: 469px;
+    height: 308px;
+  }
+  .failure-text {
+    gap: 20px;
+    margin-top: 100px;
+  }
+  .failure-p {
+    width: 349px;
+  }
 }
