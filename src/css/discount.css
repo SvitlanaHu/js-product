@@ -84,7 +84,8 @@
 padding-left: 0;
 padding-right: 0;
 margin: 0;
-padding-top: 0;
+/* padding-top: 0; */
+padding-top: 3px;
     }
 }
 @media only screen and (min-width: 1440px) {
