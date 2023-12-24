@@ -49,6 +49,17 @@ html {
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Baskerville Bold';
+  src: local(baskerville-bold) url('../fonts/baskerville-bold.ttf')
+      format('truetype'),
+    /* Safari, Android, iOS */ url('../fonts/baskerville-bold.woff')
+      format('woff'),
+    /* Modern Browsers */ url('../fonts/baskerville-bold.woff2') format('woff2'); /* Modern Browsers */
+  font-weight: 700;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   padding: 0;
