@@ -1,5 +1,7 @@
 import axios from 'axios';
 import icons from '../img/icone/symbol-defs.svg';
+import { updateCartButtonIcons, setCartButtonEventListeners } from './local-storage';
+
 const popularProductsURL =
   'https://food-boutique.b.goit.study/api/products/popular';
 
@@ -23,20 +25,26 @@ function renderPopularProducts(products) {
             <li class="subname-popular-product">Size: <span class="id-subname">${product.size}</span></li>
             <li class="subname-popular-product">Popularity: <span class="id-subname">${product.popularity}</span></li>
           </ul>
-          <button class='popular-cart-btn' type="button">
-          <svg class="list-cart-svg-list" width="12" height="12">
-<use href="${icons}#icon-heroicons-solid_shopping-cart-12x12 "></use>
-         </svg></button>
+          <button class='popular-cart-btn' type="button" data-product-id="${product._id}">          
+                                <svg class="list-cart-svg-list" width="18" height="18" >
+                                    <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18">
+                                    </use>
+                                </svg>
+                            </button>
         </a>
     `;
 
     productList.appendChild(listItem);
   });
+  updateCartButtonIcons(products, '.popular-cart-btn', icons);
+  setCartButtonEventListeners(products, '.popular-cart-btn', icons);
+
 }
 
 async function fetchPopularProducts() {
   try {
     const response = await axios.get(popularProductsURL);
+    
     return response.data; // Повертаємо список популярних продуктів з відповіді
   } catch (error) {
     console.error('Error fetching popular products:', error);
@@ -47,8 +55,9 @@ async function fetchPopularProducts() {
 // Викликаємо функцію для отримання списку популярних продуктів
 fetchPopularProducts()
   .then(popularProducts => {
+    
     // Рендеримо список популярних продуктів
-    renderPopularProducts(popularProducts);
+    renderPopularProducts(popularProducts);       
   })
   .catch(error => {
     console.error('Error:', error);
