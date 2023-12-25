@@ -1,4 +1,4 @@
-import{i as r,u as c,a as f,b as C,d as T,h as B}from"./assets/local-storage-066ecf26.js";import{a as b,P as q}from"./assets/vendor-b592f4c5.js";const z="https://food-boutique.b.goit.study/api/products";function H(t,s,e){return b.get(`${z}`,{params:{page:t,limit:s,keyword:e}})}document.addEventListener("DOMContentLoaded",()=>{const t=document.querySelector(".footer-sub-form");t.addEventListener("submit",async s=>{s.preventDefault();const e=t.querySelector(".footer-email-input"),i=e.value;if(!e.checkValidity()){alert("Please enter a valid email address.");return}const o={email:i};try{const n=await fetch("https://food-boutique.b.goit.study/api/subscription",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(o)});if(n.ok){const a=await n.json();alert(a.message)}else if(n.status===409)alert("This email is already subscribed.");else throw new Error("Failed to subscribe.")}catch(n){alert("Error: "+n.message)}})});document.addEventListener("DOMContentLoaded",function(){const t=document.getElementById("discount-products");document.getElementById("pagination");async function s(i){try{const n=(await b.get("https://food-boutique.b.goit.study/api/products/discount?page=${page}&limit=${itemsPerPage}`")).data;t.innerHTML="",n.forEach(a=>{const m=e(a);t.innerHTML+=m})}catch(o){console.error("Error fetching discount products:",o)}}s();function e(i){return`
+import{i as r,u as c,a as f,b as C,d as T,h as B}from"./assets/local-storage-5985b4da.js";import{a as b,P as q}from"./assets/vendor-b592f4c5.js";const z="https://food-boutique.b.goit.study/api/products";function H(t,s,e){return b.get(`${z}`,{params:{page:t,limit:s,keyword:e}})}document.addEventListener("DOMContentLoaded",()=>{const t=document.querySelector(".footer-sub-form");t.addEventListener("submit",async s=>{s.preventDefault();const e=t.querySelector(".footer-email-input"),i=e.value;if(!e.checkValidity()){alert("Please enter a valid email address.");return}const o={email:i};try{const n=await fetch("https://food-boutique.b.goit.study/api/subscription",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(o)});if(n.ok){const a=await n.json();alert(a.message)}else if(n.status===409)alert("This email is already subscribed.");else throw new Error("Failed to subscribe.")}catch(n){alert("Error: "+n.message)}})});document.addEventListener("DOMContentLoaded",function(){const t=document.getElementById("discount-products");document.getElementById("pagination");async function s(i){try{const n=(await b.get("https://food-boutique.b.goit.study/api/products/discount?page=${page}&limit=${itemsPerPage}`")).data;t.innerHTML="",n.forEach(a=>{const m=e(a);t.innerHTML+=m})}catch(o){console.error("Error fetching discount products:",o)}}s();function e(i){return`
         <li class="card-container-list-discount" id="${i._id}">
         <div class="photo-card-list-discount">
                 <a class="product-modal-list-discount" href="МОДАЛЬНЕ ВІКНО">
@@ -8,6 +8,8 @@ import{i as r,u as c,a as f,b as C,d as T,h as B}from"./assets/local-storage-066
                          </svg>
                         <img class="product-image-list-discount" src="${i.img}" alt="${i.name} photo" width=114 height=114 loading="lazy" />
                     </div>
+                    </a>
+
                     <div class="product-info-list">
                         <div class="price-and-btn-list-discount">
                             <h2 class="product-name-list-discount">${i.name}</h2>
@@ -19,7 +21,6 @@ import{i as r,u as c,a as f,b as C,d as T,h as B}from"./assets/local-storage-066
                             </button>
                         </div>
                     </div>
-                </a>
             </div>
         </li>
     
