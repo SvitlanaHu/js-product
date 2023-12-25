@@ -77,6 +77,12 @@
   position: relative;
 }
 
+@media only screen and (min-width: 1440px) {
+  .hero-img {
+    width: 1240px;
+    margin: 0 auto;
+  }
+}
 .icon-organic-food {
   position: absolute;
   top: -8px;

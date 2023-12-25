@@ -11,3 +11,23 @@ export function getProducts(page, limit) {
     });
 };
 
+export function getProductsKeyword(page, limit, value) {
+    return axios.get(`${BASE_URL}`, {
+        params: {
+            page: page,
+            limit: limit,
+            keyword: value,
+        },
+    });
+};
+
+export function getProductsCategory(page, limit, category) {
+    return axios.get(`${BASE_URL}`, {
+        params: {
+            page: page,
+            limit: limit,
+            category: category,
+        },
+    });
+};
+
