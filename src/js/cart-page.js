@@ -1,3 +1,5 @@
+import './header';
+
 import icons from '../img/icone/symbol-defs.svg';
 import { getCart, clearCart, saveCart } from './local-storage';
 import axios from 'axios';
