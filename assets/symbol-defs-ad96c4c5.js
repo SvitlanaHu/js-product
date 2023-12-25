@@ -7,4 +7,4 @@
           <use href="${r}#icon-heroicons-solid_shopping-cart-18x18"></use>
         </svg>
       `})}function I(e,t,r){document.querySelectorAll(t).forEach(s=>{s.addEventListener("click",n=>{const o=n.currentTarget.dataset.productId;h(o,e,t,r)})})}d();const v="/js-product/assets/symbol-defs-9e372123.svg";export{I as a,y as b,C as c,p as d,a as g,v as i,l as s,u};
-//# sourceMappingURL=symbol-defs-26295cf0.js.map
+//# sourceMappingURL=symbol-defs-ad96c4c5.js.map
