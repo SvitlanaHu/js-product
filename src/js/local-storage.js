@@ -72,7 +72,9 @@ export function removeFromCart(productId) {
 export function clearCart() {
   saveCart([]);
 }
-function updateCartCount() {
+
+// Кількість товарів в корзині
+export function updateCartCount() {
 const cartItems = getCart();
 const totalCount = cartItems.reduce((count, item) => count + item.quantity, 0);
 const cartCountElement = document.querySelector('.numbers-of-products');
