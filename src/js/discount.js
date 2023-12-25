@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <a class="product-modal-list-discount" href="МОДАЛЬНЕ ВІКНО">
                     <div class="img-container-list-discount">
                         <svg width="60" height="60" class="product-image-discount">
-                            <use href="../img/icone/symbol-defs.svg#icon-discount-green"></use>
+                            <use href="./img/icone/symbol-defs.svg#icon-discount-green"></use>
                          </svg>
                         <img class="product-image-list-discount" src="${product.img}" alt="${product.name} photo" width=114 height=114 loading="lazy" />
                     </div>
