@@ -11,8 +11,8 @@
     <link rel="icon" type="image/svg+xml" href="/js-product/favicon.svg" />
     
     <script type="module" crossorigin src="/js-product/commonHelpers.js"></script>
-    <link rel="modulepreload" crossorigin href="/js-product/assets/local-storage-e8f2c5b0.js">
-    <link rel="stylesheet" href="/js-product/assets/local-storage-1cf4723a.css">
+    <link rel="modulepreload" crossorigin href="/js-product/assets/local-storage-ee33ca5d.js">
+    <link rel="stylesheet" href="/js-product/assets/local-storage-c2138391.css">
   </head>
   <body>
     <header class="header">
@@ -54,82 +54,80 @@
 
     <main>
       <section class="cart-page-section container">
-  <div class="all-content-wrap">
-    <div class="cart-wrap-title">
-      <span class="cart-page-shop-icon"
-        ><svg class="" width="18" height="18">
-          <use
-            href="/js-product/assets/symbol-defs-24cbf6d3.svg#icon-heroicons-solid_shopping-cart-18x18"
-          ></use></svg
-      ></span>
-      <h1 class="cart-title">
-        Cart (<span class="js-number-of-products">0</span>)
-      </h1>
-    </div>
+  <div class="cart-wrap-title">
+    <span class="cart-page-shop-icon"
+      ><svg class="" width="18" height="18">
+        <use
+          href="/js-product/assets/symbol-defs-24cbf6d3.svg#icon-heroicons-solid_shopping-cart-18x18"
+        ></use></svg
+    ></span>
+    <h1 class="cart-title">
+      Cart (<span class="js-number-of-products">0</span>)
+    </h1>
+  </div>
 
-    <div class="empty-basket-wrap">
-      <div class="empty-basket-content">
-        <img
-          class="basket_img"
-          srcset="/js-product/assets/basket_1x-791cbee1.png 1x, /js-product/assets/basket_1x-791cbee1.png 2x"
-          src="/js-product/assets/basket_1x-791cbee1.png"
-          alt="yellow shopping basket"
-          width="132"
-          height="114"
-        />
-        <div class="basket_container_text">
-          <h3 class="basket_title">
-            Your basket is <span class="basket_title_span">empty...</span>
-          </h3>
-          <p class="basket-text">
-            Go to the main page to select your favorite products and add them to
-            the cart.
-          </p>
-        </div>
+  <div class="empty-basket-wrap">
+    <div class="empty-basket-content" hidden>
+      <img
+        class="basket_img"
+        srcset="/js-product/assets/basket_1x-791cbee1.png 1x, /js-product/assets/basket_1x-791cbee1.png 2x"
+        src="/js-product/assets/basket_1x-791cbee1.png"
+        alt="yellow shopping basket"
+        width="132"
+        height="114"
+      />
+      <div class="basket_container_text">
+        <h3 class="basket_title">
+          Your basket is <span class="basket_title_span">empty...</span>
+        </h3>
+        <p class="basket-text">
+          Go to the main page to select your favorite products and add them to
+          the cart.
+        </p>
       </div>
     </div>
+  </div>
 
-    <div class="cart-main-content-wrap">
-      <div class="delete-all-btn-wrap js-delete-all-btn">
-        <a href="#" class="delete-all-btn"
-          >Delete all
-          <span class="delete-all-btn-icon"
-            ><svg class="" width="14" height="14">
-              <use
-                href="/js-product/assets/symbol-defs-24cbf6d3.svg#close-button"
-              ></use></svg></span
-        ></a>
+  <div class="main-content-with-delete-all" hidden>
+    <div class="delete-all-btn-wrap js-delete-all-btn">
+      <a href="#" class="delete-all-btn"
+        >Delete all
+        <span class="delete-all-btn-icon"
+          ><svg class="" width="14" height="14">
+            <use
+              href="/js-product/assets/symbol-defs-24cbf6d3.svg#close-button"
+            ></use></svg></span
+      ></a>
+    </div>
+
+    <div class="cart-main-content">
+      <div class="scroll-container">
+        <ul class="cart-list js-cart-list"></ul>
       </div>
 
-      <div class="cart-main-content">
-        <div class="scroll-container">
-          <ul class="cart-list js-cart-list"></ul>
+      <div class="order-content">
+        <h2 class="order-title">Your Order</h2>
+        <div class="total-wrap">
+          <span class="text-total">Total</span>
+          <span class="total-price-text"
+            ><span class="total-light-text">Sum:&nbsp;&nbsp;</span>$<span
+              class="js-cart-amount"
+              >0</span
+            ></span
+          >
         </div>
-
-        <div class="order-content">
-          <h2 class="order-title">Your Order</h2>
-          <div class="total-wrap">
-            <span class="text-total">Total</span>
-            <span class="total-price-text"
-              ><span class="total-light-text">Sum:&nbsp;&nbsp;</span>$<span
-                class="js-cart-amount"
-                >0</span
-              ></span
-            >
-          </div>
-          <form class="order-form">
-            <label for="user-email" class="order-label">Mail: </label>
-            <input
-              type="email"
-              name="email"
-              id="user-email"
-              class="order-form-input"
-              placeholder="Enter your email"
-              autocomplete="on"
-            />
-            <button type="submit" class="order-btn-submit">Checkout</button>
-          </form>
-        </div>
+        <form class="order-form">
+          <label for="user-email" class="order-label">Mail: </label>
+          <input
+            type="email"
+            name="email"
+            id="user-email"
+            class="order-form-input"
+            placeholder="Enter your email"
+            autocomplete="on"
+          />
+          <button type="submit" class="order-btn-submit">Checkout</button>
+        </form>
       </div>
     </div>
   </div>
@@ -243,7 +241,6 @@
   </div>
 </footer>
 
-    
     
   </body>
 </html>

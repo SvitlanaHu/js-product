@@ -1,13 +1,13 @@
-import{g as c,s as p,i as f,c as g}from"./assets/local-storage-e8f2c5b0.js";const r=document.querySelector(".js-cart-list"),b=document.querySelector(".js-delete-all-btn"),i=document.querySelector(".all-content-wrap"),h=document.querySelector(".js-number-of-products"),v=document.querySelector(".js-cart-amount"),L=document.querySelector(".order-form");C();r.addEventListener("click",S);o();function C(){const t=c();i.classList.add("is-visible-main-content"),y(t),L.addEventListener("submit",x)}function S(t){if(!t.target.classList.contains("js-delete-product-btn"))return;const e=t.target.closest(".js-cart-item"),s=e.dataset.id,a=c().filter(({_id:l})=>s!==l);p(a),e.style.display="none",o(),j(),d()}function j(){c().length||(i.classList.replace("is-visible-main-content","is-hidden-main-content"),r.innerHTML="")}function y(t){if(!t.length){i.classList.add("is-hidden-main-content");return}const e=t.map(({_id:s,name:n,img:a,category:l,price:u,size:m})=>`<li class="cart-item js-cart-item" data-id = ${s}>
+import{g as c,s as p,i as m,c as f}from"./assets/local-storage-ee33ca5d.js";const e={cartProductList:document.querySelector(".js-cart-list"),deleteAllBtn:document.querySelector(".js-delete-all-btn"),emptyBasketContent:document.querySelector(".empty-basket-content"),emptyBasketWrap:document.querySelector(".empty-basket-wrap"),cartMainContainer:document.querySelector(".main-content-with-delete-all"),numberOfProducts:document.querySelector(".js-number-of-products"),cartTotalPrice:document.querySelector(".js-cart-amount"),orderForm:document.querySelector(".order-form")};y();l();e.cartProductList.addEventListener("click",h);function y(){const t=c();if(!t.length){e.emptyBasketContent.hidden=!1;return}g(t),e.cartMainContainer.hidden=!1,e.emptyBasketWrap.style.display="none",o(),e.orderForm.addEventListener("submit",k)}function l(){const t=c();e.numberOfProducts.textContent=t.length}function h(t){if(!t.target.classList.contains("js-delete-product-btn"))return;const r=t.target.closest(".js-cart-item"),a=r.dataset.id,s=c().filter(({_id:i})=>a!==i);p(s),r.style.display="none",l(),b(),o()}function b(){c().length||(e.cartMainContainer.hidden=!0,e.emptyBasketContent.hidden=!1,e.emptyBasketWrap.style.display="block",e.cartProductList.innerHTML="")}function g(t){const r=t.map(({_id:a,name:n,img:s,category:i,price:d,size:u})=>`<li class="cart-item js-cart-item" data-id = ${a}>
        <span class="delete-product-btn js-delete-product-btn">
               <svg width="12" height="12" class='js-delete-product-btn'>
-                <use class='js-delete-product-btn' href="${f}#close-button"></use></svg
+                <use class='js-delete-product-btn' href="${m}#close-button"></use></svg
             ></span>
           <div class="cart-item-info-wrap">
             <div class="cart-img-wrap-bgc">
               <div class="cart-img-thumb">
               <img
-                src="${a}"
+                src="${s}"
                 alt="${n}"
                 width="100"
                 height="100"
@@ -19,14 +19,14 @@ import{g as c,s as p,i as f,c as g}from"./assets/local-storage-e8f2c5b0.js";cons
               <div class="cart-text-wrap">
                 <p class="cart-item-text">
                   <span class="cart-light-text">Category:</span
-                  >&nbsp;&nbsp;${l}
+                  >&nbsp;&nbsp;${i}
                 </p>
                 <p class="cart-item-text">
-                  <span class="cart-light-text">Size:</span>&nbsp;&nbsp;${m}
+                  <span class="cart-light-text">Size:</span>&nbsp;&nbsp;${u}
                 </p>
               </div>
-              <p class="cart-item-price">${u}</p>
+              <p class="cart-item-price">${d}</p>
             </div>
           </div>
-        </li>`).join("");return r.innerHTML=e}b.addEventListener("click",()=>{g(),r.innerHTML="",o(),i.classList.replace("is-visible-main-content","is-hidden-main-content")});function o(){const t=c();h.textContent=t.length}function d(){const e=c().reduce((s,{price:n,quantity:a})=>s+=n*a,0);v.textContent=e}d();function x(t){t.preventDefault();const e=t.currentTarget.elements.email.value;if(!e){alert("Please, write your email!");return}$(e),t.currentTarget.reset()}function $(t){if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)){alert("Please, enter valid Email!");return}}
+        </li>`).join("");return e.cartProductList.innerHTML=r}e.deleteAllBtn.addEventListener("click",()=>{e.cartProductList.innerHTML="",f(),o(),l(),e.cartMainContainer.hidden=!0,e.emptyBasketContent.hidden=!1,e.emptyBasketWrap.style.display="block"});function o(){const r=c().reduce((a,{price:n,quantity:s})=>a+=n*s,0);e.cartTotalPrice.textContent=r.toFixed(2)}function k(t){t.preventDefault();const r=t.currentTarget.elements.email.value;if(!r){alert("Please, write your email!");return}C(r),t.currentTarget.reset()}function C(t){if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)){alert("Please, enter valid Email!");return}}
 //# sourceMappingURL=commonHelpers.js.map
