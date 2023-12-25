@@ -4,7 +4,7 @@ import{i as a,u as c,a as f,b as L,d as T,h as q}from"./assets/local-storage-559
                 <a class="product-modal-list-discount" href="МОДАЛЬНЕ ВІКНО">
                     <div class="img-container-list-discount">
                         <svg width="60" height="60" class="product-image-discount">
-                            <use href="../img/icone/symbol-defs.svg#icon-discount-green"></use>
+                            <use href="./img/icone/symbol-defs.svg#icon-discount-green"></use>
                          </svg>
                         <img class="product-image-list-discount" src="${o.img}" alt="${o.name} photo" width=114 height=114 loading="lazy" />
                     </div>
