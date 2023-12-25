@@ -56,8 +56,8 @@ function createMarkup(arr) {
     .map(item => {
       const categoryWithoutUnderscore = item.category.split('_').join(' ');
       return `
-            <li class="photo-card-list" id="open-modal">
-                <a class="product-modal-list">
+            <li class="photo-card-list">
+                <a class="product-modal-list" href="#">
                     <div class="img-container-list">
                         <img class="product-image-list" src="${item.img}" alt="${item.name} photo" width=140 height=140 loading="lazy" />
                     </div>
