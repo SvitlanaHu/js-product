@@ -14,9 +14,9 @@
     <title>Food Boutique</title>
     
     <script type="module" crossorigin src="/js-product/commonHelpers2.js"></script>
-    <link rel="modulepreload" crossorigin href="/js-product/assets/local-storage-03e6884f.js">
+    <link rel="modulepreload" crossorigin href="/js-product/assets/local-storage-409ae8c9.js">
     <link rel="modulepreload" crossorigin href="/js-product/assets/vendor-b592f4c5.js">
-    <link rel="stylesheet" href="/js-product/assets/local-storage-f38c48f0.css">
+    <link rel="stylesheet" href="/js-product/assets/local-storage-8b6ae612.css">
     <link rel="stylesheet" href="/js-product/assets/vendor-a0b14d8a.css">
   </head>
   <body>
@@ -99,7 +99,7 @@
   </div>
 </section>
 
-        <div class="filters-container">
+        <div class="filters-container container">
     <p class="filters-text">Filters:</p>
     <div class="search-container">
         <div class="searchbar">
@@ -112,14 +112,6 @@
                             <use href="../img/icone/symbol-defs.svg#icon-ic_baseline-search-20x20"></use>
                         </svg>
                     </button>
-
-                    <div class="no-results-container">
-                        <p class="no-results-text">Nothing was found for the selected <span
-                                class="filter-word">filters...</span></p>
-                        <p class="adjust-text">Try adjusting your search parameters or browse our range by other
-                            criteria to find the perfect
-                            product for you.</p>
-                    </div>
 
 
 
@@ -141,15 +133,27 @@
 </div>
 </div>
 </div>
+
+
+
         <div class="main-box">
           <div class="all-products-container">
             <div class="products-list-and-pagination">
-              <div id="products-list-container">
+              <div class="no-results-container visually-hidden">
+    <p class="no-results-text">Nothing was found for the selected <span
+            class="filter-word">filters...</span></p>
+    <p class="adjust-text">Try adjusting your search parameters or browse our range by other
+        criteria to find the perfect
+        product for you.</p>
+</div>
+<div id="products-list-container">
     <!-- Тут буде рендеритися список продуктів -->
+
 </div>
     <!-- Контейнер для пагінації -->
    <div id="tui-pagination-container" class="tui-pagination"></div>
 </div>
+
             </div>
             <div class="side-bar">
               <div class="popular-container">
