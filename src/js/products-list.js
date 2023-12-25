@@ -25,6 +25,8 @@ async function onSubmit(evt) {
   query = searchQuery;
 if (!searchQuery) {
   productsListContainer.innerHTML='';  
+  removeAndRecreatePaginationContainer()
+  noSearchDivContainerElement.classList.remove('visually-hidden')
 
   return console.log('Please enter a search query.');
 } try {
@@ -80,6 +82,9 @@ async function renderProducts() {
       const totalItems = perPage * totalPages;
       if (results.length === 0) { 
         removeAndRecreatePaginationContainer()
+        const container = document.getElementById('tui-pagination-container');
+        container.classList.add('visually-hidden')
+
         console.log(results);
         noSearchDivContainerElement.classList.remove('visually-hidden')
         productsListContainer.innerHTML=''; 
@@ -99,6 +104,7 @@ async function renderProducts() {
      const visiblePages = window.innerWidth < 768 ? 2 : 4; // За замовчуванням 4, якщо ширина екрану більша за 768
      if (totalPages === 1) {
       removeAndRecreatePaginationContainer();
+      container.classList.add('visually-hidden')
      } else {
     pagination = new Pagination(container, {
       totalItems: totalItems,
