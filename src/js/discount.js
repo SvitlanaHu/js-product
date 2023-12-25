@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const discountProductsContainer = document.getElementById("discount-products");
     const paginationContainer = document.getElementById('pagination');
 
-  
+
     async function fetchDiscountProducts(page) {
         try {
             const respone = await axios.get('https://food-boutique.b.goit.study/api/products/discount?page=${page}&limit=${itemsPerPage}`');
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             discountProductsContainer.innerHTML = '';
 
-                // Вибірка тільки 2 продуктів для відображення
+            // Вибірка тільки 2 продуктів для відображення
             // const productsToDisplay = discountProducts.slice(0, 2);
 
             // productsToDisplay.forEach(product => {
@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 const card = createProductCard(product)
                 discountProductsContainer.innerHTML += card;
             });
-        } catch(error) {
-             console.error('Error fetching discount products:', error);
+        } catch (error) {
+            console.error('Error fetching discount products:', error);
         }
     }
 
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <a class="product-modal-list-discount" href="МОДАЛЬНЕ ВІКНО">
                     <div class="img-container-list-discount">
                         <svg width="60" height="60" class="product-image-discount">
-                            <use href="./img/icone/symbol-defs.svg#icon-discount-green"></use>
+                            <use href="../img/icone/symbol-defs.svg#icon-discount-green"></use>
                          </svg>
                         <img class="product-image-list-discount" src="${product.img}" alt="${product.name} photo" width=114 height=114 loading="lazy" />
                     </div>
@@ -61,12 +61,12 @@ document.addEventListener("DOMContentLoaded", function () {
         </li>
     
         `
-        
+
     }
 
-    
+
     // Функція для додавання продукту до кошика
-    
+
 
 
 
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 
 
-    
+
 })
 
 const discountProductsContainer = document.getElementById("discount-products");
