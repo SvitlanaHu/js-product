@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             const respone = await axios.get('https://food-boutique.b.goit.study/api/products/discount?page=${page}&limit=${itemsPerPage}`');
             const discountProducts = respone.data;
-            console.log(discountProducts);
+            // console.log(discountProducts);
 
             discountProductsContainer.innerHTML = '';
 

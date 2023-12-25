@@ -57,12 +57,6 @@ input:focus {
 }
 
 
-.no-results-container {
-    display: none;
-
-}
-
-
 .no-results-text {
     font-size: 20px;
     font-weight: 500;

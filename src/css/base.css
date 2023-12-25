@@ -94,6 +94,9 @@ body {
   /* outline: 2px solid red;
   outline-offset: -2px; */
 }
+.main-box {
+  padding-bottom: 80px;
+}
 /* Tablet screens */
 @media screen and (min-width: 768px) {
   .container {
@@ -101,6 +104,9 @@ body {
 
     padding-left: 32px;
     padding-right: 32px;
+  }
+  .main-box {
+    padding-bottom: 100px;
   }
 }
 /* Desctop screens */
@@ -115,6 +121,7 @@ body {
     max-width: 1440px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     margin: 0 auto;
     /* justify-content: center; */
     gap: 40px;
@@ -123,6 +130,7 @@ body {
     padding-left: 100px;
     padding-right: 100px;
     padding-top: 60px;
+    padding-bottom: 60px;
   }
 
   .side-bar {
