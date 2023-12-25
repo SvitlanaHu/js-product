@@ -40,9 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="photo-card-list-discount">
                 <a class="product-modal-list-discount" href="МОДАЛЬНЕ ВІКНО">
                     <div class="img-container-list-discount">
-                        <svg width="60" height="60" class="product-image-discount">
-                            <use href="/img/discount-green.svg#icomoon-ignore"></use>
-                         </svg>
+                      <img class="product-image-discount" src="./img/discount-green.svg" alt="Discount" width="60" height="60"></img>
                         <img class="product-image-list-discount" src="${product.img}" alt="${product.name} photo" width=114 height=114 loading="lazy" />
                     </div>
                     <div class="product-info-list">
@@ -90,4 +88,3 @@ discountProductsContainer.addEventListener("mouseout", function () {
 });
 
 
-//   <img class="product-image-discount" src="img/discount-green.svg" alt="Discount" width="60" height="60"></img>
