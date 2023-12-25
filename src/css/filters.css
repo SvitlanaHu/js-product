@@ -1,3 +1,24 @@
+.js-search-form {
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+}
+@media only screen and (min-width: 768px) {
+    .js-search-form {
+        flex-direction: row;
+gap: 8px;
+    }
+    .search-wrapper {
+        width: 269px;
+    }
+.categories-dropdown-wrapper {
+    width: 189px;
+}
+.a-to-z-wrapper {
+    width: 200px;
+}
+}
+
 .filters-text {
     color: var(--add-text-color);
     font-size: 14px;
@@ -5,7 +26,12 @@
 }
 
 .filters-container{
-    padding-bottom: 60px;
+    margin-bottom: 40px;
+}
+@media only screen and (min-width: 1440px) {
+    .filters-container {
+margin-bottom: 0;
+    } 
 }
 
 input {
@@ -29,11 +55,12 @@ input:focus {
 .search-filter-btn {
     border: none;
     background-color: transparent;
+    width: 20px;
+    height: 20px;
 }
 
 .search-wrapper {
-    width: 269px;
-    height: 52px;
+    height: 48px;
     padding: 14px 20px;
     border-radius: 30px;
     border: 1px solid var(--add-text-color);
@@ -44,6 +71,11 @@ input:focus {
     flex-direction: row;
     align-items: center;
 }
+@media only screen and (min-width: 768px) {
+    .search-wrapper {
+        height: 52px;
+    }
+}
 
 .search-wrapper:hover,
 .search-wrapper:focus {
@@ -51,17 +83,42 @@ input:focus {
 }
 
 ::placeholder {
-    color: var(--main-text-color);
-    font-size: 18px;
-    ;
+    color: #010101;
+font-family: Neue Montreal;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.29em;
+}
+
+@media only screen and (min-width: 768px) {
+    ::placeholder {
+font-size: 18px;
+font-style: normal;
+line-height: 1.33em;
+    }
 }
 
 
+
 .no-results-text {
-    font-size: 20px;
     font-weight: 500;
     width: 367px;
     color: var(--main-text-color);
+
+    font-size: 18px;
+    line-height: 1.11em;
+    margin: 0 auto;
+    margin-bottom: 14px;
+    width: 261px;
+    text-align: center;
+}
+@media only screen and (min-width: 768px) {
+    .no-results-text {
+        font-size: 20px;
+        line-height: 1.2em;
+        width: 100%;
+    }
 }
 
 
@@ -71,21 +128,28 @@ input:focus {
 }
 
 .adjust-text {
-    font-size: 18px;
+    /* font-size: 18px; */
     color: rgba(1, 1, 1, 0.7);
     text-align: center;
+    color: rgba(1, 1, 1, 0.70);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.29em;
+    width: 279px;
+}
+@media only screen and (min-width: 768px) {
+    .adjust-text {
+        font-size: 18px;
+        line-height: 1.33em;
+        width: 371px;
+    }
 }
 
-@media only screen and (max-width: 420px) {
-    .no-results-text {
-        font-size: 18px;
-        text-align: center;
-        width: 261px;
+.search-container {
+    margin-bottom: 40px;
+}
+@media only screen and (min-width: 1440px) {
+    .search-container {
+        margin-bottom: 0;
     }
-
-    .adjust-text {
-        font-size: 14px;
-        width: 279px;
-    }
-
 }
