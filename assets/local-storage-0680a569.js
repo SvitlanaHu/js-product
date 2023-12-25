@@ -6,5 +6,5 @@
         <svg class="list-cart-svg-list" width="18" height="18">
           <use href="${r}#icon-heroicons-solid_shopping-cart-18x18"></use>
         </svg>
-      `})}function v(e,t,r){document.querySelectorAll(t).forEach(s=>{s.addEventListener("click",n=>{const o=n.currentTarget.dataset.productId;h(o,e,t,r)})})}export{v as a,C as b,I as c,f as d,a as g,y as i,l as s,u};
-//# sourceMappingURL=local-storage-387e6bb1.js.map
+      `})}function v(e,t,r){document.querySelectorAll(t).forEach(s=>{s.addEventListener("click",n=>{const o=n.currentTarget.dataset.productId;h(o,e,t,r)})})}export{v as a,m as b,I as c,C as d,f as e,a as g,y as i,l as s,u};
+//# sourceMappingURL=local-storage-0680a569.js.map
