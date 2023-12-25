@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="photo-card-list-discount">
                 <a class="product-modal-list-discount" href="МОДАЛЬНЕ ВІКНО">
                     <div class="img-container-list-discount">
-                        <img class="product-image-discount" src="img/discount-green.svg" alt="Discount" width="60" height="60">
+                      <img class="product-image-discount" src="./img/discount-green.svg" alt="Discount" width="60" height="60"></img>
                         <img class="product-image-list-discount" src="${product.img}" alt="${product.name} photo" width=114 height=114 loading="lazy" />
                     </div>
                     <div class="product-info-list">
@@ -86,3 +86,5 @@ discountProductsContainer.addEventListener("mouseover", function () {
 discountProductsContainer.addEventListener("mouseout", function () {
     discountProductsContainer.style.overflowY = "hidden";
 });
+
+
