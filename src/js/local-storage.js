@@ -84,7 +84,9 @@ export function handleCartButtonClick(productId, arr, buttonClass, icons) {
     } else if (product) {
       addToCart(product);
     }
-    updateCartButtonIcons(arr, buttonClass, icons);
+    updateCartButtonIcons(arr, '.cart-btn-list', icons);
+    updateCartButtonIcons(arr, '.popular-cart-btn', icons);
+    updateCartButtonIcons(arr, '.cart-btn-list-discount', icons);
   }
   
   // Уніфікована функція для оновлення іконок кнопок кошика

@@ -4,23 +4,41 @@ import axios from 'axios';
 
 const BASE_URL = 'https://food-boutique.b.goit.study/api/orders ';
 
-const cartProductList = document.querySelector('.js-cart-list');
-const deleteAllBtn = document.querySelector('.js-delete-all-btn');
-const allContentWrap = document.querySelector('.all-content-wrap');
-const numberOfProducts = document.querySelector('.js-number-of-products');
-const cartAmount = document.querySelector('.js-cart-amount');
-const orderForm = document.querySelector('.order-form');
+const refs = {
+  cartProductList: document.querySelector('.js-cart-list'),
+  deleteAllBtn: document.querySelector('.js-delete-all-btn'),
+  emptyBasketContent: document.querySelector('.empty-basket-content'),
+  emptyBasketWrap: document.querySelector('.empty-basket-wrap'),
+  cartMainContainer: document.querySelector('.main-content-with-delete-all'),
+  numberOfProducts: document.querySelector('.js-number-of-products'),
+  cartTotalPrice: document.querySelector('.js-cart-amount'),
+  orderForm: document.querySelector('.order-form'),
+};
 
 renderCartMarkup();
-cartProductList.addEventListener('click', onClickDeleteProduct);
 getNumberOfProducts();
 
-function renderCartMarkup() {
-  const arrSavedCart = getCart();
+refs.cartProductList.addEventListener('click', onClickDeleteProduct);
 
-  allContentWrap.classList.add('is-visible-main-content');
-  renderCartTpl(arrSavedCart);
-  orderForm.addEventListener('submit', onOrderFormSubmit);
+function renderCartMarkup() {
+  const lsData = getCart();
+
+  if (!lsData.length) {
+    refs.emptyBasketContent.hidden = false;
+    return;
+  }
+
+  renderCartTpl(lsData);
+  refs.cartMainContainer.hidden = false;
+  refs.emptyBasketWrap.style.display = 'none';
+
+  countTotalPrice();
+  refs.orderForm.addEventListener('submit', onOrderFormSubmit);
+}
+
+function getNumberOfProducts() {
+  const lsData = getCart();
+  refs.numberOfProducts.textContent = lsData.length;
 }
 
 function onClickDeleteProduct(evt) {
@@ -41,27 +59,22 @@ function onClickDeleteProduct(evt) {
   getNumberOfProducts();
 
   checkLS();
-  countTotalAmount();
+  countTotalPrice();
 }
 
 function checkLS() {
   const lsData = getCart();
   if (!lsData.length) {
-    allContentWrap.classList.replace(
-      'is-visible-main-content',
-      'is-hidden-main-content'
-    );
-    cartProductList.innerHTML = '';
+    refs.cartMainContainer.hidden = true;
+
+    refs.emptyBasketContent.hidden = false;
+    refs.emptyBasketWrap.style.display = 'block';
+    refs.cartProductList.innerHTML = '';
   }
 }
 
 // Розмітка cartProductList
 function renderCartTpl(arr) {
-  if (!arr.length) {
-    allContentWrap.classList.add('is-hidden-main-content');
-    return;
-  }
-
   const markup = arr
     .map(({ _id, name, img, category, price, size }) => {
       return `<li class="cart-item js-cart-item" data-id = ${_id}>
@@ -98,36 +111,29 @@ function renderCartTpl(arr) {
     })
     .join('');
 
-  return (cartProductList.innerHTML = markup);
+  return (refs.cartProductList.innerHTML = markup);
 }
 
 // Кнопка видалення усіх продуктів
-deleteAllBtn.addEventListener('click', () => {
+refs.deleteAllBtn.addEventListener('click', () => {
+  refs.cartProductList.innerHTML = '';
   clearCart();
-  cartProductList.innerHTML = '';
+  countTotalPrice();
   getNumberOfProducts();
-  allContentWrap.classList.replace(
-    'is-visible-main-content',
-    'is-hidden-main-content'
-  );
+  refs.cartMainContainer.hidden = true;
+  refs.emptyBasketContent.hidden = false;
+  refs.emptyBasketWrap.style.display = 'block';
 });
 
-function getNumberOfProducts() {
-  const lsData = getCart();
-  numberOfProducts.textContent = lsData.length;
-}
-
-function countTotalAmount() {
+function countTotalPrice() {
   const lsData = getCart();
 
-  const amount = lsData.reduce(
+  const totalPrice = lsData.reduce(
     (acc, { price, quantity }) => (acc += price * quantity),
     0
   );
-  cartAmount.textContent = amount;
+  refs.cartTotalPrice.textContent = totalPrice.toFixed(2);
 }
-
-countTotalAmount();
 
 // ================================================
 

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import icons from '../img/icone/symbol-defs.svg';
+import { updateCartButtonIcons, setCartButtonEventListeners } from './local-storage';
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -25,8 +26,11 @@ document.addEventListener("DOMContentLoaded", function () {
             // });
             discountProducts.forEach(product => {
                 const card = createProductCard(product)
+                
                 discountProductsContainer.innerHTML += card;
             });
+            updateCartButtonIcons(discountProducts, '.cart-btn-list-discount', icons); // Використання уніфікованої функції
+            setCartButtonEventListeners(discountProducts, '.cart-btn-list-discount', icons); // Використання уніфікованої функції
         } catch (error) {
             console.error('Error fetching discount products:', error);
         }
@@ -35,36 +39,43 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchDiscountProducts();
 
     function createProductCard(product) {
-        return `
+        const longText = product.name;
+        const maxLength = 12;
+        const screenWidth = window.innerWidth;
+        const shouldShowFullText = longText.length > maxLength && screenWidth >= 1440;
+        const truncatedText = truncateText(longText, maxLength);
+           return `
         <li class="card-container-list-discount" id="${product._id}">
         <div class="photo-card-list-discount">
-                <a class="product-modal-list-discount" href="МОДАЛЬНЕ ВІКНО">
+                <a class="product-modal-list-discount" href="#">
                     <div class="img-container-list-discount">
                         <svg width="60" height="60" class="product-image-discount">
                             <use href="${icons}#icon-discount-green"></use>
                          </svg>
                         <img class="product-image-list-discount" src="${product.img}" alt="${product.name} photo" width=114 height=114 loading="lazy" />
                     </div>
+                    </a>
                     <div class="product-info-list">
                         <div class="price-and-btn-list-discount">
-                            <h2 class="product-name-list-discount">${product.name}</h2>
-                            <h2 class="price-discount">$${product.price}</h2>
-                            <button class='cart-btn-list-discount' type="button">          
+                        <h2 class="product-name-list-discount${shouldShowFullText ? ' show-full-text' : ''}" title="${shouldShowFullText ? longText : ''}">${truncatedText}</h2>
+                        <h2 class="price-discount">$${product.price}</h2>
+                            <button class='cart-btn-list-discount' type="button" data-product-id="${product._id}">          
                                 <svg class='list-cart-svg-list' width="18" height="18" >
                                     <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
                                 </svg>
                             </button>
                         </div>
                     </div>
-                </a>
             </div>
         </li>
-    
         `
-
     }
 
-
+// Якщо довжина h2 більша maxLength, то додаємо ... і текст виводимо під курсором для екранів від 1440px
+    function truncateText(text, maxLength) {
+        const screenWidth = window.innerWidth;
+        return screenWidth >= 1440 && text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+    }
     // Функція для додавання продукту до кошика
 
 

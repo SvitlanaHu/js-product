@@ -1,6 +1,6 @@
 import icons from '../img/icone/symbol-defs.svg';
 import { getProducts, getProductsKeyword, getProductsCategory } from './products-api';
-import { getFilters, updateFilter, removeFromCart, handleCartButtonClick, updateCartButtonIcons, setCartButtonEventListeners} from './local-storage';
+import { getFilters, updateFilter, updateCartButtonIcons, setCartButtonEventListeners} from './local-storage';
 
 import 'tui-pagination/dist/tui-pagination.css';
 import Pagination from 'tui-pagination';
@@ -25,6 +25,8 @@ async function onSubmit(evt) {
   query = searchQuery;
 if (!searchQuery) {
   productsListContainer.innerHTML='';  
+  removeAndRecreatePaginationContainer()
+  noSearchDivContainerElement.classList.remove('visually-hidden')
 
   return console.log('Please enter a search query.');
 } try {
@@ -80,6 +82,9 @@ async function renderProducts() {
       const totalItems = perPage * totalPages;
       if (results.length === 0) { 
         removeAndRecreatePaginationContainer()
+        const container = document.getElementById('tui-pagination-container');
+        container.classList.add('visually-hidden')
+
         console.log(results);
         noSearchDivContainerElement.classList.remove('visually-hidden')
         productsListContainer.innerHTML=''; 
@@ -99,6 +104,7 @@ async function renderProducts() {
      const visiblePages = window.innerWidth < 768 ? 2 : 4; // За замовчуванням 4, якщо ширина екрану більша за 768
      if (totalPages === 1) {
       removeAndRecreatePaginationContainer();
+      container.classList.add('visually-hidden')
      } else {
     pagination = new Pagination(container, {
       totalItems: totalItems,
@@ -168,20 +174,5 @@ export function createMarkup(arr) {
         `;
     })
     .join('')}</ul>`;
-    setTimeout(() => {
-      document.querySelectorAll('.cart-btn-list').forEach(button => {
-        button.addEventListener('click', (e) => {
-          const productId = e.currentTarget.dataset.productId;
-          const product = arr.find(item => item._id === productId);
-          if (product) {
-            handleCartButtonClick(product, arr);
-          } else {
-            console.error('Product not found for ID:', productId);
-          }
-        });
-      });
-    }, 0);
-
-    setCartButtonEventListeners(arr); // Встановлення обробників подій після створення розмітки
     return markup;
 }
