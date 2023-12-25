@@ -45,6 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
                          </svg>
                         <img class="product-image-list-discount" src="${product.img}" alt="${product.name} photo" width=114 height=114 loading="lazy" />
                     </div>
+                    </a>
+
                     <div class="product-info-list">
                         <div class="price-and-btn-list-discount">
                             <h2 class="product-name-list-discount">${product.name}</h2>
@@ -56,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
                             </button>
                         </div>
                     </div>
-                </a>
             </div>
         </li>
     
