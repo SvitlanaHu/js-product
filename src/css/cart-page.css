@@ -62,6 +62,10 @@
   }
 }
 
+.cart-icon {
+  fill: var(--white);
+}
+
 .delete-all-btn-wrap {
   display: flex;
   justify-content: flex-end;
