@@ -175,10 +175,20 @@ padding-top: 3px;
 
 .product-name-list-discount {
     color: var(--main-text-color);
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.11em;
     margin-bottom: 10px;
     margin-right: auto;
+}
+@media only screen and (min-width: 375px) {
+    .product-name-list-discount {
+        font-size: 18px;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .product-name-list-discount {
+        font-size: 20px;
+    }
 }
 
 .price-discount {
@@ -186,6 +196,12 @@ padding-top: 3px;
     font-size: 18px;
     line-height: 1.11em;
     margin-bottom: 10px;
+}
+@media only screen and (min-width: 768px) {
+    .price-discount {
+        font-size: 20px;
+    }
+
 }
 
 .price-and-btn-list-discount {
