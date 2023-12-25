@@ -174,9 +174,16 @@
 }
 
 .cart-list {
+  height: 420px;
   display: flex;
   flex-direction: column;
   gap: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .cart-list {
+    height: 520px;
+  }
 }
 
 .cart-item-info-wrap {
@@ -484,25 +491,17 @@
 
 /* =empty-basket= */
 
-.basket-container {
-  padding-left: 32px;
-  padding-right: 32px;
-}
-
-.empty-basket {
-  padding-top: 48px;
-  padding-bottom: 120px;
+.empty-basket-wrap {
+  padding-top: 86px;
+  padding-bottom: 40px;
+  width: 100%;
+  height: 338px;
 }
 
 .empty-basket-content {
-  padding-top: 86px;
-}
-
-.basket_list {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding-bottom: 100px;
+  width: 279px;
+  height: 212px;
+  margin: 0 auto;
 }
 
 .basket_svg {
@@ -515,8 +514,7 @@
   transition: background-color 0.3s ease;
 }
 
-.basket_text,
-.basket_span {
+.basket_text {
   font-size: 24px;
   font-weight: 500;
   line-height: 1.16;
@@ -557,20 +555,20 @@
 }
 
 @media screen and (min-width: 768px) {
-  .empty-basket {
-    padding-top: 75px;
+  .empty-basket-wrap {
+    padding-top: 109px;
+    padding-bottom: 20px;
+    height: 395px;
   }
 
   .empty-basket-content {
-    padding-top: 109px;
+    width: 387px;
+    height: 266px;
+    /* padding-top: 109px;
+    padding-bottom: 20px; */
   }
 
-  .basket_list {
-    padding-bottom: 130px;
-  }
-
-  .basket_text,
-  .basket_span {
+  .basket_text {
     font-size: 32px;
     line-height: 1;
   }
@@ -598,44 +596,17 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .empty-basket-content {
+  .empty-basket-wrap {
     padding-top: 129px;
-  }
-
-  .basket-container {
-    padding-left: 100px;
-    padding-right: 100px;
-  }
-  .empty-basket {
-    padding-top: 57px;
-    padding-bottom: 150px;
-  }
-
-  .basket_list {
-    padding-bottom: 150px;
+    padding-bottom: 50px;
+    height: 391px;
   }
 }
 
-/* .is-hidden {
+.is-hidden {
   display: none;
 }
 
 .is-visible {
   display: block;
-} */
-
-.all-content-wrap.is-visible-main-content .empty-basket-wrap {
-  display: none;
-}
-
-.all-content-wrap.is-visible-main-content .cart-main-content-wrap {
-  display: block;
-}
-
-.all-content-wrap.is-hidden-main-content .empty-basket-wrap {
-  display: block;
-}
-
-.all-content-wrap.is-hidden-main-content .cart-main-content-wrap {
-  display: none;
 }
