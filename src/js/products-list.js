@@ -1,13 +1,38 @@
 import icons from '../img/icone/symbol-defs.svg';
-import { getProducts } from './products-api';
+import { getProducts, getProductsKeyword, getProductsCategory } from './products-api';
 import { getFilters, updateFilter, removeFromCart, handleCartButtonClick, updateCartButtonIcons, setCartButtonEventListeners} from './local-storage';
 
 import 'tui-pagination/dist/tui-pagination.css';
 import Pagination from 'tui-pagination';
 
 const productsListContainer = document.getElementById('products-list-container');
+const inputkeywordEl = document.getElementById('search-bar-id')
+const formFiltersEl = document.getElementById('search-form')
+const noSearchDivContainerElement = document.querySelector('.no-results-container')
+// noSearchDivContainerElement.classList.remove('visually-hidden');
 
+let page;
 let pagination;
+let query = null;
+
+formFiltersEl.addEventListener('submit', onSubmit)
+
+async function onSubmit(evt) {
+  evt.preventDefault();
+  updateFilter('page', 1);
+  page = 1;
+  const searchQuery = evt.target.elements['item-search-value'].value.trim();
+  query = searchQuery;
+if (!searchQuery) {
+  productsListContainer.innerHTML='';  
+
+  return console.log('Please enter a search query.');
+} try {
+  await renderProducts(searchQuery);
+} catch(error) {
+ console.log('Oops! Something went wrong! Try reloading the page!')    
+}
+}
 
 // Обробка зміни розміру вікна
 window.addEventListener('resize', updatePageSize);
@@ -49,12 +74,21 @@ async function renderProducts() {
     let limit = filters.limit || 6;
 
     try {
-        const { data } = await getProducts(page, limit);
-        const { perPage, totalPages, results } = data;
-        const totalItems = perPage * totalPages;
+      noSearchDivContainerElement.classList.add('visually-hidden')
+      const { data } = await getProductsKeyword(page, limit, query);
+      const { perPage, totalPages, results } = data;
+      const totalItems = perPage * totalPages;
+      if (results.length === 0) { 
+        removeAndRecreatePaginationContainer()
+        console.log(results);
+        noSearchDivContainerElement.classList.remove('visually-hidden')
+        productsListContainer.innerHTML=''; 
+          console.log('nothing');
+          return;
 
-       
+      }
     productsListContainer.innerHTML = createMarkup(results); // Оновлюємо тільки список продуктів
+    noSearchDivContainerElement.classList.add('visually-hidden')
     
     setCartButtonEventListeners(results, '.cart-btn-list', icons); // Використання уніфікованої функції
 
@@ -63,8 +97,9 @@ async function renderProducts() {
     const container = document.getElementById('tui-pagination-container');
      // Визначення кількості видимих сторінок на основі ширини екрану
      const visiblePages = window.innerWidth < 768 ? 2 : 4; // За замовчуванням 4, якщо ширина екрану більша за 768
-
-
+     if (totalPages === 1) {
+      removeAndRecreatePaginationContainer();
+     } else {
     pagination = new Pagination(container, {
       totalItems: totalItems,
       itemsPerPage: limit,
@@ -72,6 +107,8 @@ async function renderProducts() {
       centerAlign: true,
       page: page,
     });
+  }
+
 
     pagination.on('beforeMove', event => {
               const currentPage = event.page;
