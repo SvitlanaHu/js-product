@@ -88,3 +88,6 @@ discountProductsContainer.addEventListener("mouseover", function () {
 discountProductsContainer.addEventListener("mouseout", function () {
     discountProductsContainer.style.overflowY = "hidden";
 });
+
+
+//   <img class="product-image-discount" src="img/discount-green.svg" alt="Discount" width="60" height="60"></img>
