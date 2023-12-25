@@ -1,6 +1,6 @@
 import icons from '../img/icone/symbol-defs.svg';
 import { getProducts, getProductsKeyword, getProductsCategory } from './products-api';
-import { getFilters, updateFilter, removeFromCart, handleCartButtonClick, updateCartButtonIcons, setCartButtonEventListeners} from './local-storage';
+import { getFilters, updateFilter, updateCartButtonIcons, setCartButtonEventListeners} from './local-storage';
 
 import 'tui-pagination/dist/tui-pagination.css';
 import Pagination from 'tui-pagination';
@@ -174,20 +174,5 @@ export function createMarkup(arr) {
         `;
     })
     .join('')}</ul>`;
-    setTimeout(() => {
-      document.querySelectorAll('.cart-btn-list').forEach(button => {
-        button.addEventListener('click', (e) => {
-          const productId = e.currentTarget.dataset.productId;
-          const product = arr.find(item => item._id === productId);
-          if (product) {
-            handleCartButtonClick(product, arr);
-          } else {
-            console.error('Product not found for ID:', productId);
-          }
-        });
-      });
-    }, 0);
-
-    setCartButtonEventListeners(arr); // Встановлення обробників подій після створення розмітки
     return markup;
 }
