@@ -1,10 +1,8 @@
 import icons from '../img/icone/symbol-defs.svg';
-import { getCart } from './local-storage';
-import { clearCart } from './local-storage';
-import { saveCart } from './local-storage';
-// import axios from 'axios';
+import { getCart, clearCart, saveCart } from './local-storage';
+import axios from 'axios';
 
-// const BASE_URL = 'https://food-boutique.b.goit.study/api/products';
+const BASE_URL = 'https://food-boutique.b.goit.study/api/orders ';
 
 const cartProductList = document.querySelector('.js-cart-list');
 const deleteAllBtn = document.querySelector('.js-delete-all-btn');
@@ -14,14 +12,15 @@ const cartAmount = document.querySelector('.js-cart-amount');
 const orderForm = document.querySelector('.order-form');
 
 renderCartMarkup();
+cartProductList.addEventListener('click', onClickDeleteProduct);
 getNumberOfProducts();
 
 function renderCartMarkup() {
   const arrSavedCart = getCart();
+
   allContentWrap.classList.add('is-visible-main-content');
   renderCartTpl(arrSavedCart);
-  cartProductList.addEventListener('click', onClickDeleteProduct);
-  // orderForm.addEventListener('submit', onOrderFormSubmit);
+  orderForm.addEventListener('submit', onOrderFormSubmit);
 }
 
 function onClickDeleteProduct(evt) {
@@ -52,6 +51,7 @@ function checkLS() {
       'is-visible-main-content',
       'is-hidden-main-content'
     );
+    cartProductList.innerHTML = '';
   }
 }
 
@@ -104,6 +104,7 @@ function renderCartTpl(arr) {
 // Кнопка видалення усіх продуктів
 deleteAllBtn.addEventListener('click', () => {
   clearCart();
+  cartProductList.innerHTML = '';
   getNumberOfProducts();
   allContentWrap.classList.replace(
     'is-visible-main-content',
@@ -119,7 +120,10 @@ function getNumberOfProducts() {
 function countTotalAmount() {
   const lsData = getCart();
 
-  const amount = lsData.reduce((acc, { price }) => (acc += price), 0);
+  const amount = lsData.reduce(
+    (acc, { price, quantity }) => (acc += price * quantity),
+    0
+  );
   cartAmount.textContent = amount;
 }
 
@@ -127,21 +131,50 @@ countTotalAmount();
 
 // ================================================
 
-// function onOrderFormSubmit(evt) {
-//   evt.preventDefault();
-//   const email = evt.currentTarget.elements.email.value;
+function onOrderFormSubmit(evt) {
+  evt.preventDefault();
+  const email = evt.currentTarget.elements.email.value;
 
-//   if (!email) {
-//     alert('Please, write your email!');
-//     return;
+  if (!email) {
+    alert('Please, write your email!');
+    return;
+  }
+  // postProductApi(email);
+  checkOnValidateEmail(email);
+  evt.currentTarget.reset();
+}
+
+function checkOnValidateEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert('Please, enter valid Email!');
+    return;
+  }
+}
+
+// // POST запит на API
+// async function postProductApi(email) {
+//   const [{ _id, quantity }] = getCart();
+
+//   const formData = {
+//     email: email,
+//     products: [{ productId: _id, amount: quantity }],
+//   };
+
+//   const options = {
+//     method: 'post',
+//     data: formData,
+//   };
+
+//   try {
+//     await axios(
+//       `${BASE_URL}
+// `,
+//       options
+//     );
+//     cartProductList.innerHTML = '';
+//     alert('Your order is accepted!');
+//   } catch (error) {
+//     console.error(error);
 //   }
-//   console.log(email);
-//   console.log('Отправили заказ');
 // }
-
-// const createNewOrder = async orderObj => {
-//   const res = await axios.post(`${BASE_URL}orders/`, orderObj);
-//   return await res.data;
-// };
-
-// createNewOrder();
