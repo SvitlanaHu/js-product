@@ -227,3 +227,24 @@ padding-top: 3px;
     border: none;
     margin-left: 8px;
 }
+
+/* Додаємо ... для тексту, який не поміщається в контейнер */
+@media only screen and (min-width: 1440px) {
+    .show-full-text {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: unset;
+    }
+
+    .product-name-list-discount {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        transition: max-width 0.5s ease-out;
+        max-width: 135px; /* Задайте бажаний початковий розмір тексту */
+    }
+
+    .product-name-list-discount:hover {
+        max-width: none;
+    }
+}
