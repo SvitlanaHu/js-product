@@ -1,0 +1,213 @@
+.container-discount {
+    max-width: 375px;
+    margin: 0 auto;
+    
+
+
+}
+@media only screen and (min-width: 768px) { 
+    .container-discount {
+        max-width: 768px;
+    }
+}
+@media only screen and (min-width: 1440px) { 
+    .container-discount {
+        max-width: 275px;
+    }
+}
+
+
+.discount-title {
+    color: #010101;
+        font-family: Neue Montreal;
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 32px;
+        padding-left: 20px;
+        padding-right: 20px;
+        
+        /* 114.286% */
+}
+@media only screen and (min-width: 768px) { 
+    .discount-title {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+}
+@media only screen and (min-width: 1440px) { 
+    .discount-title {
+        padding: 0;
+    }
+}
+
+
+/* #discount-products {
+    max-height: 500px;
+    overflow-y: auto;
+} */
+
+#discount-products {
+    max-height: 500px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    /* Для Firefox */
+    scrollbar-color: transparent;
+    /* Для Firefox */
+    -ms-overflow-style: none;
+    /* Для Internet Explorer та Edge */
+    scrollbar-width: none;
+    /* Для браузерів на основі WebKit (Chrome, Safari) */
+}
+
+#discount-products::-webkit-scrollbar {
+    display: none;
+    /* Для браузерів на основі WebKit (Chrome, Safari) */
+}
+
+@media only screen and (min-width: 320px) {
+    #discount-products {
+        margin-bottom: 80px;
+    }
+}
+
+@media only screen and (min-width: 768px) { 
+    #discount-products {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        justify-content: center;  
+        margin-top: 20px;
+        margin-bottom: 100px;  
+        max-height: 240px;
+    }
+}
+@media only screen and (min-width: 1440px) { 
+    #discount-products {
+        gap: 20px;
+        justify-content: center;  
+        margin-top: 20px;  
+        max-height: 500px;
+    }
+}
+.card-container-list-discount {
+    max-width: 375px;
+    padding-top: 20px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+@media only screen and (min-width: 768px) {
+    .card-container-list-discount {
+padding-left: 0;
+padding-right: 0;
+margin: 0;
+/* padding-top: 0; */
+padding-top: 3px;
+    }
+}
+@media only screen and (min-width: 1440px) {
+    .card-container-list-discount {
+    width: 275px;
+    height: 232px;
+    }
+}
+
+
+.photo-card-list-discount {
+    max-width: 336px;
+    height: 232px;
+    border-radius: 15px;
+    background: var(--gray98);
+    padding: 16px;
+}
+@media only screen and (min-width: 768px) {
+    .photo-card-list-discount {
+    width: 336px;
+    height: 232px;
+    }
+}
+@media only screen and (min-width: 1440px) {
+    .photo-card-list-discount {
+    width: 275px;
+    padding-top: 20px;
+    }
+}
+
+.product-modal-list-discount{
+
+}
+
+.img-container-list-discount {
+    display: flex;
+    align-items: center;    max-width: 304px;
+    height: 150px;
+    border-radius: 10px;
+    background-color: var(--main-background-color);
+    margin-bottom: 16px;
+    position: relative;
+}
+@media only screen and (min-width: 1440px) {
+    .img-container-list-discount {
+        width: 243px;
+    }
+    }
+
+.product-image-discount {
+    position: absolute;
+    top: -18px;
+    right: -6px;
+    width: 50px;
+    height: 50px;
+}
+
+.product-image-list-discount {
+    margin: 0 auto;  
+}
+@media only screen and (min-width: 1440px) {
+    .product-image-list-discount {
+    height: 105px;
+    width: 105px;
+    }
+}
+
+.product-name-list-discount {
+    color: var(--main-text-color);
+    font-size: 18px;
+    line-height: 1.11em;
+    margin-bottom: 10px;
+    margin-right: auto;
+}
+
+.price-discount {
+    color: var(--main-text-color);
+    font-size: 18px;
+    line-height: 1.11em;
+    margin-bottom: 10px;
+}
+
+.price-and-btn-list-discount {
+    display: flex;
+    align-items: baseline;
+    /* justify-content: space-between; */
+}
+
+.product-price-list-discount {
+
+}
+
+
+.cart-btn-list-discount {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    padding: 8px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    background: var(--olive);
+    border: none;
+    margin-left: 8px;
+}

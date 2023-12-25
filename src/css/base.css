@@ -49,6 +49,17 @@ html {
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Baskerville Bold';
+  src: local(baskerville-bold) url('../fonts/baskerville-bold.ttf')
+      format('truetype'),
+    /* Safari, Android, iOS */ url('../fonts/baskerville-bold.woff')
+      format('woff'),
+    /* Modern Browsers */ url('../fonts/baskerville-bold.woff2') format('woff2'); /* Modern Browsers */
+  font-weight: 700;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -83,6 +94,9 @@ body {
   /* outline: 2px solid red;
   outline-offset: -2px; */
 }
+.main-box {
+  padding-bottom: 80px;
+}
 /* Tablet screens */
 @media screen and (min-width: 768px) {
   .container {
@@ -91,13 +105,38 @@ body {
     padding-left: 32px;
     padding-right: 32px;
   }
+  .main-box {
+    padding-bottom: 100px;
+  }
 }
 /* Desctop screens */
 @media screen and (min-width: 1440px) {
   .container {
     max-width: 1440px;
+    margin: 0 auto;
     padding-left: 100px;
     padding-right: 100px;
+  }
+  .main-box {
+    max-width: 1440px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    /* justify-content: center; */
+    gap: 40px;
+    /* outline: 2px solid purple;
+    outline-offset: -2px; */
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .side-bar {
+    max-width: 275px;
+    /* outline: 2px solid greenyellow;
+    outline-offset: -2px; */
   }
 }
 
