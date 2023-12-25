@@ -5,8 +5,6 @@ import icons from '../img/icone/symbol-defs.svg';
 document.addEventListener("DOMContentLoaded", function () {
     const discountProductsContainer = document.getElementById("discount-products");
     const paginationContainer = document.getElementById('pagination');
-    const itemsPerPage = 2;
-    let currentPage = 1;
 
   
     async function fetchDiscountProducts(page) {
@@ -18,16 +16,17 @@ document.addEventListener("DOMContentLoaded", function () {
             discountProductsContainer.innerHTML = '';
 
                 // Вибірка тільки 2 продуктів для відображення
-            const productsToDisplay = discountProducts.slice(0, 2);
+            // const productsToDisplay = discountProducts.slice(0, 2);
 
-            productsToDisplay.forEach(product => {
-                const card = createProductCard(product);
-                discountProductsContainer.innerHTML += card;
-            });
-            // discountProducts.forEach(product => {
-            //     const card = createProductCard(product)
+            // productsToDisplay.forEach(product => {
+            //     const card = createProductCard(product);
+            //     console.log(product);
             //     discountProductsContainer.innerHTML += card;
             // });
+            discountProducts.forEach(product => {
+                const card = createProductCard(product)
+                discountProductsContainer.innerHTML += card;
+            });
         } catch(error) {
              console.error('Error fetching discount products:', error);
         }
@@ -37,10 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function createProductCard(product) {
         return `
-        <li class="card-container-list-discount">
+        <li class="card-container-list-discount" id="${product._id}">
         <div class="photo-card-list-discount">
                 <a class="product-modal-list-discount" href="МОДАЛЬНЕ ВІКНО">
                     <div class="img-container-list-discount">
+                        <img class="product-image-discount" src="img/discount-green.svg" alt="Discount" width="60" height="60">
                         <img class="product-image-list-discount" src="${product.img}" alt="${product.name} photo" width=114 height=114 loading="lazy" />
                     </div>
                     <div class="product-info-list">
@@ -59,7 +59,10 @@ document.addEventListener("DOMContentLoaded", function () {
         </li>
     
         `
+        
     }
+
+    
     // Функція для додавання продукту до кошика
     
 
@@ -71,4 +74,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // 
+
+    
 })
+
+const discountProductsContainer = document.getElementById("discount-products");
+
+discountProductsContainer.addEventListener("mouseover", function () {
+    discountProductsContainer.style.overflowY = "auto";
+});
+discountProductsContainer.addEventListener("mouseout", function () {
+    discountProductsContainer.style.overflowY = "hidden";
+});
