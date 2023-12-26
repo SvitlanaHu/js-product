@@ -65,6 +65,14 @@
   display: none;
 }
 
+/* Mobile screens */
+@media screen and (max-width: 374px) {
+  .home-btn-text,
+  .header-logo {
+    font-size: 12px;
+  }
+}
+
 /* Tablet screens */
 @media screen and (min-width: 768px) {
   .text-logo {
