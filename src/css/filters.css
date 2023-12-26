@@ -1,91 +1,170 @@
-.filters-text {
-    color: var(--add-text-color);
-    font-size: 14px;
-    margin-bottom: 8px;
+.js-search-form {
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
 }
 
-.filters-container{
-    padding-bottom: 60px;
+@media only screen and (min-width: 768px) {
+    .js-search-form {
+        flex-direction: row;
+        gap: 8px;
+    }
+    .search-wrapper {
+        width: 269px;
+    }
+    .categories-wrapper {
+        width: 189px;
+    }
+    .a-to-z-wrapper {
+        width: 200px;
+    }
+}
+.categories-wrapper:focus, .sorting-wrapper:focus, .categories-wrapper:hover, .sorting-wrapper:hover,
+.categories-wrapper:active, .sorting-wrapper:active {
+background-color: var(--gray98);
+border-color: var(--gray98);;
+}
+
+.filters-text,
+.no-results-text,
+.adjust-text {
+    color: var(--main-text-color);
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.filters-text {
+    font-size: 14px;
+}
+
+.filters-container {
+    margin-bottom: 40px;
+}
+
+@media only screen and (min-width: 1440px) {
+    .filters-container,
+    .search-container {
+        margin-bottom: 0;
+    }
+}
+
+input,
+.search-filter-btn {
+    width: 25px;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+    outline: none;
 }
 
 input {
-    outline-color: none;
-    background-color: transparent;
-    border: none;
     height: 100%;
+    max-width: 335px;
     flex-grow: 1;
     font-size: 18px;
     color: var(--main-text-color);
+    background-color: transparent;
 }
 
-input:focus {
+input, select {
+font-size: 14px;
+}
+@media only screen and (min-width: 768px) {
+    input, select {
+        font-size: 18px;
+ }
+}
+select {
+    border: none;
+    background: transparent;
+    width: 100%;
     outline: none;
 }
 
 .search-filter-icon {
     fill: var(--main-text-color);
-}
-
-.search-filter-btn {
-    border: none;
-    background-color: transparent;
+    width: 20px;
+    height: 20px;
 }
 
 .search-wrapper {
-    width: 269px;
-    height: 52px;
+    height: 48px;
     padding: 14px 20px;
     border-radius: 30px;
     border: 1px solid var(--add-text-color);
-    outline-color: none;
-    cursor: text;
-    background-color: transparent;
     display: flex;
-    flex-direction: row;
     align-items: center;
-}
-
-.search-wrapper:hover,
-.search-wrapper:focus {
-    border: 1px solid var(--olive);
+    background-color: transparent;
 }
 
 ::placeholder {
-    color: var(--main-text-color);
-    font-size: 18px;
-    ;
+    color: rgba(1, 1, 1, 0.7);
+    font-family: Neue Montreal;
+    font-size: 14px;
+    line-height: 1.29em;
 }
 
+@media only screen and (min-width: 768px) {
+    .search-wrapper {
+        height: 52px;
+    }
+    ::placeholder {
+        font-size: 18px;
+        line-height: 1.33em;
+    }
+}
+
+.no-results-container {
+    margin-top: 100px;
+  margin-bottom: 180px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  }
+  @media only screen and (min-width: 768px) {
+    .no-results-container {
+      margin-top: 150px;
+      margin-bottom: 300px;
+    }
+  }
+  @media only screen and (min-width: 1440px) {
+    .no-results-container {
+      margin-top: 200px;
+      margin-bottom: 300px;
+      padding-left: 250px;
+    }
+  }
 
 .no-results-text {
-    font-size: 20px;
-    font-weight: 500;
-    width: 367px;
-    color: var(--main-text-color);
+    width: 261px;
+font-size: 18px;
+font-weight: 500;
+line-height: 1.11;
+margin-bottom: 14px;
 }
-
+@media only screen and (min-width: 768px) {
+    .no-results-text {
+        font-size: 20px;
+        line-height: 1.2em;
+        width: 100%;
+    }
+}
 
 .filter-word {
     color: var(--olive);
-    align-items: center;
 }
 
 .adjust-text {
-    font-size: 18px;
-    color: rgba(1, 1, 1, 0.7);
-    text-align: center;
+    color: rgba(1, 1, 1, 0.70);
+    font-size: 14px;
+    line-height: 1.29em;
+    width: 279px;
 }
-
-@media only screen and (max-width: 420px) {
-    .no-results-text {
-        font-size: 18px;
-        text-align: center;
-        width: 261px;
-    }
-
+@media only screen and (min-width: 768px) {
     .adjust-text {
-        font-size: 14px;
-        width: 279px;
+        font-size: 18px;
+        line-height: 1.33em;
+        width: 371px;
     }
-
 }
+
