@@ -1,19 +1,19 @@
-import{u as w,i as r,a as $,b as d,d as b}from"./assets/symbol-defs-104844b5.js";import{a as E,P as B}from"./assets/vendor-b592f4c5.js";const q="https://food-boutique.b.goit.study/api/products";function z(t,s,e){return E.get(`${q}`,{params:{page:t,limit:s,keyword:e}})}document.addEventListener("DOMContentLoaded",()=>{const t=document.querySelector(".footer-sub-form");t.addEventListener("submit",async s=>{s.preventDefault();const e=t.querySelector(".footer-email-input"),o=e.value;if(!e.checkValidity()){alert("Please enter a valid email address.");return}const i={email:o};try{const n=await fetch("https://food-boutique.b.goit.study/api/subscription",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(i)});if(n.ok){const a=await n.json();alert(a.message)}else if(n.status===409)alert("This email is already subscribed.");else throw new Error("Failed to subscribe.")}catch(n){alert("Error: "+n.message)}})});document.addEventListener("DOMContentLoaded",function(){const t=document.getElementById("discount-products");document.getElementById("pagination");async function s(i){try{const a=(await E.get("https://food-boutique.b.goit.study/api/products/discount?page=${page}&limit=${itemsPerPage}`")).data;t.innerHTML="",a.forEach(l=>{const c=e(l);t.innerHTML+=c}),w(a,".cart-btn-list-discount",r),$(a,".cart-btn-list-discount",r)}catch(n){console.error("Error fetching discount products:",n)}}s();function e(i){const n=i.name,a=12,l=window.innerWidth,c=n.length>a&&l>=1440,f=o(n,a);return`
-        <li class="card-container-list-discount" id="${i._id}">
+import{u as y,i as r,a as b,b as $,d as g}from"./assets/symbol-defs-4ca4e526.js";import{a as p,P as C}from"./assets/vendor-b592f4c5.js";const P="https://food-boutique.b.goit.study/api/products";async function B(){try{return(await p.get(`${P}/categories`)).data}catch(t){throw console.error("Error fetching categories:",t),t}}function S({page:t,limit:e,keyword:s,category:n,byABC:o,byPrice:i,byPopularity:a}){const c={page:t,limit:e,...s&&{keyword:s},...n&&{category:n},...o&&{byABC:o},...i&&{byPrice:i},...a&&{byPopularity:a}};return p.get(`${P}`,{params:c})}document.addEventListener("DOMContentLoaded",()=>{const t=document.querySelector(".footer-sub-form");t.addEventListener("submit",async e=>{e.preventDefault();const s=t.querySelector(".footer-email-input"),n=s.value;if(!s.checkValidity()){alert("Please enter a valid email address.");return}const o={email:n};try{const i=await fetch("https://food-boutique.b.goit.study/api/subscription",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(o)});if(i.ok){const a=await i.json();alert(a.message)}else if(i.status===409)alert("This email is already subscribed.");else throw new Error("Failed to subscribe.")}catch(i){alert("Error: "+i.message)}})});document.addEventListener("DOMContentLoaded",function(){const t=document.getElementById("discount-products");document.getElementById("pagination");async function e(o){try{const a=(await p.get("https://food-boutique.b.goit.study/api/products/discount?page=${page}&limit=${itemsPerPage}`")).data;t.innerHTML="",a.forEach(c=>{const d=s(c);t.innerHTML+=d}),y(a,".cart-btn-list-discount",r),b(a,".cart-btn-list-discount",r)}catch(i){console.error("Error fetching discount products:",i)}}e();function s(o){const i=o.name,a=12,c=window.innerWidth,d=i.length>a&&c>=1440,L=n(i,a);return`
+        <li class="card-container-list-discount" id="${o._id}">
         <div class="photo-card-list-discount">
                 <a class="product-modal-list-discount" href="#">
                     <div class="img-container-list-discount">
                         <svg width="60" height="60" class="product-image-discount">
                             <use href="${r}#icon-discount-green"></use>
                          </svg>
-                        <img class="product-image-list-discount" src="${i.img}" alt="${i.name} photo" width=114 height=114 loading="lazy" />
+                        <img class="product-image-list-discount" src="${o.img}" alt="${o.name} photo" width=114 height=114 loading="lazy" />
                     </div>
                     </a>
                     <div class="product-info-list">
                         <div class="price-and-btn-list-discount">
-                        <h2 class="product-name-list-discount${c?" show-full-text":""}" title="${c?n:""}">${f}</h2>
-                        <h2 class="price-discount">$${i.price}</h2>
-                            <button class='cart-btn-list-discount' type="button" data-product-id="${i._id}">          
+                        <h2 class="product-name-list-discount${d?" show-full-text":""}" title="${d?i:""}">${L}</h2>
+                        <h2 class="price-discount">$${o.price}</h2>
+                            <button class='cart-btn-list-discount' type="button" data-product-id="${o._id}">          
                                 <svg class='list-cart-svg-list' width="18" height="18" >
                                     <use href="${r}#icon-heroicons-solid_shopping-cart-18x18"></use>
                                 </svg>
@@ -22,25 +22,25 @@ import{u as w,i as r,a as $,b as d,d as b}from"./assets/symbol-defs-104844b5.js"
                     </div>
             </div>
         </li>
-        `}function o(i,n){return window.innerWidth>=1440&&i.length>n?`${i.slice(0,n)}...`:i}});const g=document.getElementById("discount-products");g.addEventListener("mouseover",function(){g.style.overflowY="auto"});g.addEventListener("mouseout",function(){g.style.overflowY="hidden"});const H="https://food-boutique.b.goit.study/api/products/popular";function M(t){const s=document.querySelector(".popular-product-list");t.forEach(e=>{const o=document.createElement("li");o.classList.add("popular-product-item");const i=e.category.split("_").join(" ");o.innerHTML=`
+        `}function n(o,i){return window.innerWidth>=1440&&o.length>i?`${o.slice(0,i)}...`:o}});const u=document.getElementById("discount-products");u.addEventListener("mouseover",function(){u.style.overflowY="auto"});u.addEventListener("mouseout",function(){u.style.overflowY="hidden"});const I="https://food-boutique.b.goit.study/api/products/popular";function T(t){const e=document.querySelector(".popular-product-list");t.forEach(s=>{const n=document.createElement("li");n.classList.add("popular-product-item");const o=s.category.split("_").join(" ");n.innerHTML=`
       <a class="popular-modal">
                  <div class="popular-img">
-            <img class="popular-photo-item" src="${e.img}" alt="${e.name}" width="56" height="56" loading="lazy">
+            <img class="popular-photo-item" src="${s.img}" alt="${s.name}" width="56" height="56" loading="lazy">
           </div>  
           <ul class="about-popular">
-            <li class="name-popular-product">${e.name}</li>
-            <li class="subname-popular-product">Category: <span class="id-subname">${i}</span></li>
-            <li class="subname-popular-product">Size: <span class="id-subname">${e.size}</span></li>
-            <li class="subname-popular-product">Popularity: <span class="id-subname">${e.popularity}</span></li>
+            <li class="name-popular-product">${s.name}</li>
+            <li class="subname-popular-product">Category: <span class="id-subname">${o}</span></li>
+            <li class="subname-popular-product">Size: <span class="id-subname">${s.size}</span></li>
+            <li class="subname-popular-product">Popularity: <span class="id-subname">${s.popularity}</span></li>
           </ul>
-          <button class='popular-cart-btn' type="button" data-product-id="${e._id}">          
+          <button class='popular-cart-btn' type="button" data-product-id="${s._id}">          
                                 <svg class="list-cart-svg-list" width="18" height="18" >
                                     <use href="${r}#icon-heroicons-solid_shopping-cart-18x18">
                                     </use>
                                 </svg>
                             </button>
         </a>
-    `,s.appendChild(o)}),w(t,".popular-cart-btn",r),$(t,".popular-cart-btn",r)}async function W(){try{return(await E.get(H)).data}catch(t){throw console.error("Error fetching popular products:",t),t}}W().then(t=>{M(t)}).catch(t=>{console.error("Error:",t)});const h=document.getElementById("products-list-container");document.getElementById("search-bar-id");const _=document.getElementById("search-form"),u=document.querySelector(".no-results-container");let T,I=null;_.addEventListener("submit",F);async function F(t){t.preventDefault(),d("page",1);const s=t.target.elements["item-search-value"].value.trim();if(I=s,!s)return h.innerHTML="",p(),u.classList.remove("visually-hidden"),console.log("Please enter a search query.");try{await m(s)}catch{console.log("Oops! Something went wrong! Try reloading the page!")}}window.addEventListener("resize",k);function k(){let t;window.innerWidth>=1440?t=9:window.innerWidth>=768?t=8:t=6,b().limit!==t&&(d("limit",t),d("page",1),m())}function p(){const t=document.getElementById("tui-pagination-container");t&&t.remove();const s=document.createElement("div");s.id="tui-pagination-container",s.className="tui-pagination",h.after(s)}async function m(){const t=b();let s=t.page||1,e=t.limit||6;try{u.classList.add("visually-hidden");const{data:o}=await z(s,e,I),{perPage:i,totalPages:n,results:a}=o,l=i*n;if(a.length===0){p(),document.getElementById("tui-pagination-container").classList.add("visually-hidden"),console.log(a),u.classList.remove("visually-hidden"),h.innerHTML="",console.log("nothing");return}h.innerHTML=x(a),u.classList.add("visually-hidden"),$(a,".cart-btn-list",r),p();const c=document.getElementById("tui-pagination-container"),f=window.innerWidth<768?2:4;n===1?(p(),c.classList.add("visually-hidden")):T=new B(c,{totalItems:l,itemsPerPage:e,visiblePages:f,centerAlign:!0,page:s}),T.on("beforeMove",L=>{const P=L.page,y=b(),C=y.limit||6;(P!==y.page||C!==y.limit)&&(d("page",P),d("limit",C),m())}),w(a,".cart-btn-list",r)}catch(o){console.error("Error fetching products",o)}}m();function x(t){return`<ul class="card-container-list">${t.map(e=>{const o=e.category.split("_").join(" ");return`
+    `,e.appendChild(n)}),y(t,".popular-cart-btn",r),b(t,".popular-cart-btn",r)}async function _(){try{return(await p.get(I)).data}catch(t){throw console.error("Error fetching popular products:",t),t}}_().then(t=>{T(t)}).catch(t=>{console.error("Error:",t)});const h=document.getElementById("products-list-container"),v=document.querySelector(".no-results-container");let w;function F(){const t=document.getElementById("tui-pagination-container");t&&t.remove();const e=document.createElement("div");e.id="tui-pagination-container",e.className="tui-pagination",h.after(e)}async function f(){const t=$();let e=t.page||1,s=t.limit||6;try{const n=await S(t),{perPage:o,totalPages:i,results:a}=n.data,c=o*i;if(a.length===0){v.classList.remove("visually-hidden"),h.innerHTML="";return}h.innerHTML=q(a),v.classList.add("visually-hidden"),b(a,".cart-btn-list",r),M(c,e,s),y(a,".cart-btn-list",r)}catch(n){console.error("Error fetching products",n)}}function M(t,e,s){F();const n=document.getElementById("tui-pagination-container");if(t>s){const o=window.innerWidth<768?2:4;w=new C(n,{totalItems:t,itemsPerPage:s,visiblePages:o,centerAlign:!0,page:e}),w.on("beforeMove",i=>{g("page",i.page),f()})}}function q(t){return`<ul class="card-container-list">${t.map(e=>{const s=e.category.split("_").join(" ");return`
             <li class="photo-card-list">
                 <a class="product-modal-list" href="#">
                     <div class="img-container-list">
@@ -50,7 +50,7 @@ import{u as w,i as r,a as $,b as d,d as b}from"./assets/symbol-defs-104844b5.js"
                         <h2 class="product-name-list">${e.name}</h2>
                         <div class='product-atributes-list'>
                             <p class="atributes-info-list">
-                                <b class="atributes-list">Category:</b> ${o}
+                                <b class="atributes-list">Category:</b> ${s}
                             </p>
                             <p class="atributes-info-list">
                                 <b class="atributes-list">Size:</b> ${e.size}
@@ -59,17 +59,15 @@ import{u as w,i as r,a as $,b as d,d as b}from"./assets/symbol-defs-104844b5.js"
                                 <b class="atributes-list">Popularity:</b> ${e.popularity}
                             </p>
                         </div>
-                        </a>
                         <div class="price-and-btn-list">
                             <h2 class="product-price-list">$${e.price}</h2>
-                            <button class='cart-btn-list' type="button" data-product-id="${e._id}">          
+                            <button class='cart-btn-list' type="button" data-product-id="${e._id}">
                                 <svg class="list-cart-svg-list" width="18" height="18" >
-                                    <use href="${r}#icon-heroicons-solid_shopping-cart-18x18">
-                                    </use>
+                                    <use href="${r}#icon-heroicons-solid_shopping-cart-18x18"></use>
                                 </svg>
                             </button>
                         </div>
                     </div>
-            </li>
-        `}).join("")}</ul>`}window.onscroll=()=>v();window.addEventListener("scroll",S(v,250)),window.addEventListener("resize",S(v,250));async function v(){const t=document.querySelector("body"),s=document.body.offsetHeight,e=window.innerHeight,o=window.scrollY,i=s-e/4;o+e>i?t.classList.add("body--no-transparency"):t.classList.remove("body--no-transparency")}function S(t,s){let e=null;return function(...i){e||(e=setTimeout(()=>{t(...i),clearTimeout(e),e=null},s))}}
+                </a>
+            </li>`}).join("")}</ul>`}async function l(t,e){g(t,e),g("page",1),await f()}async function z(){try{const t=await B(),e=document.getElementById("category-select");t.forEach(s=>{const n=document.createElement("option");n.value=s,n.textContent=s.replace(/_/g," "),e.appendChild(n)})}catch(t){console.error("Error fetching categories:",t)}}async function H(){const t=$();if(t.keyword&&(document.getElementById("search-bar-id").value=t.keyword),t.category&&(document.getElementById("category-select").value=t.category),t.byABC||t.byPrice||t.byPopularity){const e=document.getElementById("sorting-select");e.value=t.byABC?"byABC":t.byPrice?"byPrice":"byPopularity"}await z(),await f()}function x(){const t=document.getElementById("search-form"),e=document.getElementById("category-select"),s=document.getElementById("sorting-select");t.addEventListener("submit",async n=>{n.preventDefault();const o=n.target.elements["item-search-value"].value.trim();l("keyword",o||null)}),e.addEventListener("change",n=>{l("category",n.target.value!=="Show all"?n.target.value:null)}),s.addEventListener("change",n=>{const o=n.target.value;l("byABC",o==="byABC"),l("byPrice",o==="byPrice"),l("byPopularity",o==="byPopularity")})}document.addEventListener("DOMContentLoaded",()=>{H(),x()});window.onscroll=()=>m();window.addEventListener("scroll",E(m,250)),window.addEventListener("resize",E(m,250));async function m(){const t=document.querySelector("body"),e=document.body.offsetHeight,s=window.innerHeight,n=window.scrollY,o=e-s/4;n+s>o?t.classList.add("body--no-transparency"):t.classList.remove("body--no-transparency")}function E(t,e){let s=null;return function(...o){s||(s=setTimeout(()=>{t(...o),clearTimeout(s),s=null},e))}}
 //# sourceMappingURL=commonHelpers2.js.map
