@@ -1,51 +1,69 @@
-// import axios from 'axios'; 
-// import { createMarkup } from "./products-list"; 
-// import { getProductsKeyword } from './products-api'; 
- 
-// const BASE_URL = 'https://food-boutique.b.goit.study/api/products'; 
- 
- 
-// const searchBar = document.getElementById('search-bar-id'); 
-// // const ulEl = document.querySelector('.card-container-list'); 
-// // console.log(ulEl); 
-// let foodProducts = []; 
-// let keyword = null; 
-// let page = 1; 
-// let limit = 6; 
- 
-// // searchBar.addEventListener('submit', onFilterSubmit) 
- 
-// // async function onFilterSubmit(evt) { 
-// //     evt.preventDefault() 
-// //     page = 1; 
-// //     const searchValue = evt.target.elements['item-search-value'].value.toLowerCase() 
-// //     keyword = searchValue; 
-// //     console.log(searchValue); 
-// //     try { 
-// //         // This part needs to be fixed 
-// //         const { data } = await getProductsKeyword(page, limit, value); 
-// //         const { } = data; 
-// //         if (.length === 0) { 
- 
- 
-// //         } 
-// //     } catch (error) { 
-// //         console.log(error.message); 
-// //     } 
-// // } 
- 
- 
-// searchBar.addEventListener('input', onFilterInput); 
- 
- 
-// function onFilterInput(e) { 
-//     const searchString = e.target.value.toLowerCase(); 
-//     console.log(e.target.value); 
- 
- 
-//     const filteredProducts = foodProducts.filter(item => { 
-//         return item.name.toLowerCase().includes(searchString); 
-//     }); 
-//     console.log(filteredProducts); 
-//     createMarkup(filteredProducts); 
-// }
+import { getCategories } from './products-api';
+import { updateFilter, getFilters } from './local-storage';
+import { renderProducts } from './products-list';
+
+async function handleFilterUpdate(key, value) {
+  updateFilter(key, value);
+  updateFilter('page', 1); // Повернення на першу сторінку при зміні фільтра
+  await renderProducts();
+}
+
+async function loadCategories() {
+  try {
+    const categories = await getCategories();
+    const categorySelect = document.getElementById('category-select');
+
+    categories.forEach(category => {
+      const option = document.createElement('option');
+      option.value = category;
+      option.textContent = category.replace(/_/g, ' ');
+      categorySelect.appendChild(option);
+    });
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+  }
+}
+
+async function initializeFilters() {
+  const filters = getFilters();
+
+  if (filters.keyword) {
+    document.getElementById('search-bar-id').value = filters.keyword;
+  }
+
+  await loadCategories();
+
+  if (filters.category) {
+    document.getElementById('category-select').value = filters.category;
+  }
+
+  await renderProducts();
+}
+
+function setupFilterEventListeners() {
+  const searchForm = document.getElementById('search-form');
+  const categorySelect = document.getElementById('category-select');
+  const sortSelect = document.getElementById('sorting-select');
+
+  searchForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const keyword = event.target.elements['item-search-value'].value.trim();
+    handleFilterUpdate('keyword', keyword || null);
+  });
+
+  categorySelect.addEventListener('change', (event) => {
+    handleFilterUpdate('category', event.target.value !== 'Show all' ? event.target.value : null);
+  });
+
+  sortSelect.addEventListener('change', (event) => {
+    const sortType = event.target.value;
+    handleFilterUpdate('byABC', sortType === 'byABC');
+    handleFilterUpdate('byPrice', sortType === 'byPrice');
+    handleFilterUpdate('byPopularity', sortType === 'byPopularity');
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initializeFilters();
+  setupFilterEventListeners();
+});

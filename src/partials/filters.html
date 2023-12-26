@@ -1,39 +1,30 @@
 <div class="filters-container">
     <p class="filters-text container">Filters:</p>
     <div class="search-container container">
-        <div class="searchbar">
-            <form class='js-search-form' id="search-form" autocomplete="off">
-                <div class="search-wrapper">
-                    <input class="search-input" name="item-search-value" id='search-bar-id' type="text"
-                        placeholder="Search for anything">
-                    <button class="search-filter-btn" type="submit">
-                        <svg class="search-filter-icon" width="20" height="20">
-                            <use href="./img/icone/symbol-defs.svg#icon-ic_baseline-search-20x20"></use>
-                        </svg>
-                    </button>
-                </div>
-                <div class = "categories-dropdown-wrapper search-wrapper">
-                    <input class="category-input" name="category-value" id='category-value-id' type="text"
-                    placeholder="Categories">
-                    <button class="dropbtn search-filter-btn">
-                        <svg class = "dropdown-arrow" width = "20" height ="20">
-                            <use href = "./img/icone/symbol-defs.svg#icon-chevron-down"></use>
-                        </svg>
-                    </button>
-                    <div class="dropdown-content">
-                    </div>
-                </div>
-                <div class = "a-to-z-wrapper search-wrapper">
-                    <input class="a-to-z-input" name="a-to-z-value" id='a-to-z-value-id' type="text"
-                    placeholder="A to Z">
-                    <button class="dropbtn search-filter-btn">
-                        <svg class = "dropdown-arrow" width = "20" height ="20">
-                            <use href = "./img/icone/symbol-defs.svg#icon-chevron-down"></use>
-                        </svg>
-                    </button>
-                </div>
-            </form>
+        <form class='js-search-form' id="search-form" autocomplete="off">
+            <div class="search-wrapper">
+                <input class="search-input" name="item-search-value" id='search-bar-id' type="text"
+                    placeholder="Search for anything">
+                <button class="search-filter-btn" type="submit">
+                    <svg class="search-filter-icon" width="20" height="20">
+                        <use href="./img/icone/symbol-defs.svg#icon-ic_baseline-search-20x20"></use>
+                    </svg>
+                </button>
+            </div>
+            <div class="categories-dropdown-wrapper search-wrapper">
+                <select id="category-select" class="category-input">
+                    <option value="Show all">Show all</option>
+                    <!-- Тут будуть додані категорії динамічно через JavaScript -->
+                </select>
+            </div>
+            <div class="sorting-wrapper">
+                <select id="sorting-select" class="sorting-input">
+                    <option value="none">No Sorting</option>
+                    <option value="byABC">Sort A-Z</option>
+                    <option value="byPrice">Sort by Price</option>
+                    <option value="byPopularity">Sort by Popularity</option>
+                </select>
+            </div>
+        </form>
     </div>
 </div>
-
-
