@@ -11,21 +11,21 @@
           placeholder="Search for anything"
         />
         <button class="search-filter-btn" type="submit">
-          <svg class="search-filter-icon" width="20" height="20">
+          <svg class="search-filter-icon filters-icon" width="20" height="20">
             <use
               href="./img/icone/symbol-defs.svg#icon-ic_baseline-search-20x20"
             ></use>
           </svg>
         </button>
       </div>
-      <div class="categories-dropdown-wrapper search-wrapper">
-        <select id="category-select" class="category-input">
+      <div class="categories-wrapper search-wrapper">
+        <select id="category-select" class="category-input select-container">
           <option value="Show all">Show all</option>
           <!-- Тут будуть додані категорії динамічно через JavaScript -->
         </select>
       </div>
-      <div class="sorting-wrapper">
-        <select id="sorting-select" class="sorting-input">
+      <div class="sorting-wrapper search-wrapper">
+        <select id="sorting-select" class="sorting-input select-container">
           <option value="none">No Sorting</option>
           <option value="byABC">Sort A-Z</option>
           <option value="byPrice">Sort by Price</option>

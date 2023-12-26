@@ -44,6 +44,8 @@ export async function renderProducts() {
     if (results.length === 0) {
       noSearchDivContainerElement.classList.remove('visually-hidden');
       productsListContainer.innerHTML = '';
+      const container = document.getElementById('tui-pagination-container');
+      container.classList.add('visually-hidden');
       return;
     }
 
@@ -100,6 +102,7 @@ export function createMarkup(arr) {
                                 <b class="atributes-list">Popularity:</b> ${item.popularity}
                             </p>
                         </div>
+                        </a>
                         <div class="price-and-btn-list">
                             <h2 class="product-price-list">$${item.price}</h2>
                             <button class='cart-btn-list' type="button" data-product-id="${item._id}">
@@ -109,7 +112,7 @@ export function createMarkup(arr) {
                             </button>
                         </div>
                     </div>
-                </a>
+
             </li>`;
     })
     .join('')}</ul>`;
