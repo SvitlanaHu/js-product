@@ -96,6 +96,7 @@ function checkLS() {
 function renderCartTpl(arr) {
   const markup = arr
     .map(({ _id, name, img, category, price, size }) => {
+      const categoryWithoutUnderscore = category.split('_').join(' ');
       return `<li class="cart-item js-cart-item" data-id = ${_id}>
        <span class="delete-product-btn js-delete-product-btn">
               <svg width="12" height="12" class='js-delete-product-btn'>
@@ -117,13 +118,13 @@ function renderCartTpl(arr) {
               <div class="cart-text-wrap">
                 <p class="cart-item-text">
                   <span class="cart-light-text">Category:</span
-                  >&nbsp;&nbsp;${category}
+                  >&nbsp;&nbsp;${categoryWithoutUnderscore}
                 </p>
                 <p class="cart-item-text">
                   <span class="cart-light-text">Size:</span>&nbsp;&nbsp;${size}
                 </p>
               </div>
-              <p class="cart-item-price">${price}</p>
+              <p class="cart-item-price">$${price}</p>
             </div>
           </div>
         </li>`;
@@ -261,14 +262,14 @@ closeCartModal.addEventListener("click", function () {
 function modalImage() {
   const arrayForImage = getCart();
 
-  takeImage(arrayForImage);
+  // takeImage(arrayForImage);
 }
 
-function takeImage(arr) {
-  const images = arr.map(({ img, name }) => ({ img, name }));
-  const randomIndex = Math.floor(Math.random() * images.length);
-  const randomImage = images[randomIndex];
-  const modalImg = `<img src="${randomImage.img}" alt="${randomImage.name}" width="140" height="140">`;
+// function takeImage(arr) {
+//   const images = arr.map(({ img, name }) => ({ img, name }));
+//   const randomIndex = Math.floor(Math.random() * images.length);
+//   const randomImage = images[randomIndex];
+//   const modalImg = `<img src="${randomImage.img}" alt="${randomImage.name}" width="140" height="140">`;
 
-  imageForModal.insertAdjacentHTML('beforeend', modalImg);
-}
+//   imageForModal.insertAdjacentHTML('beforeend', modalImg);
+// }
