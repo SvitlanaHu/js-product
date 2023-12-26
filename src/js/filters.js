@@ -31,12 +31,19 @@ async function initializeFilters() {
     document.getElementById('search-bar-id').value = filters.keyword;
   }
 
-  await loadCategories();
-
   if (filters.category) {
     document.getElementById('category-select').value = filters.category;
   }
+  if (filters.byABC || filters.byPrice || filters.byPopularity) {
+    const sortSelect = document.getElementById('sorting-select');
+    sortSelect.value = filters.byABC
+      ? 'byABC'
+      : filters.byPrice
+      ? 'byPrice'
+      : 'byPopularity';
+  }
 
+  await loadCategories();
   await renderProducts();
 }
 
@@ -45,17 +52,20 @@ function setupFilterEventListeners() {
   const categorySelect = document.getElementById('category-select');
   const sortSelect = document.getElementById('sorting-select');
 
-  searchForm.addEventListener('submit', async (event) => {
+  searchForm.addEventListener('submit', async event => {
     event.preventDefault();
     const keyword = event.target.elements['item-search-value'].value.trim();
     handleFilterUpdate('keyword', keyword || null);
   });
 
-  categorySelect.addEventListener('change', (event) => {
-    handleFilterUpdate('category', event.target.value !== 'Show all' ? event.target.value : null);
+  categorySelect.addEventListener('change', event => {
+    handleFilterUpdate(
+      'category',
+      event.target.value !== 'Show all' ? event.target.value : null
+    );
   });
 
-  sortSelect.addEventListener('change', (event) => {
+  sortSelect.addEventListener('change', event => {
     const sortType = event.target.value;
     handleFilterUpdate('byABC', sortType === 'byABC');
     handleFilterUpdate('byPrice', sortType === 'byPrice');
