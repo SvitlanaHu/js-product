@@ -14,9 +14,9 @@
     <title>Food Boutique</title>
     
     <script type="module" crossorigin src="/js-product/commonHelpers2.js"></script>
-    <link rel="modulepreload" crossorigin href="/js-product/assets/symbol-defs-4ca4e526.js">
+    <link rel="modulepreload" crossorigin href="/js-product/assets/symbol-defs-2dcb3083.js">
     <link rel="modulepreload" crossorigin href="/js-product/assets/vendor-b592f4c5.js">
-    <link rel="stylesheet" href="/js-product/assets/symbol-defs-3f4a9ba4.css">
+    <link rel="stylesheet" href="/js-product/assets/symbol-defs-4c786f55.css">
     <link rel="stylesheet" href="/js-product/assets/vendor-a0b14d8a.css">
   </head>
   <body>
@@ -114,21 +114,21 @@
           placeholder="Search for anything"
         />
         <button class="search-filter-btn" type="submit">
-          <svg class="search-filter-icon" width="20" height="20">
+          <svg class="search-filter-icon filters-icon" width="20" height="20">
             <use
               href="/js-product/assets/symbol-defs-9e372123.svg#icon-ic_baseline-search-20x20"
             ></use>
           </svg>
         </button>
       </div>
-      <div class="categories-dropdown-wrapper search-wrapper">
-        <select id="category-select" class="category-input">
+      <div class="categories-wrapper search-wrapper">
+        <select id="category-select" class="category-input select-container">
           <option value="Show all">Show all</option>
           <!-- Тут будуть додані категорії динамічно через JavaScript -->
         </select>
       </div>
-      <div class="sorting-wrapper">
-        <select id="sorting-select" class="sorting-input">
+      <div class="sorting-wrapper search-wrapper">
+        <select id="sorting-select" class="sorting-input select-container">
           <option value="none">No Sorting</option>
           <option value="byABC">Sort A-Z</option>
           <option value="byPrice">Sort by Price</option>
