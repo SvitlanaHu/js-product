@@ -4,6 +4,7 @@ import icons from '../img/icone/symbol-defs.svg';
 import { getCart, clearCart, saveCart } from './local-storage';
 import axios from 'axios';
 import { updateCartCount } from "./local-storage";
+import './modal-window';
 
 
 const BASE_URL = 'https://food-boutique.b.goit.study/api/orders ';
@@ -190,7 +191,7 @@ try {
   });
 
   if (response.ok) {
-      cartModal.classList.add("open");
+      const data = await response.json();
       clearCart();
       deleteProducts()
       updateCartCount()
