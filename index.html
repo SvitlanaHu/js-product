@@ -14,9 +14,9 @@
     <title>Food Boutique</title>
     
     <script type="module" crossorigin src="/js-product/commonHelpers2.js"></script>
-    <link rel="modulepreload" crossorigin href="/js-product/assets/symbol-defs-f7ff4350.js">
+    <link rel="modulepreload" crossorigin href="/js-product/assets/symbol-defs-04bf95ba.js">
     <link rel="modulepreload" crossorigin href="/js-product/assets/vendor-b592f4c5.js">
-    <link rel="stylesheet" href="/js-product/assets/symbol-defs-47fa4717.css">
+    <link rel="stylesheet" href="/js-product/assets/symbol-defs-992a4321.css">
     <link rel="stylesheet" href="/js-product/assets/vendor-a0b14d8a.css">
   </head>
   <body>
@@ -284,8 +284,54 @@
     </div>
   </div>
 </footer>
+
+<div class="success-modal">
+  <div class="success-modal-interface">
+    <svg class="close-svg">
+      <use href="../img/icone/symbol-defs.svg#close-button"></use>
+    </svg>
+    <div class="success-text">
+      <h1 class="success-title">
+        Thanks for subscribing for
+        <span class="success-color">new</span> products
+      </h1>
+      <p class="success-p">
+        We promise you organic and high-quality products that will meet your
+        expectations. Please stay with us and we promise you many pleasant
+        surprises.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="failure-modal">
+  <div class="failure-modal-interface">
+    <svg class="close-svg">
+      <use href="../img/icone/symbol-defs.svg#close-button"></use>
+    </svg>
+    <div class="failure-text">
+      <h1 class="failure-title">
+        This <span class="failure-color">email address</span> already been
+        entered
+      </h1>
+      <p class="failure-p">
+        You have already subscribed to our new products. Watch for offers at the
+        mailing address.
+      </p>
+    </div>
+  </div>
+</div>
 <!-- Loads the specified .html file -->
-    <a href="#" class="modal-link" data-modal="food"></a>
+    
+<div class="list-modal" id="list-modal">
+  <div class="modal-li">
+    <svg width="15" height="15" id="close-modal">
+      <use href="/js-product/assets/favicon-1e637930.svg#Vector"></use>
+    </svg>
+  </div>
+</div>
+
+<a href="#" class="modal-link" data-modal="food"></a>
 <a href="#" class="modal-link" data-modal="new-products"></a>
 <!-- <a href="#" class="modal-link" data-modal="email "></a> -->
 <a href="#" class="modal-link" data-modal="order-success"></a>
@@ -397,5 +443,7 @@
         <p class="order-success-text">Thank you for shopping at Food Boutique. Your order has been received and is now being freshly prepared just for you! Get ready to indulge in nourishing goodness, delivered right to your doorstep. We're thrilled to be part of your journey to better health and happiness.</p>
     </div>
 </div>
+
+
   </body>
 </html>
