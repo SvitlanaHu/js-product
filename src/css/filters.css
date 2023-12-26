@@ -12,12 +12,17 @@
     .search-wrapper {
         width: 269px;
     }
-    .categories-dropdown-wrapper {
+    .categories-wrapper {
         width: 189px;
     }
     .a-to-z-wrapper {
         width: 200px;
     }
+}
+.categories-wrapper:focus, .sorting-wrapper:focus, .categories-wrapper:hover, .sorting-wrapper:hover,
+.categories-wrapper:active, .sorting-wrapper:active {
+background-color: var(--gray98);
+border-color: var(--gray98);;
 }
 
 .filters-text,
@@ -45,6 +50,8 @@
 
 input,
 .search-filter-btn {
+    width: 25px;
+    height: 20px;
     border: none;
     background-color: transparent;
     outline: none;
@@ -52,10 +59,26 @@ input,
 
 input {
     height: 100%;
+    max-width: 335px;
     flex-grow: 1;
     font-size: 18px;
     color: var(--main-text-color);
     background-color: transparent;
+}
+
+input, select {
+font-size: 14px;
+}
+@media only screen and (min-width: 768px) {
+    input, select {
+        font-size: 18px;
+ }
+}
+select {
+    border: none;
+    background: transparent;
+    width: 100%;
+    outline: none;
 }
 
 .search-filter-icon {
@@ -74,11 +97,6 @@ input {
     background-color: transparent;
 }
 
-.search-wrapper:hover,
-.search-wrapper:focus {
-    border: 1px solid var(--olive);
-}
-
 ::placeholder {
     color: rgba(1, 1, 1, 0.7);
     font-family: Neue Montreal;
@@ -95,3 +113,58 @@ input {
         line-height: 1.33em;
     }
 }
+
+.no-results-container {
+    margin-top: 100px;
+  margin-bottom: 180px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  }
+  @media only screen and (min-width: 768px) {
+    .no-results-container {
+      margin-top: 150px;
+      margin-bottom: 300px;
+    }
+  }
+  @media only screen and (min-width: 1440px) {
+    .no-results-container {
+      margin-top: 200px;
+      margin-bottom: 300px;
+      padding-left: 250px;
+    }
+  }
+
+.no-results-text {
+    width: 261px;
+font-size: 18px;
+font-weight: 500;
+line-height: 1.11;
+margin-bottom: 14px;
+}
+@media only screen and (min-width: 768px) {
+    .no-results-text {
+        font-size: 20px;
+        line-height: 1.2em;
+        width: 100%;
+    }
+}
+
+.filter-word {
+    color: var(--olive);
+}
+
+.adjust-text {
+    color: rgba(1, 1, 1, 0.70);
+    font-size: 14px;
+    line-height: 1.29em;
+    width: 279px;
+}
+@media only screen and (min-width: 768px) {
+    .adjust-text {
+        font-size: 18px;
+        line-height: 1.33em;
+        width: 371px;
+    }
+}
+

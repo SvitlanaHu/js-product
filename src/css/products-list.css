@@ -155,29 +155,23 @@ margin-bottom: 40px;
   border-radius: 30px;
   background: var(--olive);
   border: none;
+  transition: background-color var(--animation);
+}
+.cart-btn-list:active,
+.cart-btn-list:active {
+  background-color: var(--gray);
+  border: 1px solid var(--white);
+}
+
+@media (hover: hover) {
+  .cart-btn-list:hover,
+  .cart-btn-list:hover{
+    background-color: var(--olive-hover);
+
+  }
 }
 
 .list-cart-svg-list {
   fill: var(--main-background-color);
 }
 
-.no-results-container {
-  margin-top: 100px;
-margin-bottom: 180px;
-display: flex;
-align-items: center;
-flex-direction: column;
-}
-@media only screen and (min-width: 768px) {
-  .no-results-container {
-    margin-top: 150px;
-    margin-bottom: 300px;
-  }
-}
-@media only screen and (min-width: 1440px) {
-  .no-results-container {
-    margin-top: 200px;
-    margin-bottom: 300px;
-    padding-left: 250px;
-  }
-}
