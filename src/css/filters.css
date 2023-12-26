@@ -28,9 +28,9 @@ border-color: var(--gray98);;
 .filters-text,
 .no-results-text,
 .adjust-text {
-    color: var(--main-text-color);
     margin-bottom: 8px;
-    text-align: center;
+    color: rgba(1, 1, 1, 0.30);
+    line-height: 1.3em;
 }
 
 .filters-text {
@@ -95,6 +95,10 @@ select {
     display: flex;
     align-items: center;
     background-color: transparent;
+}
+.category-input, sorting-input {
+padding-bottom: 20px;
+padding-top: 20px;
 }
 
 ::placeholder {

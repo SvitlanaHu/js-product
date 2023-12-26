@@ -142,6 +142,7 @@ function deleteProducts() {
   clearCart();
   countTotalPrice();
   getNumberOfProducts();
+  updateCartCount()
   refs.cartMainContainer.hidden = true;
   refs.emptyBasketContent.hidden = false;
   refs.emptyBasketWrap.style.display = 'block';
@@ -192,7 +193,6 @@ try {
   });
 
   if (response.ok) {
-      const data = await response.json();
       clearCart();
       deleteProducts()
       updateCartCount()
