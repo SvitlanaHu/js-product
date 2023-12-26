@@ -150,3 +150,26 @@ body {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+
+.top-btn {
+  all: unset;
+  font-size: 1.5rem;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  cursor: pointer;
+  transform: scale(1.8);
+  opacity: 0;
+  transition: .3s;
+  width: 7px;
+  height: 7px;
+  display: flex;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  background: var(--add-text-color);
+  border: none;
+  transition: background-color var(--animation);
+  }
