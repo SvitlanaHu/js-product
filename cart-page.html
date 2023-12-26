@@ -11,8 +11,10 @@
     <link rel="icon" type="image/svg+xml" href="/js-product/favicon.svg" />
     
     <script type="module" crossorigin src="/js-product/commonHelpers.js"></script>
-    <link rel="modulepreload" crossorigin href="/js-product/assets/symbol-defs-04bf95ba.js">
-    <link rel="stylesheet" href="/js-product/assets/symbol-defs-992a4321.css">
+    <link rel="modulepreload" crossorigin href="/js-product/assets/vendor-b592f4c5.js">
+    <link rel="modulepreload" crossorigin href="/js-product/assets/popular-0fc2dbc8.js">
+    <link rel="stylesheet" href="/js-product/assets/vendor-a0b14d8a.css">
+    <link rel="stylesheet" href="/js-product/assets/popular-992a4321.css">
   </head>
   <body>
     <header class="header">
@@ -128,28 +130,26 @@
             placeholder="Enter your email"
             autocomplete="on"
           />
-          <button type="submit" class="order-btn-submit">Checkout</button>
+          <button type="submit" id="open-modal-btn" class="order-btn-submit">Checkout</button>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<div class="checkout-modal">
-  <div class="checkout-modal-interface">
-    <svg class="close-svg">
-      <use href="../img/icone/symbol-defs.svg#close-button"></use>
-    </svg>
-    <div class="image-container-modal-cart"></div>
-    <div class="text-container-modal-cart">
-      <h1 class="title-modal-cart">Order success</h1>
-      <p class="p-modal-cart">
-        Thank you for shopping at Food Boutique. Your order has been received
-        and is now being freshly prepared just for you! Get ready to indulge in
-        nourishing goodness, delivered right to your doorstep. We're thrilled to
-        be part of your journey to better health and happiness.
-      </p>
-    </div>
+<!-- МОДАЛЬНЕ ВІКНО В КОРЗИНІ -->
+<div class="modal" id="my-modal">
+  <div class="modal__box">
+      <button class="modal__close-btn" id="close-my-modal-btn">
+          <svg class="close-modal-btn" width="14" height="14">
+            <use href="/js-product/assets/symbol-defs-920d1140.svg#icon-close-sharp"></use>
+          </svg>
+      </button>
+<svg class="success-svg" width="140" height="140">
+<use href="/js-product/assets/symbol-defs-920d1140.svg#icon-order-placed-purchased-icon"></use>
+</svg>            <h2 class="order-success-title">Order success</h2>
+
+      <p class="order-success-text">Thank you for shopping at Food Boutique. Your order has been received and is now being freshly prepared just for you! Get ready to indulge in nourishing goodness, delivered right to your doorstep. We're thrilled to be part of your journey to better health and happiness.</p>
   </div>
 </div>
 
@@ -300,6 +300,7 @@
   </div>
 </div>
 
+    
     
   </body>
 </html>
