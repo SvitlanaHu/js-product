@@ -1,9 +1,3 @@
-/* для імпорту функій в ваш файл застосовуйте
-import { назва функції, назва функції } from './js/localStorage';
-наприклад:
-import { saveFilters, getFilters, updateFilter, saveCart, getCart, addToCart, removeFromCart, clearCart } from './js/localStorage';
-*/
-
 // Функція для збереження фільтрів у localStorage
 export function saveFilters(filters) {
   localStorage.setItem('productFilters', JSON.stringify(filters));
@@ -101,26 +95,26 @@ export function handleCartButtonClick(productId, arr, buttonClass, icons) {
   updateCartCount();
 }
 
+// Функція для генерації HTML іконки
+function getCartButtonIconHTML(productId, cart, icons, buttonClass) {
+  const productInCart = cart.find(item => item._id === productId);
+  const iconId = productInCart ? 'icon-check' : 'icon-heroicons-solid_shopping-cart-18x18';
+  const width = buttonClass === '.popular-cart-btn' ? '12' : '18'; // Припустимо, що для .popular-cart-btn ширина інша
+  return `
+    <svg class="list-cart-svg-list ${buttonClass === '.popular-cart-btn' ? 'olive' : ''}" width="${width}" height="${width}">
+      <use href="${icons}#${iconId}"></use>
+    </svg>
+  `;
+}
+
 // Уніфікована функція для оновлення іконок кнопок кошика
 export function updateCartButtonIcons(arr, buttonClass, icons) {
   const cart = getCart();
-  document.querySelectorAll(buttonClass).forEach(button => {
-    const productId = button.dataset.productId;
-    const productInCart = cart.find(item => item._id === productId);
+  const buttons = document.querySelectorAll(buttonClass);
 
-    if (productInCart) {
-      button.innerHTML = `
-        <svg class="list-cart-svg-list" width="18" height="18">
-          <use href="${icons}#icon-check"></use>
-        </svg>
-      `;
-    } else {
-      button.innerHTML = `
-        <svg class="list-cart-svg-list" width="18" height="18">
-          <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
-        </svg>
-      `;
-    }
+  buttons.forEach(button => {
+    const productId = button.dataset.productId;
+    button.innerHTML = getCartButtonIconHTML(productId, cart, icons, buttonClass);
   });
 }
 
