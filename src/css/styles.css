@@ -14,8 +14,6 @@
 @import url('./footer.css');
 @import url('./buttons-paginations.css');
 @import url('./filters.css');
-@import url('./home-page.css');
-@import url('./local-storage.css');
 @import url('./modal-window.css');
 @import url('./products-list.css');
 @import url('./popular.css');
@@ -46,11 +44,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  color: #FF3D00;
+  color: #ff3d00;
   animation: fill 1s ease-in infinite alternate;
 }
 
-.loader::before, .loader::after {
+.loader::before,
+.loader::after {
   content: '';
   position: absolute;
   height: 100%;
@@ -68,6 +67,10 @@
 }
 
 @keyframes fill {
-  0% { box-shadow: 0 0 0 2px inset; }
-  100% { box-shadow: 0 0 0 10px inset; }
+  0% {
+    box-shadow: 0 0 0 2px inset;
+  }
+  100% {
+    box-shadow: 0 0 0 10px inset;
+  }
 }
