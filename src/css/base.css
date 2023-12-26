@@ -8,10 +8,13 @@
   --main-text-color: #010101;
   --main-background-color: #e8e8e2;
   --olive: #6d8434;
+  --olive-hover: #586f1f;
   --add-text-color: rgba(1, 1, 1, 0.3);
+  --paragraf-text: rgba(1, 1, 1, 0.7);
   --gray98: #fafafa;
   --light-violet: #9747ff;
   --white: #fff;
+  --background-visibility: rgba(1, 1, 1, 0.4);
 
   /* others */
   --indent: 20px;
@@ -94,9 +97,7 @@ body {
   /* outline: 2px solid red;
   outline-offset: -2px; */
 }
-.main-box {
-  padding-bottom: 80px;
-}
+
 /* Tablet screens */
 @media screen and (min-width: 768px) {
   .container {
@@ -104,9 +105,6 @@ body {
 
     padding-left: 32px;
     padding-right: 32px;
-  }
-  .main-box {
-    padding-bottom: 100px;
   }
 }
 /* Desctop screens */
@@ -129,8 +127,7 @@ body {
     outline-offset: -2px; */
     padding-left: 100px;
     padding-right: 100px;
-    padding-top: 60px;
-    padding-bottom: 60px;
+    /* padding-top: 60px; */
   }
 
   .side-bar {

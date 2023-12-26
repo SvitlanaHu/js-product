@@ -1,80 +1,78 @@
 <section class="cart-page-section container">
-  <div class="all-content-wrap">
-    <div class="cart-wrap-title">
-      <span class="cart-page-shop-icon"
-        ><svg class="" width="18" height="18">
-          <use
-            href="img/icone/symbol-defs.svg#icon-heroicons-solid_shopping-cart-18x18"
-          ></use></svg
-      ></span>
-      <h1 class="cart-title">
-        Cart (<span class="js-number-of-products">0</span>)
-      </h1>
-    </div>
+  <div class="cart-wrap-title">
+    <span class="cart-page-shop-icon"
+      ><svg class="cart-icon" width="18" height="18">
+        <use
+          href="img/icone/symbol-defs.svg#icon-heroicons-solid_shopping-cart-18x18"
+        ></use></svg
+    ></span>
+    <h1 class="cart-title">
+      Cart (<span class="js-number-of-products">0</span>)
+    </h1>
+  </div>
 
-    <div class="empty-basket-wrap">
-      <div class="empty-basket-content">
-        <img
-          class="basket_img"
-          srcset="img/basket_1x.png 1x, img/basket_1x.png 2x"
-          src="img/basket_1x.png"
-          alt="yellow shopping basket"
-          width="132"
-          height="114"
-        />
-        <div class="basket_container_text">
-          <h3 class="basket_title">
-            Your basket is <span class="basket_title_span">empty...</span>
-          </h3>
-          <p class="basket-text">
-            Go to the main page to select your favorite products and add them to
-            the cart.
-          </p>
-        </div>
+  <div class="empty-basket-wrap">
+    <div class="empty-basket-content" hidden>
+      <img
+        class="basket_img"
+        srcset="img/basket_1x.png 1x, img/basket_1x.png 2x"
+        src="img/basket_1x.png"
+        alt="yellow shopping basket"
+        width="132"
+        height="114"
+      />
+      <div class="basket_container_text">
+        <h3 class="basket_title">
+          Your basket is <span class="basket_title_span">empty...</span>
+        </h3>
+        <p class="basket-text">
+          Go to the main page to select your favorite products and add them to
+          the cart.
+        </p>
       </div>
     </div>
+  </div>
 
-    <div class="cart-main-content-wrap">
-      <div class="delete-all-btn-wrap js-delete-all-btn">
-        <a href="#" class="delete-all-btn"
-          >Delete all
-          <span class="delete-all-btn-icon"
-            ><svg class="" width="14" height="14">
-              <use
-                href="img/icone/symbol-defs.svg#close-button"
-              ></use></svg></span
-        ></a>
+  <div class="main-content-with-delete-all" hidden>
+    <div class="delete-all-btn-wrap js-delete-all-btn">
+      <a href="#" class="delete-all-btn"
+        >Delete all
+        <span class="delete-all-btn-icon"
+          ><svg class="" width="14" height="14">
+            <use
+              href="img/icone/symbol-defs.svg#close-button"
+            ></use></svg></span
+      ></a>
+    </div>
+
+    <div class="cart-main-content">
+      <div class="scroll-container">
+        <ul class="cart-list js-cart-list"></ul>
       </div>
 
-      <div class="cart-main-content">
-        <div class="scroll-container">
-          <ul class="cart-list js-cart-list"></ul>
+      <div class="order-content">
+        <h2 class="order-title">Your Order</h2>
+        <div class="total-wrap">
+          <span class="text-total">Total</span>
+          <span class="total-price-text"
+            ><span class="total-light-text">Sum:&nbsp;&nbsp;</span>$<span
+              class="js-cart-amount"
+              >0</span
+            ></span
+          >
         </div>
-
-        <div class="order-content">
-          <h2 class="order-title">Your Order</h2>
-          <div class="total-wrap">
-            <span class="text-total">Total</span>
-            <span class="total-price-text"
-              ><span class="total-light-text">Sum:&nbsp;&nbsp;</span>$<span
-                class="js-cart-amount"
-                >0</span
-              ></span
-            >
-          </div>
-          <form class="order-form">
-            <label for="user-email" class="order-label">Mail: </label>
-            <input
-              type="email"
-              name="email"
-              id="user-email"
-              class="order-form-input"
-              placeholder="Enter your email"
-              autocomplete="on"
-            />
-            <button type="submit" class="order-btn-submit">Checkout</button>
-          </form>
-        </div>
+        <form class="order-form">
+          <label for="user-email" class="order-label">Mail: </label>
+          <input
+            type="email"
+            name="email"
+            id="user-email"
+            class="order-form-input"
+            placeholder="Enter your email"
+            autocomplete="on"
+          />
+          <button type="submit" class="order-btn-submit">Checkout</button>
+        </form>
       </div>
     </div>
   </div>
