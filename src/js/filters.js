@@ -23,11 +23,6 @@ function onFilterInput(e) {
 
     updateFilter( "keyword", searchString);
  
-    // try {
-    //     renderProducts(searchString);
-    // } catch(error) {
-    //     console.log('Oops! Something went wrong! Try reloading the page!')    
-    // }
     console.log(e.target.value); 
  
  
