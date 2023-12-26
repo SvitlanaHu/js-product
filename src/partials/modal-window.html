@@ -1,0 +1,62 @@
+<a href="#" class="modal-link" data-modal="food"></a>
+<a href="#" class="modal-link" data-modal="new-products"></a>
+<a href="#" class="modal-link" data-modal="email "></a>
+<a href="#" class="modal-link" data-modal="order-success"></a>
+
+<div class="modal-window modal-food" data-modal="food">
+  <svg class="modal-close-sharp-box js-modal-close">
+    <use
+      class="modal-close-sharp"
+      href="./img/icone/symbol-defs.svg#icon-close-sharp"
+      width="22"
+      hight="22"
+    ></use>
+  </svg>
+</div>
+
+<div class="modal-window modal-new-products" data-modal="new-products">
+  <svg class="modal-close-sharp-box js-modal-close">
+    <use
+      class="modal-close-sharp"
+      href="./img/icone/symbol-defs.svg#icon-close-sharp"
+      width="22"
+      hight="22"
+    ></use>
+  </svg>
+  <h2 class="modal-new-products-title">
+    Thanks for subscribing for <span class="modal-span">new</span> products
+  </h2>
+  <p class="modal-new-products-text">
+    We promise you organic and high-quality products that will meet your
+    expectations. Please stay with us and we promise you many pleasant
+    surprises.
+  </p>
+  <div class="modal-img">
+    <picture>
+      <!-- Tablet & Desktop screen -->
+      <source
+        media="(min-width: 768px)"
+        width="490"
+        srcset="../img/modal/modal.png 1x, ../img/modal/modal.png 2x"
+      />
+      <!-- Mobile screen -->
+      <source
+        media="(max-width: 767px)"
+        width="335"
+        srcset="
+          ../img/modal/modal-mobile.png 1x,
+          ../img/modal/modal-mobile.png 2x
+        "
+      />
+      <img src="../img/modal/modal-mobile.png" alt="vegetables in a box" />
+    </picture>
+  </div>
+</div>
+
+<div class="modal-window modal-email" data-modal="email ">
+  This <span class="modal-span">email address</span> has already been entered
+</div>
+
+<div class="modal-window modal-order-success" data-modal="order-success">
+  Order success
+</div>

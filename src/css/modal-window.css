@@ -1,0 +1,106 @@
+.modal-link {
+  display: block;
+}
+
+.modal-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  background: var(--main-background-color);
+}
+
+/* Phone screens */
+
+.modal-food {
+  display: none;
+  background: var(--gray98);
+  width: 335px;
+  height: 535px;
+  padding: 40px 20px;
+}
+
+.modal-close-sharp-box {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  fill: var(--main-text-color);
+  cursor: pointer;
+}
+
+.modal-new-products {
+  display: none;
+  width: 335px;
+  height: 400px;
+  padding: 100px 44px;
+}
+
+.modal-new-products-title {
+  display: block;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.2; /* 120% */
+  margin-bottom: 14px;
+}
+
+.modal-span {
+  color: var(--olive);
+}
+
+.modal-new-products-text {
+  color: var(--paragraf-text);
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.28; /* 128.571% */
+}
+
+.modal-img {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 335px;
+}
+
+.modal-email {
+  display: none;
+}
+
+.modal-order-success {
+  display: none;
+}
+
+/* Tablet screens */
+@media screen and (min-width: 768px) {
+  .modal-food {
+    height: 380px;
+    padding: 40px;
+  }
+
+  .modal-new-products {
+    width: 490px;
+    height: 400px;
+    padding: 90px 81px;
+  }
+
+  .modal-new-products-title {
+    font-size: 24px;
+    width: 245px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+  }
+
+  .modal-new-products-text {
+    font-size: 16px;
+  }
+
+  .modal-img {
+    width: 490px;
+  }
+}
