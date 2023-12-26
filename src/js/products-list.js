@@ -18,8 +18,9 @@ let query = null;
 formFiltersEl.addEventListener('submit', onSubmit)
 
 async function onSubmit(evt) {
+  console.log(evt);
   evt.preventDefault();
-  updateFilter('page', 1);
+  updateFilter( { keyword: evt, category: null, page: 1, limit: 6 });
   page = 1;
   const searchQuery = evt.target.elements['item-search-value'].value.trim();
   query = searchQuery;
