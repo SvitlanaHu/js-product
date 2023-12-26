@@ -17,6 +17,7 @@
 
 /* Phone screens */
 
+/* Вікно на продуктову картку */
 .modal-food {
   display: none;
   background: var(--gray98);
@@ -41,6 +42,7 @@
   scale: 0.8;
 }
 
+/* Підписка на нові продукти */
 .modal-new-products {
   display: none;
   width: 335px;
@@ -80,6 +82,7 @@
   width: 335px;
 }
 
+/* Вікно у футері */
 .modal-email {
   display: none;
   width: 335px;
@@ -87,8 +90,9 @@
   padding: 80px 44px;
 }
 
+/* Вікно в корзині */
 .modal-order-success {
-  display: none;
+  display: block;
   width: 335px;
   height: 428px;
   padding: 220px 20px 60px 20px;
@@ -151,7 +155,7 @@
   }
 
   .modal-order-success {
-    display: block;
+    display: none;
     width: 560px;
     height: 509px;
     padding: 257px 40px 80px 40px;
