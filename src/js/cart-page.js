@@ -190,8 +190,7 @@ try {
   });
 
   if (response.ok) {
-      const data = await response.json();
-      alert(data.message);
+      cartModal.classList.add("open");
       clearCart();
       deleteProducts()
       updateCartCount()
@@ -221,8 +220,6 @@ function checkOnValidateEmail(email) {
     alert('Please, enter valid Email!');
     return;
   }
-
-  cartModal.classList.add("open");
 }
 
 
