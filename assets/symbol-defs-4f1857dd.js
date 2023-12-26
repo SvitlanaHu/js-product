@@ -3,4 +3,4 @@
       <use href="${n}#${r}"></use>
     </svg>
   `}function u(e,t,n){const c=a();document.querySelectorAll(t).forEach(r=>{const s=r.dataset.productId;r.innerHTML=h(s,c,n,t)})}function v(e,t,n){document.querySelectorAll(t).forEach(c=>{c.addEventListener("click",o=>{const r=o.currentTarget.dataset.productId;y(r,e,t,n)})})}d();const S="/js-product/assets/symbol-defs-9e372123.svg";export{v as a,p as b,I as c,C as d,a as g,S as i,l as s,u};
-//# sourceMappingURL=symbol-defs-2dcb3083.js.map
+//# sourceMappingURL=symbol-defs-4f1857dd.js.map
