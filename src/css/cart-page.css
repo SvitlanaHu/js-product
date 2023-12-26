@@ -140,8 +140,8 @@
 
 .scroll-container {
   /* outline: 1px solid green; */
-  padding-right: 12px;
-  width: 347px;
+  /* padding-right: 12px; */
+  max-width: 347px;
   height: 420px;
   overflow-y: scroll;
   scroll-behavior: smooth;
