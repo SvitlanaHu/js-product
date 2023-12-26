@@ -158,7 +158,7 @@ margin-bottom: 40px;
 }
 
 .list-cart-svg-list {
-  fill: none;
+  fill: var(--main-background-color);
 }
 
 .no-results-container {

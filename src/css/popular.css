@@ -163,10 +163,10 @@
 .list-cart-svg-list{
   width: 100%; /* Займає увесь простір кнопки */
   height: auto; /* Зберігає пропорції */
-  background-color: var(--olive); /* видалити після заміни іконки*/
+}
+.olive{
   fill: var(--olive); /* Колір іконки, якщо потрібно */
 }
-
 @media only screen and (min-width: 768px) {
   .popular-cart-btn {
     margin-left: 0;

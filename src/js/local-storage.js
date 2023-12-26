@@ -1,9 +1,3 @@
-/* для імпорту функій в ваш файл застосовуйте
-import { назва функції, назва функції } from './js/localStorage';
-наприклад:
-import { saveFilters, getFilters, updateFilter, saveCart, getCart, addToCart, removeFromCart, clearCart } from './js/localStorage';
-*/
-
 // Функція для збереження фільтрів у localStorage
 export function saveFilters(filters) {
   localStorage.setItem('productFilters', JSON.stringify(filters));
@@ -12,7 +6,9 @@ export function saveFilters(filters) {
 // Функція для отримання фільтрів з localStorage
 export function getFilters() {
   const savedFilters = localStorage.getItem('productFilters');
-  return savedFilters ? JSON.parse(savedFilters) : { keyword: null, category: null, page: 1, limit: 6 };
+  return savedFilters
+    ? JSON.parse(savedFilters)
+    : { keyword: null, category: null, page: 1, limit: 6 };
 }
 
 // Функція для оновлення певного фільтра
@@ -36,19 +32,20 @@ export function getCart() {
 // Додавання продукту до кошика
 export function addToCart(productToAdd) {
   const cart = getCart();
-  const existingProductIndex = cart.findIndex(item => item._id === productToAdd._id);
+  const existingProductIndex = cart.findIndex(
+    item => item._id === productToAdd._id
+  );
 
   if (existingProductIndex > -1) {
-      // Збільшуємо кількість існуючого продукту в кошику
-      cart[existingProductIndex].quantity += 1;
+    // Збільшуємо кількість існуючого продукту в кошику
+    cart[existingProductIndex].quantity += 1;
   } else {
-      // Додаємо новий продукт в кошик з кількістю 1
-      cart.push({ ...productToAdd, quantity: 1 });
+    // Додаємо новий продукт в кошик з кількістю 1
+    cart.push({ ...productToAdd, quantity: 1 });
   }
 
   saveCart(cart);
 }
-
 
 // Видалення продукту з кошика
 export function removeFromCart(productId) {
@@ -56,13 +53,13 @@ export function removeFromCart(productId) {
   const productIndex = cart.findIndex(item => item._id === productId);
 
   if (productIndex > -1) {
-      if (cart[productIndex].quantity > 1) {
-          // Якщо кількість більше 1, зменшуємо її
-          cart[productIndex].quantity -= 1;
-      } else {
-          // Якщо кількість дорівнює 1, видаляємо продукт з кошика
-          cart.splice(productIndex, 1);
-      }
+    if (cart[productIndex].quantity > 1) {
+      // Якщо кількість більше 1, зменшуємо її
+      cart[productIndex].quantity -= 1;
+    } else {
+      // Якщо кількість дорівнює 1, видаляємо продукт з кошика
+      cart.splice(productIndex, 1);
+    }
   }
 
   saveCart(cart);
@@ -75,12 +72,15 @@ export function clearCart() {
 
 // Кількість товарів в корзині
 export function updateCartCount() {
-const cartItems = getCart();
-const totalCount = cartItems.reduce((count, item) => count + item.quantity, 0);
-const cartCountElement = document.querySelector('.numbers-of-products');
-if (cartCountElement) {
+  const cartItems = getCart();
+  const totalCount = cartItems.reduce(
+    (count, item) => count + item.quantity,
+    0
+  );
+  const cartCountElement = document.querySelector('.numbers-of-products');
+  if (cartCountElement) {
     cartCountElement.textContent = totalCount;
-}
+  }
 }
 
 // Уніфікована функція для обробки кліку на кнопку додавання продукту до кошика
@@ -101,33 +101,42 @@ export function handleCartButtonClick(productId, arr, buttonClass, icons) {
   updateCartCount();
 }
 
+// Функція для генерації HTML іконки
+function getCartButtonIconHTML(productId, cart, icons, buttonClass) {
+  const productInCart = cart.find(item => item._id === productId);
+  const iconId = productInCart
+    ? 'icon-check'
+    : 'icon-heroicons-solid_shopping-cart-18x18';
+  const width = buttonClass === '.popular-cart-btn' ? '12' : '18'; // Припустимо, що для .popular-cart-btn ширина інша
+  return `
+    <svg class="list-cart-svg-list ${
+      buttonClass === '.popular-cart-btn' ? 'olive' : ''
+    }" width="${width}" height="${width}">
+      <use href="${icons}#${iconId}"></use>
+    </svg>
+  `;
+}
+
 // Уніфікована функція для оновлення іконок кнопок кошика
 export function updateCartButtonIcons(arr, buttonClass, icons) {
   const cart = getCart();
-  document.querySelectorAll(buttonClass).forEach(button => {
-    const productId = button.dataset.productId;
-    const productInCart = cart.find(item => item._id === productId);
+  const buttons = document.querySelectorAll(buttonClass);
 
-    if (productInCart) {
-      button.innerHTML = `
-        <svg class="list-cart-svg-list" width="18" height="18">
-          <use href="${icons}#icon-check"></use>
-        </svg>
-      `;
-    } else {
-      button.innerHTML = `
-        <svg class="list-cart-svg-list" width="18" height="18">
-          <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
-        </svg>
-      `;
-    }
+  buttons.forEach(button => {
+    const productId = button.dataset.productId;
+    button.innerHTML = getCartButtonIconHTML(
+      productId,
+      cart,
+      icons,
+      buttonClass
+    );
   });
 }
 
 // Уніфікована функція для встановлення обробників подій на кнопки додавання до кошика
 export function setCartButtonEventListeners(arr, buttonClass, icons) {
   document.querySelectorAll(buttonClass).forEach(button => {
-    button.addEventListener('click', (e) => {
+    button.addEventListener('click', e => {
       const productId = e.currentTarget.dataset.productId;
       handleCartButtonClick(productId, arr, buttonClass, icons);
     });
