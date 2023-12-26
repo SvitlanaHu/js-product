@@ -14,7 +14,7 @@ let page = 1;
 let limit = 6; 
  
  
- 
+// function
 searchBar.addEventListener('input', onFilterInput); 
  
  
