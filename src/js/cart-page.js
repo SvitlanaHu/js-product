@@ -3,6 +3,8 @@ import './header';
 import icons from '../img/icone/symbol-defs.svg';
 import { getCart, clearCart, saveCart } from './local-storage';
 import axios from 'axios';
+import { updateCartCount } from "./local-storage";
+
 
 const BASE_URL = 'https://food-boutique.b.goit.study/api/orders ';
 
@@ -117,7 +119,9 @@ function renderCartTpl(arr) {
 }
 
 // Кнопка видалення усіх продуктів
-refs.deleteAllBtn.addEventListener('click', () => {
+refs.deleteAllBtn.addEventListener('click', deleteProducts)
+
+function deleteProducts() {
   refs.cartProductList.innerHTML = '';
   clearCart();
   countTotalPrice();
@@ -125,7 +129,7 @@ refs.deleteAllBtn.addEventListener('click', () => {
   refs.cartMainContainer.hidden = true;
   refs.emptyBasketContent.hidden = false;
   refs.emptyBasketWrap.style.display = 'block';
-});
+}
 
 function countTotalPrice() {
   const lsData = getCart();
@@ -139,7 +143,7 @@ function countTotalPrice() {
 
 // ================================================
 
-function onOrderFormSubmit(evt) {
+async function onOrderFormSubmit(evt) {
   evt.preventDefault();
   const email = evt.currentTarget.elements.email.value;
 
@@ -150,7 +154,52 @@ function onOrderFormSubmit(evt) {
   // postProductApi(email);
   checkOnValidateEmail(email);
   evt.currentTarget.reset();
+
+    //Відправляємо озамовлення на сервер
+  const productsInCart = getCart();
+  const productsData = productsInCart.map(({ _id }) => ({
+    productId: _id,
+    amount: 1,
+  }));
+
+  const orderData = {
+    email,
+    products: productsData,
+  };
+try {
+  const response = await fetch('https://food-boutique.b.goit.study/api/orders', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(orderData),
+  });
+
+  if (response.ok) {
+      const data = await response.json();
+      alert(data.message);
+      clearCart();
+      deleteProducts()
+      updateCartCount()
+  } else if (response.status === 400) {
+    // Обробка помилок "Bad Request"
+    const errorData = await response.json();
+    alert('Bad request: ' + errorData.message);
+  } else if (response.status === 404) {
+    // Обробка помилок "Not Found"
+    alert('Resource not found.');
+  } else if (response.status === 500) {
+    // Обробка помилок "Server Error"
+    alert('Server error. Please try again later.');
+  } else {
+    // Інші невизначені помилки
+    throw new Error('Failed to subscribe.');
 }
+  } catch (error) {
+  alert('Error: ' + error.message);
+}
+}
+
 
 function checkOnValidateEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -159,6 +208,10 @@ function checkOnValidateEmail(email) {
     return;
   }
 }
+
+
+
+
 
 // // POST запит на API
 // async function postProductApi(email) {
