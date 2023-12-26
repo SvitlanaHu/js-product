@@ -116,4 +116,24 @@ export function createMarkup(arr) {
             </li>`;
     })
     .join('')}</ul>`;
+
+    setTimeout(() => {
+      document.querySelectorAll('.cart-btn-list').forEach(button => {
+        button.addEventListener('click', (e) => {
+          const productId = e.currentTarget.dataset.productId;
+          const product = arr.find(item => item._id === productId);
+          if (product) {
+            handleCartButtonClick(product, arr);
+          } else {
+            console.error('Product not found for ID:', productId);
+          }
+        });
+      });
+    }, 0);
+
+
+    setCartButtonEventListeners(arr); // Встановлення обробників подій після створення розмітки
+    return markup;
 }
+
+

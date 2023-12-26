@@ -8,6 +8,18 @@ import { updateCartCount } from "./local-storage";
 
 const BASE_URL = 'https://food-boutique.b.goit.study/api/orders ';
 
+
+const cartProductList = document.querySelector('.js-cart-list');
+const deleteAllBtn = document.querySelector('.js-delete-all-btn');
+const allContentWrap = document.querySelector('.all-content-wrap');
+const numberOfProducts = document.querySelector('.js-number-of-products');
+const cartAmount = document.querySelector('.js-cart-amount');
+const orderForm = document.querySelector('.order-form');
+const imageForModal = document.querySelector(".image-container-modal-cart");
+const openCartModal = document.querySelector(".order-btn-submit");
+const closeCartModal = document.querySelector(".close-svg");
+const cartModal = document.querySelector(".checkout-modal");
+
 const refs = {
   cartProductList: document.querySelector('.js-cart-list'),
   deleteAllBtn: document.querySelector('.js-delete-all-btn'),
@@ -19,8 +31,10 @@ const refs = {
   orderForm: document.querySelector('.order-form'),
 };
 
+
 renderCartMarkup();
 getNumberOfProducts();
+modalImage();
 
 refs.cartProductList.addEventListener('click', onClickDeleteProduct);
 
@@ -239,3 +253,28 @@ function checkOnValidateEmail(email) {
 //     console.error(error);
 //   }
 // }
+
+openCartModal.addEventListener("click", function () {
+  cartModal.classList.add("open");
+});
+
+closeCartModal.addEventListener("click", function () {
+  cartModal.classList.remove("open");
+})
+
+function modalImage() {
+  const arrayForImage = getCart();
+
+  takeImage(arrayForImage);
+}
+
+function takeImage(arr) {
+  const images = arr.map(({ img, name }) => ({ img, name }));
+  const randomIndex = Math.floor(Math.random() * images.length);
+  const randomImage = images[randomIndex];
+  const modalImg = randomImage.map(elem => `
+  <img src="${elem.img}" alt="${elem.name}" width="140" height="140">
+  `).join('');
+
+  imageForModal.insertAdjacentHTML('beforeend', modalImg);
+}
