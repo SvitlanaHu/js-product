@@ -1,8 +1,7 @@
 <a href="#" class="modal-link" data-modal="food"></a>
 <a href="#" class="modal-link" data-modal="new-products"></a>
-<a href="#" class="modal-link" data-modal="email "></a>
+<!-- <a href="#" class="modal-link" data-modal="email "></a> -->
 <a href="#" class="modal-link" data-modal="order-success"></a>
-<div class="overlay"></div>
 
 <!-- Вікно на продуктову картку -->
 
@@ -41,37 +40,20 @@
       <source
         media="(min-width: 768px)"
         width="490"
-        srcset="../img/modal/modal.png 1x, ../img/modal/modal.png 2x"
+        srcset="./img/modal/modal.png 1x, ../img/modal/modal.png 2x"
       />
       <!-- Mobile screen -->
       <source
         media="(max-width: 767px)"
         width="335"
         srcset="
-          ../img/modal/modal-mobile.png 1x,
-          ../img/modal/modal-mobile.png 2x
+          ./img/modal/modal-mobile.png 1x,
+          ./img/modal/modal-mobile.png 2x
         "
       />
-      <img src="../img/modal/modal-mobile.png" alt="vegetables in a box" />
+      <img src="./img/modal/modal-mobile.png" alt="vegetables in a box" />
     </picture>
   </div>
-</div>
-
-<!-- Вікно у футері -->
-<div class="modal-window modal-email" data-modal="email ">
-  <svg class="modal-close-sharp-box js-modal-close">
-    <use
-      class="modal-close-sharp"
-      href="./img/icone/symbol-defs.svg#icon-close-sharp"
-    ></use>
-  </svg>
-  <h2 class="modal-new-products-title">
-    This <span class="modal-span">email address</span> has already been entered
-  </h2>
-  <p class="modal-new-products-text">
-    You have already subscribed to our new products. Watch for offers at the
-    mailing address.
-  </p>
 </div>
 
 <!-- Вікно в корзині -->
@@ -83,18 +65,23 @@
     ></use>
   </svg>
   <div class="modal-success-img">
-    <picture>
+    <svg>
+      <use
+        href="./img/icone/symbol-defs.svg#icon-order-placed-purchased-icon"
+      ></use>
+    </svg>
+    <!-- <picture>
       <img
         width="140"
         srcset="
-          ../img/modal/image-success.png 1x,
-          ../img/modal/image-success.png 2x
+          ./img/modal/image-success.png 1x,
+          ./img/modal/image-success.png 2x
         "
-        src="../img/modal/image-success.png"
+        src="./img/modal/image-success.png"
         alt="tomato"
       />
-    </picture>
-  </div>
+    </picture> -->
+<!--   </div>
   <h2 class="modal-text-uppercase">Order success</h2>
   <p class="modal-new-products-text">
     Thank you for shopping at Food Boutique. Your order has been received and is
@@ -103,9 +90,6 @@
     your journey to better health and happiness.
   </p>
 </div> -->
-
-
-
 
 <!-- МОДАЛЬНЕ ВІКНО  -->
 
