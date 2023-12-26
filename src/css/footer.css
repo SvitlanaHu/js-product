@@ -494,6 +494,15 @@
   max-width: 248px;
 }
 
+.close-svg {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+}
+
 @media only screen and (min-width: 768px) {
   .success-modal-interface {
     width: 490px;
@@ -526,5 +535,11 @@
     width: 349px;
     font-size: 16px;
     line-height: 20px;
+  }
+  .close-svg {
+    width: 28px;
+    height: 28px;
+    top: 24px;
+    right: 24px;
   }
 }

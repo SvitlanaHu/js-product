@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const subscriptionForm = document.querySelector('.footer-sub-form');
     const successModal = document.querySelector('.success-modal');
     const failureModal = document.querySelector('.failure-modal');
+    const closeFooterModals = document.querySelectorAll(".close-svg");
 
     subscriptionForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -38,5 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             alert('Error: ' + error.message);
         }
+    });
+
+    closeFooterModals.forEach(closeFooterModal => {
+        closeFooterModal.addEventListener("click", function () {
+            if (failureModal.classList.contains("open")) {
+                failureModal.classList.remove("open");
+            } else if (successModal.classList.contains("open")) {
+                successModal.classList.remove("open");
+            }
+        });
     });
 });
