@@ -14,6 +14,7 @@
   --gray98: #fafafa;
   --light-violet: #9747ff;
   --white: #fff;
+  --background-visibility: rgba(1, 1, 1, 0.4);
 
   /* others */
   --indent: 20px;
