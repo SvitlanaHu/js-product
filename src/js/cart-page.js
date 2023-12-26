@@ -155,6 +155,8 @@ function checkOnValidateEmail(email) {
     alert('Please, enter valid Email!');
     return;
   }
+
+  cartModal.classList.add("open");
 }
 
 // // POST запит на API
@@ -184,10 +186,6 @@ function checkOnValidateEmail(email) {
 //   }
 // }
 
-openCartModal.addEventListener("click", function () {
-  cartModal.classList.add("open");
-});
-
 closeCartModal.addEventListener("click", function () {
   cartModal.classList.remove("open");
 })
@@ -202,9 +200,7 @@ function takeImage(arr) {
   const images = arr.map(({ img, name }) => ({ img, name }));
   const randomIndex = Math.floor(Math.random() * images.length);
   const randomImage = images[randomIndex];
-  const modalImg = randomImage.map(elem => `
-  <img src="${elem.img}" alt="${elem.name}" width="140" height="140">
-  `).join('');
+  const modalImg = `<img src="${randomImage.img}" alt="${randomImage.name}" width="140" height="140">`;
 
   imageForModal.insertAdjacentHTML('beforeend', modalImg);
 }
