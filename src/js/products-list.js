@@ -1,3 +1,4 @@
+import { showLoader, hideLoader } from './loader.js';
 import icons from '../img/icone/symbol-defs.svg';
 import { getFilteredProducts } from './products-api';
 import {
@@ -35,7 +36,7 @@ export async function renderProducts() {
   const filters = getFilters();
   let page = filters.page || 1;
   let limit = filters.limit || 6;
-
+  showLoader();
   try {
     const response = await getFilteredProducts(filters);
     const { perPage, totalPages, results } = response.data;
@@ -56,6 +57,8 @@ export async function renderProducts() {
     updateCartButtonIcons(results, '.cart-btn-list', icons);
   } catch (error) {
     console.error('Error fetching products', error);
+  }finally {
+    hideLoader();
   }
 }
 

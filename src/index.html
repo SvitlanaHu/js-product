@@ -16,9 +16,10 @@
   </head>
   <body>
     <load src="partials/header.html" />
-
-    <main class="main-container intro-content">
-      <div>
+ <!-- Централізований лоадер для всіх AJAX-запитів -->
+ <main class="main-container intro-content">
+      <div class="loader" hidden></div>
+      <div id="main-content">
         <load src="partials/hero.html" />
         <load src="partials/filters.html" />
         <div class="main-box">
