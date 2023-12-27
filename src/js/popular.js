@@ -7,9 +7,9 @@ import {
 
 const POPULAR_URL = 'https://food-boutique.b.goit.study/api/products/popular';
 
-async function fetchProducts() {
+async function fetchPopularProducts() {
   try {
-    const response = await axios.get(`${POPULAR_URL}`);
+    const response = await axios.get(POPULAR_URL);
     return response.data;
   } catch (error) {
     console.error('Error fetching popular products:', error);
@@ -54,10 +54,13 @@ function renderPopularProducts(products) {
   setCartButtonEventListeners(products, '.popular-cart-btn', icons);
 }
 
-fetchProducts()
+// Викликаємо функцію для отримання списку популярних продуктів
+fetchPopularProducts()
   .then(popularProducts => {
+    // Рендеримо список популярних продуктів
     renderPopularProducts(popularProducts);
   })
   .catch(error => {
     console.error('Error:', error);
+    // Тут можна обробити помилку, якщо отримання популярних продуктів не вдалося
   });
