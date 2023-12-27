@@ -124,6 +124,7 @@ padding-top: 20px;
   display: flex;
   align-items: center;
   flex-direction: column;
+  text-align: center;
   }
   @media only screen and (min-width: 768px) {
     .no-results-container {
@@ -135,7 +136,10 @@ padding-top: 20px;
     .no-results-container {
       margin-top: 200px;
       margin-bottom: 300px;
-      padding-left: 250px;
+      /* padding-left: 250px; */
+      width: 925px;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 
@@ -145,6 +149,7 @@ font-size: 18px;
 font-weight: 500;
 line-height: 1.11;
 margin-bottom: 14px;
+color: var(--main-text-color);
 }
 @media only screen and (min-width: 768px) {
     .no-results-text {
