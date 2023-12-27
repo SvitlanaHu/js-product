@@ -44,7 +44,7 @@ function renderPopularProducts(products) {
 async function fetchPopularProducts() {
   try {
     const response = await axios.get(popularProductsURL);
-    
+
     return response.data; // Повертаємо список популярних продуктів з відповіді
   } catch (error) {
     console.error('Error fetching popular products:', error);
@@ -55,11 +55,11 @@ async function fetchPopularProducts() {
 // Викликаємо функцію для отримання списку популярних продуктів
 fetchPopularProducts()
   .then(popularProducts => {
-    
+
     // Рендеримо список популярних продуктів
-    renderPopularProducts(popularProducts);       
+    renderPopularProducts(popularProducts);
   })
-  .catch(error => {
-    console.error('Error:', error);
-    // Тут можна обробити помилку, якщо отримання популярних продуктів не вдалося
-  });
+// .catch(error => {
+//   console.error('Error:', error);
+//   // Тут можна обробити помилку, якщо отримання популярних продуктів не вдалося
+// });
