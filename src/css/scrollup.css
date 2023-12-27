@@ -16,7 +16,7 @@
   align-items: center;
   border-radius: 30px;
   background: var(--add-text-color);
-  background-image: url(../img/icone/up-arrow.svg);
+  background-image: url(./img/icone/up-arrow.svg);
   border: none;
 }
 
