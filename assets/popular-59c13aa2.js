@@ -21,4 +21,4 @@ import{a as f}from"./vendor-b592f4c5.js";(function(){const e=document.createElem
                             </button>
         </a>
     `,e.appendChild(n)}),l(t,".popular-cart-btn",u),I(t,".popular-cart-btn",u)}async function L(){try{return(await f.get(v)).data}catch(t){throw console.error("Error fetching popular products:",t),t}}L().then(t=>{S(t)}).catch(t=>{console.error("Error:",t)});export{l as a,I as b,x as c,m as d,q as e,i as g,u as i,p as s,d as u};
-//# sourceMappingURL=popular-5ee110a8.js.map
+//# sourceMappingURL=popular-59c13aa2.js.map
