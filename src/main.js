@@ -1,5 +1,6 @@
 import './js/products-api';
 import './js/footer';
+import './js/scrollup';
 import './js/loader';
 import './js/discount';
 import './js/header';
