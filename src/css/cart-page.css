@@ -637,7 +637,8 @@
   height: 100%;
   z-index: 99998;
   background-color: rgba(46, 47, 66, 0.4);
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
   display: grid;
   align-items: center;
   justify-content: center;
@@ -654,7 +655,8 @@
   width: 335px;
   height: 428px;
   z-index: 1;
-  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -662,7 +664,7 @@
   opacity: 1;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 20px;
-  background: #E8E8E2;
+  background: #e8e8e2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -693,7 +695,7 @@
 
 .p-modal-cart {
   width: 295px;
-  color: rgba(1, 1, 1, 0.70);
+  color: rgba(1, 1, 1, 0.7);
   text-align: center;
   font-family: 'Neue Montreal';
   font-size: 14px;
