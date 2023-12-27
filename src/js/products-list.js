@@ -20,6 +20,27 @@ const noSearchDivContainerElement = document.querySelector(
 
 let pagination;
 
+// Обробка зміни розміру вікна
+window.addEventListener('resize', updatePageSize);
+
+// Функція для оновлення ліміту продуктів на сторінці
+function updatePageSize() {
+  let limit;
+  if (window.innerWidth >= 1440) {
+    limit = 9;
+  } else if (window.innerWidth >= 768) {
+    limit = 8;
+  } else {
+    limit = 6;
+  }
+  const currentFilters = getFilters();
+  if (currentFilters.limit !== limit) {
+    updateFilter('limit', limit);
+    updateFilter('page', 1); // Оновлення сторінки до першої
+    renderProducts();
+  }
+}
+
 function removeAndRecreatePaginationContainer() {
   const container = document.getElementById('tui-pagination-container');
   if (container) {
