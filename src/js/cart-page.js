@@ -1,11 +1,9 @@
 import './header';
-
 import icons from '../img/icone/symbol-defs.svg';
 import { getCart, clearCart, saveCart } from './local-storage';
 import axios from 'axios';
 import { updateCartCount } from "./local-storage";
 import './modal-window';
-
 
 const BASE_URL = 'https://food-boutique.b.goit.study/api/orders ';
 
@@ -178,6 +176,12 @@ async function onOrderFormSubmit(evt) {
     products: productsData,
   };
 try {
+  // Відкрити модальне вікно
+function openModal(){
+    document.getElementById("my-modal").classList.add("open")
+  }
+  const openModalBtn = document.getElementById('open-modal-btn')
+  openModalBtn.addEventListener("click", openModal);
   const response = await fetch('https://food-boutique.b.goit.study/api/orders', {
       method: 'POST',
       headers: {
@@ -186,10 +190,12 @@ try {
       body: JSON.stringify(orderData),
   });
 
+// Додаємо обробник подій на елемент з id "open-modal-btn"
   if (response.ok) {
-      clearCart();
-      deleteProducts()
-      updateCartCount()
+    openModal()
+    clearCart();
+    deleteProducts()
+    updateCartCount()
   } else if (response.status === 400) {
     // Обробка помилок "Bad Request"
     const errorData = await response.json();
