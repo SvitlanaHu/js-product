@@ -82,6 +82,16 @@ body {
   margin: 0;
 }
 
+.index-body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
+  flex-grow: 1;
+}
+
 /* Phone screens */
 .container {
   min-width: 320px;
