@@ -9,12 +9,6 @@ import './modal-window';
 
 const BASE_URL = 'https://food-boutique.b.goit.study/api/orders ';
 
-
-const cartProductList = document.querySelector('.js-cart-list');
-const deleteAllBtn = document.querySelector('.js-delete-all-btn');
-const allContentWrap = document.querySelector('.all-content-wrap');
-const numberOfProducts = document.querySelector('.js-number-of-products');
-const cartAmount = document.querySelector('.js-cart-amount');
 const orderForm = document.querySelector('.order-form');
 const imageForModal = document.querySelector(".image-container-modal-cart");
 const openCartModal = document.querySelector(".order-btn-submit");
@@ -142,7 +136,6 @@ function deleteProducts() {
   clearCart();
   countTotalPrice();
   getNumberOfProducts();
-  updateCartCount()
   refs.cartMainContainer.hidden = true;
   refs.emptyBasketContent.hidden = false;
   refs.emptyBasketWrap.style.display = 'block';
@@ -156,6 +149,7 @@ function countTotalPrice() {
     0
   );
   refs.cartTotalPrice.textContent = totalPrice.toFixed(2);
+  updateCartCount();
 }
 
 // ================================================
