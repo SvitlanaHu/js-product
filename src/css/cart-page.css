@@ -300,12 +300,14 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  height: 14px;
 }
 
 @media screen and (min-width: 768px) {
   .cart-text-wrap {
     margin-bottom: 46px;
     gap: 16px;
+    height: auto;
   }
 }
 

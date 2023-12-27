@@ -1,11 +1,4 @@
-document.getElementById("open-modal-btn").addEventListener("click", openModal)
 document.getElementById("close-my-modal-btn").addEventListener("click", closeModal)
-
-// Відкрити модальне вікно
-function openModal(){
-    document.getElementById("my-modal").classList.add("open")
-}
-
 
 // Закрити модальне вікно
 function closeModal() {
