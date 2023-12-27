@@ -83,7 +83,7 @@
 
 @media screen and (min-width: 1440px) {
   .delete-all-btn-wrap {
-    width: 500px;
+    width: 514px;
     margin-bottom: 44px;
     padding-right: 0;
   }
@@ -135,6 +135,7 @@
   .cart-main-content {
     flex-direction: row;
     gap: 101px;
+    justify-content: space-between;
   }
 }
 
@@ -149,15 +150,15 @@
 
 @media screen and (min-width: 768px) {
   .scroll-container {
-    width: 720px;
+    max-width: 720px;
     height: 520px;
-    padding-right: 48px;
-  }
+    padding-right: 33px;
+    }
 }
 
 @media screen and (min-width: 1440px) {
   .scroll-container {
-    max-width: 549px;
+   width: 549px;
     padding-right: 49px;
   }
 }
@@ -216,8 +217,11 @@
 
 @media screen and (min-width: 1440px) {
   .delete-product-btn {
-    right: -6px;
+    right: -19px;
   }
+    .cart-item-info-wrap {
+      gap: 40px;
+    }
 }
 
 .cart-item {
@@ -233,6 +237,7 @@
     padding-bottom: 40px;
   }
 }
+
 
 .cart-item:last-child {
   padding-bottom: 0;
@@ -293,7 +298,7 @@
 .cart-text-wrap {
   margin-bottom: 36px;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
