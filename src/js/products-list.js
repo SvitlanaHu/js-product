@@ -37,7 +37,6 @@ function updatePageSize() {
   if (currentFilters.limit !== limit) {
     updateFilter('limit', limit);
     updateFilter('page', 1); // Оновлення сторінки до першої
-    renderProducts();
   }
 }
 
@@ -54,6 +53,8 @@ function removeAndRecreatePaginationContainer() {
 }
 
 export async function renderProducts() {
+  updatePageSize();
+
   const filters = getFilters();
   let page = filters.page || 1;
   let limit = filters.limit || 6;
