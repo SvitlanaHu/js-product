@@ -91,6 +91,20 @@
   scale: 0.8;
 }
 
+.modal-product-img-box {
+  background-color: var(--main-background-color);
+  width: 295px;
+  height: 212px;
+  border-radius: 10px;
+}
+
+.modal-product-img {
+  width: 160px;
+  height: 160px;
+  top: 50%;
+  left: 50%;
+}
+
 /* Підписка на нові продукти */
 .modal-new-products {
   display: none;
