@@ -8,8 +8,8 @@
   border: none !important;
   outline: none !important;
 }
-.tui-page-btn:hover:not(.tui-is-disabled),
-.tui-page-btn:focus:not(.tui-is-disabled) {
+.tui-page-btn:hover:not(.tui-is-disabled, .tui-next-is-ellip),
+.tui-page-btn:focus:not(.tui-is-disabled, .tui-next-is-ellip) {
   background: #6d8434 !important;
   color: #e8e8e2 !important;
 }
@@ -96,4 +96,7 @@
     ) {
     margin-right: 8px;
   }
+}
+.tui-next-is-ellip {
+  pointer-events: none !important;
 }
