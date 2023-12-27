@@ -105,6 +105,14 @@
   left: 50%;
 }
 
+.modal-name-id {
+  color: var(--main-text-color);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.11; /* 111.111% */
+}
+
 /* Підписка на нові продукти */
 .modal-new-products {
   display: none;
