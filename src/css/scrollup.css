@@ -7,7 +7,7 @@
     cursor: pointer;
     transform: scale(1.8);
     opacity: 0;
-    transition: .3s;
+    transition: all 0.3s;
     width: 16px;
     height: 16px;
     display: flex;
@@ -17,14 +17,15 @@
     border-radius: 30px;
     background: var(--add-text-color);
     border: none;
-    transition: background-color var(--animation);
 }
+
 @media screen and (min-width: 768px) {
     .top-btn {
-            width: 18px;
-                height: 18px;
+        width: 18px;
+        height: 18px;
     }
 }
+
 @media screen and (min-width: 1440px) {
     .top-btn {
         width: 20px;
