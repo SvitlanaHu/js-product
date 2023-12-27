@@ -108,4 +108,5 @@
 .tui-next-is-ellip,
 .tui-prev-is-ellip {
   pointer-events: none !important;
+  opacity: 0.3;
 }
