@@ -59,7 +59,7 @@ fetchPopularProducts()
     // Рендеримо список популярних продуктів
     renderPopularProducts(popularProducts);
   })
-// .catch(error => {
-//   console.error('Error:', error);
-//   // Тут можна обробити помилку, якщо отримання популярних продуктів не вдалося
-// });
+  .catch(error => {
+    console.error('Error:', error);
+    // Тут можна обробити помилку, якщо отримання популярних продуктів не вдалося
+  });
