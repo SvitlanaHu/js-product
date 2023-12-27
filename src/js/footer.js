@@ -41,13 +41,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    closeFooterModals.forEach(closeFooterModal => {
-        closeFooterModal.addEventListener("click", function () {
-            if (failureModal.classList.contains("open")) {
-                failureModal.classList.remove("open");
-            } else if (successModal.classList.contains("open")) {
-                successModal.classList.remove("open");
-            }
-        });
-    });
+// Функція, яка закриває модалку
+function closeModal() {
+    if (failureModal.classList.contains("open")) {
+        failureModal.classList.remove("open");
+    } else if (successModal.classList.contains("open")) {
+        successModal.classList.remove("open");
+    }
+}
+
+// Закривання модалки при кліку на .close-svg
+closeFooterModals.forEach(closeFooterModal => {
+    closeFooterModal.addEventListener("click", closeModal);
+});
+
+// Закривання модалки при натисканні клавіші "Esc"
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+        closeModal();
+    }
+});
+
+// Закривання модалки при кліку поза модальним вікном
+document.addEventListener("click", function (event) {
+    const isOutsideModal = !event.target.closest(".failure-modal-interface") && !event.target.closest(".success-modal-interface");
+    
+    if (isOutsideModal) {
+        closeModal();
+    }
+});
 });
