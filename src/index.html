@@ -14,11 +14,13 @@
     <title>Food Boutique</title>
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
-  <body>
+  <body class="index-body">
     <load src="partials/header.html" />
-
+    <load src="partials/scrollup.html" />
+    <!-- Централізований лоадер для всіх AJAX-запитів -->
     <main class="main-container intro-content">
-      <div>
+      <div class="loader" hidden></div>
+      <div id="main-content">
         <load src="partials/hero.html" />
         <load src="partials/filters.html" />
         <div class="main-box">
@@ -35,6 +37,5 @@
       </div>
     </main>
     <load src="partials/footer.html" /><!-- Loads the specified .html file -->
-    <load src="partials/modal-window.html" />
   </body>
 </html>

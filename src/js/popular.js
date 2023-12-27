@@ -52,11 +52,26 @@ function renderPopularProducts(products) {
 
   updateCartButtonIcons(products, '.popular-cart-btn', icons);
   setCartButtonEventListeners(products, '.popular-cart-btn', icons);
+
+
+}
+
+async function fetchPopularProducts() {
+  try {
+    const response = await axios.get(popularProductsURL);
+
+    return response.data; // Повертаємо список популярних продуктів з відповіді
+  } catch (error) {
+    console.error('Error fetching popular products:', error);
+    throw error; // Обробка помилки, якщо запит не вдалося виконати
+  }
+
 }
 
 // Викликаємо функцію для отримання списку популярних продуктів
 fetchPopularProducts()
   .then(popularProducts => {
+
     // Рендеримо список популярних продуктів
     renderPopularProducts(popularProducts);
   })

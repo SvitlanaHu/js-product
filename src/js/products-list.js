@@ -1,3 +1,4 @@
+import { showLoader, hideLoader } from './loader.js';
 import icons from '../img/icone/symbol-defs.svg';
 import { getFilteredProducts } from './products-api';
 import {
@@ -19,6 +20,27 @@ const noSearchDivContainerElement = document.querySelector(
 
 let pagination;
 
+// Обробка зміни розміру вікна
+window.addEventListener('resize', updatePageSize);
+
+// Функція для оновлення ліміту продуктів на сторінці
+function updatePageSize() {
+  let limit;
+  if (window.innerWidth >= 1440) {
+    limit = 9;
+  } else if (window.innerWidth >= 768) {
+    limit = 8;
+  } else {
+    limit = 6;
+  }
+  const currentFilters = getFilters();
+  if (currentFilters.limit !== limit) {
+    updateFilter('limit', limit);
+    updateFilter('page', 1); // Оновлення сторінки до першої
+    renderProducts();
+  }
+}
+
 function removeAndRecreatePaginationContainer() {
   const container = document.getElementById('tui-pagination-container');
   if (container) {
@@ -35,7 +57,7 @@ export async function renderProducts() {
   const filters = getFilters();
   let page = filters.page || 1;
   let limit = filters.limit || 6;
-
+  showLoader();
   try {
     const response = await getFilteredProducts(filters);
     const { perPage, totalPages, results } = response.data;
@@ -56,6 +78,8 @@ export async function renderProducts() {
     updateCartButtonIcons(results, '.cart-btn-list', icons);
   } catch (error) {
     console.error('Error fetching products', error);
+  }finally {
+    hideLoader();
   }
 }
 
@@ -116,4 +140,24 @@ export function createMarkup(arr) {
             </li>`;
     })
     .join('')}</ul>`;
+
+    setTimeout(() => {
+      document.querySelectorAll('.cart-btn-list').forEach(button => {
+        button.addEventListener('click', (e) => {
+          const productId = e.currentTarget.dataset.productId;
+          const product = arr.find(item => item._id === productId);
+          if (product) {
+            handleCartButtonClick(product, arr);
+          } else {
+            console.error('Product not found for ID:', productId);
+          }
+        });
+      });
+    }, 0);
+
+
+    setCartButtonEventListeners(arr); // Встановлення обробників подій після створення розмітки
+    return markup;
 }
+
+

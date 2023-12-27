@@ -3,8 +3,17 @@ import './header';
 import icons from '../img/icone/symbol-defs.svg';
 import { getCart, clearCart, saveCart } from './local-storage';
 import axios from 'axios';
+import { updateCartCount } from "./local-storage";
+import './modal-window';
+
 
 const BASE_URL = 'https://food-boutique.b.goit.study/api/orders ';
+
+const orderForm = document.querySelector('.order-form');
+const imageForModal = document.querySelector(".image-container-modal-cart");
+const openCartModal = document.querySelector(".order-btn-submit");
+const closeCartModal = document.querySelector(".close-svg");
+const cartModal = document.querySelector(".checkout-modal");
 
 const refs = {
   cartProductList: document.querySelector('.js-cart-list'),
@@ -17,8 +26,10 @@ const refs = {
   orderForm: document.querySelector('.order-form'),
 };
 
+
 renderCartMarkup();
 getNumberOfProducts();
+modalImage();
 
 refs.cartProductList.addEventListener('click', onClickDeleteProduct);
 
@@ -79,6 +90,7 @@ function checkLS() {
 function renderCartTpl(arr) {
   const markup = arr
     .map(({ _id, name, img, category, price, size }) => {
+      const categoryWithoutUnderscore = category.split('_').join(' ');
       return `<li class="cart-item js-cart-item" data-id = ${_id}>
        <span class="delete-product-btn js-delete-product-btn">
               <svg width="12" height="12" class='js-delete-product-btn'>
@@ -100,13 +112,13 @@ function renderCartTpl(arr) {
               <div class="cart-text-wrap">
                 <p class="cart-item-text">
                   <span class="cart-light-text">Category:</span
-                  >&nbsp;&nbsp;${category}
+                  >&nbsp;&nbsp;${categoryWithoutUnderscore}
                 </p>
                 <p class="cart-item-text">
                   <span class="cart-light-text">Size:</span>&nbsp;&nbsp;${size}
                 </p>
               </div>
-              <p class="cart-item-price">${price}</p>
+              <p class="cart-item-price">$${price}</p>
             </div>
           </div>
         </li>`;
@@ -117,7 +129,9 @@ function renderCartTpl(arr) {
 }
 
 // Кнопка видалення усіх продуктів
-refs.deleteAllBtn.addEventListener('click', () => {
+refs.deleteAllBtn.addEventListener('click', deleteProducts)
+
+function deleteProducts() {
   refs.cartProductList.innerHTML = '';
   clearCart();
   countTotalPrice();
@@ -125,7 +139,7 @@ refs.deleteAllBtn.addEventListener('click', () => {
   refs.cartMainContainer.hidden = true;
   refs.emptyBasketContent.hidden = false;
   refs.emptyBasketWrap.style.display = 'block';
-});
+}
 
 function countTotalPrice() {
   const lsData = getCart();
@@ -135,11 +149,12 @@ function countTotalPrice() {
     0
   );
   refs.cartTotalPrice.textContent = totalPrice.toFixed(2);
+  updateCartCount();
 }
 
 // ================================================
 
-function onOrderFormSubmit(evt) {
+async function onOrderFormSubmit(evt) {
   evt.preventDefault();
   const email = evt.currentTarget.elements.email.value;
 
@@ -150,7 +165,50 @@ function onOrderFormSubmit(evt) {
   // postProductApi(email);
   checkOnValidateEmail(email);
   evt.currentTarget.reset();
+
+    //Відправляємо озамовлення на сервер
+  const productsInCart = getCart();
+  const productsData = productsInCart.map(({ _id }) => ({
+    productId: _id,
+    amount: 1,
+  }));
+
+  const orderData = {
+    email,
+    products: productsData,
+  };
+try {
+  const response = await fetch('https://food-boutique.b.goit.study/api/orders', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(orderData),
+  });
+
+  if (response.ok) {
+      clearCart();
+      deleteProducts()
+      updateCartCount()
+  } else if (response.status === 400) {
+    // Обробка помилок "Bad Request"
+    const errorData = await response.json();
+    alert('Bad request: ' + errorData.message);
+  } else if (response.status === 404) {
+    // Обробка помилок "Not Found"
+    alert('Resource not found.');
+  } else if (response.status === 500) {
+    // Обробка помилок "Server Error"
+    alert('Server error. Please try again later.');
+  } else {
+    // Інші невизначені помилки
+    throw new Error('Failed to subscribe.');
 }
+  } catch (error) {
+  alert('Error: ' + error.message);
+}
+}
+
 
 function checkOnValidateEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -159,6 +217,10 @@ function checkOnValidateEmail(email) {
     return;
   }
 }
+
+
+
+
 
 // // POST запит на API
 // async function postProductApi(email) {
@@ -185,4 +247,23 @@ function checkOnValidateEmail(email) {
 //   } catch (error) {
 //     console.error(error);
 //   }
+// }
+
+closeCartModal.addEventListener("click", function () {
+  cartModal.classList.remove("open");
+})
+
+function modalImage() {
+  const arrayForImage = getCart();
+
+  // takeImage(arrayForImage);
+}
+
+// function takeImage(arr) {
+//   const images = arr.map(({ img, name }) => ({ img, name }));
+//   const randomIndex = Math.floor(Math.random() * images.length);
+//   const randomImage = images[randomIndex];
+//   const modalImg = `<img src="${randomImage.img}" alt="${randomImage.name}" width="140" height="140">`;
+
+//   imageForModal.insertAdjacentHTML('beforeend', modalImg);
 // }

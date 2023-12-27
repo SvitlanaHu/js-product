@@ -83,7 +83,7 @@
 
 @media screen and (min-width: 1440px) {
   .delete-all-btn-wrap {
-    width: 500px;
+    width: 514px;
     margin-bottom: 44px;
     padding-right: 0;
   }
@@ -135,13 +135,14 @@
   .cart-main-content {
     flex-direction: row;
     gap: 101px;
+    justify-content: space-between;
   }
 }
 
 .scroll-container {
   /* outline: 1px solid green; */
-  padding-right: 12px;
-  width: 347px;
+  /* padding-right: 12px; */
+  max-width: 347px;
   height: 420px;
   overflow-y: scroll;
   scroll-behavior: smooth;
@@ -149,15 +150,15 @@
 
 @media screen and (min-width: 768px) {
   .scroll-container {
-    width: 720px;
+    max-width: 720px;
     height: 520px;
-    padding-right: 48px;
-  }
+    padding-right: 33px;
+    }
 }
 
 @media screen and (min-width: 1440px) {
   .scroll-container {
-    max-width: 549px;
+   width: 549px;
     padding-right: 49px;
   }
 }
@@ -216,8 +217,11 @@
 
 @media screen and (min-width: 1440px) {
   .delete-product-btn {
-    right: -6px;
+    right: -19px;
   }
+    .cart-item-info-wrap {
+      gap: 40px;
+    }
 }
 
 .cart-item {
@@ -233,6 +237,7 @@
     padding-bottom: 40px;
   }
 }
+
 
 .cart-item:last-child {
   padding-bottom: 0;
@@ -293,7 +298,7 @@
 .cart-text-wrap {
   margin-bottom: 36px;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
@@ -613,4 +618,114 @@
 
 .is-visible {
   display: block;
+}
+
+.close-svg {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+}
+
+.checkout-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99998;
+  background-color: rgba(46, 47, 66, 0.4);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.checkout-modal.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.checkout-modal-interface {
+  width: 335px;
+  height: 428px;
+  z-index: 1;
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 20px;
+  background: #e8e8e2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container-modal-cart {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.text-container-modal-cart {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.title-modal-cart {
+  color: #010101;
+  font-family: 'Neue Montreal';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+
+.p-modal-cart {
+  width: 295px;
+  color: rgba(1, 1, 1, 0.7);
+  text-align: center;
+  font-family: 'Neue Montreal';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+@media only screen and (min-width: 768px) {
+  .close-svg {
+    width: 28px;
+    height: 28px;
+    top: 24px;
+    right: 24px;
+  }
+  .checkout-modal-interface {
+    width: 560px;
+    height: 509px;
+  }
+  .image-container-modal-cart {
+    margin-top: 80px;
+    margin-bottom: 37px;
+  }
+  .title-modal-cart {
+    font-size: 32px;
+    line-height: 32px;
+  }
+  .p-modal-cart {
+    width: 480px;
+    font-size: 18px;
+    line-height: 24px;
+  }
 }

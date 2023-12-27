@@ -30,7 +30,7 @@ async function initializeFilters() {
   if (filters.keyword) {
     document.getElementById('search-bar-id').value = filters.keyword;
   }
-
+  await loadCategories();
   if (filters.category) {
     document.getElementById('category-select').value = filters.category;
   }
@@ -39,11 +39,11 @@ async function initializeFilters() {
     sortSelect.value = filters.byABC
       ? 'byABC'
       : filters.byPrice
-      ? 'byPrice'
-      : 'byPopularity';
+        ? 'byPrice'
+        : 'byPopularity';
   }
 
-  await loadCategories();
+
   await renderProducts();
 }
 

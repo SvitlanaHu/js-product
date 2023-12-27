@@ -28,9 +28,9 @@ border-color: var(--gray98);;
 .filters-text,
 .no-results-text,
 .adjust-text {
-    color: var(--main-text-color);
     margin-bottom: 8px;
-    text-align: center;
+    color: rgba(1, 1, 1, 0.30);
+    line-height: 1.3em;
 }
 
 .filters-text {
@@ -96,6 +96,10 @@ select {
     align-items: center;
     background-color: transparent;
 }
+.category-input, sorting-input {
+padding-bottom: 20px;
+padding-top: 20px;
+}
 
 ::placeholder {
     color: rgba(1, 1, 1, 0.7);
@@ -120,6 +124,7 @@ select {
   display: flex;
   align-items: center;
   flex-direction: column;
+  text-align: center;
   }
   @media only screen and (min-width: 768px) {
     .no-results-container {
@@ -131,7 +136,10 @@ select {
     .no-results-container {
       margin-top: 200px;
       margin-bottom: 300px;
-      padding-left: 250px;
+      /* padding-left: 250px; */
+      width: 925px;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 
@@ -141,6 +149,7 @@ font-size: 18px;
 font-weight: 500;
 line-height: 1.11;
 margin-bottom: 14px;
+color: var(--main-text-color);
 }
 @media only screen and (min-width: 768px) {
     .no-results-text {
