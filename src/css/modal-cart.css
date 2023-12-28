@@ -1,0 +1,82 @@
+/* modal.css */
+.modal-product-container {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .modal-image-container {
+    width: 240px;
+    height: 212px;
+    border-radius: 10px;
+    background: #E8E8E2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-image-container img {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .modal-product-info {
+    margin-left: 20px;
+  }
+  
+  .modal-product-title {
+    color: #010101;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  
+  .modal-product-text {
+    color: rgba(1, 1, 1, 0.30);
+    font-size: 12px;
+  }
+  
+  .modal-product-value {
+    color: #010101;
+    margin-left: 4px;
+    font-size: 12px;
+  }
+  
+  .modal-product-description {
+    color: rgba(1, 1, 1, 0.70);
+    font-size: 16px;
+    margin-top: 9px;
+    max-width: 264px;
+  }
+  
+  .modal-price-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+  }
+  
+  .modal-product-price {
+    color: #010101;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  
+  .modal-add-to-cart-btn {
+    background: #6D8434;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    width: 130px;
+    height: 40px;
+  }
+  
+  .modal-add-to-cart-btn svg {
+    margin-left: 5px;
+  }
+  
