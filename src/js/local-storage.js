@@ -108,7 +108,6 @@ function getCartButtonIconHTML(productId, cart, icons, buttonClass) {
     ? 'icon-check'
     : 'icon-heroicons-solid_shopping-cart-18x18';
   const width = buttonClass === '.popular-cart-btn' ? '12' : '18';
-console.log(buttonClass)
   // Перевірка, чи клас кнопки відповідає 'modal-add-to-cart-btn'
   if (buttonClass === '.modal-add-to-cart-btn') {
     return `
