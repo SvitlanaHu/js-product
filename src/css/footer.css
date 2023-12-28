@@ -494,7 +494,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 18px;
-  max-width: 248px;
+  width: 248px;
 }
 
 .close-svg {

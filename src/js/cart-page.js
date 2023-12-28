@@ -8,7 +8,7 @@ import './modal-window';
 const BASE_URL = 'https://food-boutique.b.goit.study/api/orders ';
 
 const orderForm = document.querySelector('.order-form');
-const imageForModal = document.querySelector(".image-container-modal-cart");
+const imageForModal = document.querySelector(".img-cart-modal");
 const openCartModal = document.querySelector(".order-btn-submit");
 const closeCartModal = document.querySelector(".close-svg");
 const cartModal = document.querySelector(".checkout-modal");
@@ -262,14 +262,17 @@ closeCartModal.addEventListener("click", function () {
 function modalImage() {
   const arrayForImage = getCart();
 
-  // takeImage(arrayForImage);
+  takeImage(arrayForImage);
 }
 
-// function takeImage(arr) {
-//   const images = arr.map(({ img, name }) => ({ img, name }));
-//   const randomIndex = Math.floor(Math.random() * images.length);
-//   const randomImage = images[randomIndex];
-//   const modalImg = `<img src="${randomImage.img}" alt="${randomImage.name}" width="140" height="140">`;
-
-//   imageForModal.insertAdjacentHTML('beforeend', modalImg);
-// }
+function takeImage(arr) {
+  const images = arr.map(({ img, name }) => ({ img, name }));
+  if (images.length === 1) {
+    const array = images[0];
+    const modalImg = `<img src="${array.img}" alt="${array.name}" width="140" height="140">`;
+    imageForModal.insertAdjacentHTML('beforeend', modalImg);
+  } else {
+    const modalImg = `<svg class="success-svg" width="140" height="140"><use href="./img/icone/symbol-defs.svg#icon-order-placed-purchased-icon"></use></svg>`;
+    imageForModal.insertAdjacentHTML('beforeend', modalImg);
+  }
+}
