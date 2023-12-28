@@ -78,6 +78,7 @@
 
 .modal-image-container {
   /* контейнер картинки */
+  position: relative;
   padding: 26px 67px;
   width: 295px;
   height: 212px;
@@ -115,6 +116,8 @@
 
 .modal-product-description {
   /* Опис товару */
+  display: block;
+
   text-overflow: ellipsis;
   color: var(--paragraf-text);
   font-size: 14px;
@@ -322,6 +325,16 @@
   .modal-product-container {
     height: 380px;
     padding: 40px;
+  }
+
+  .modal-img {
+    /* Картинка */
+    display: block;
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    top: 26px;
+    right: 40px;
   }
 
   .modal-close-sharp-box {
