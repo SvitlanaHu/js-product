@@ -1,34 +1,48 @@
-.top-btn {
-  all: unset;
-  font-size: 1.5rem;
+.scroll-up {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: 50px;
+  bottom: 50px;
+  z-index: 111;
+  width: 50px;
+  height: 50px;
+  color: black;
   cursor: pointer;
-  transform: scale(1.8);
-  transition: all 0.3s;
-  width: 16px;
-  height: 16px;
-  display: none;
-  padding: 8px;
-  justify-content: center;
+  visibility: hidden;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 3px black;
+  opacity: 0;
+  transition: 0.2s;
+  transform: translateY(25px);
+}
+
+.scroll-up::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
   align-items: center;
-  border-radius: 30px;
-  background: var(--add-text-color);
-  border: none;
-  z-index: 1;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-size: 30px;
+  content: '↑';
 }
 
-@media screen and (min-width: 768px) {
-  .top-btn {
-    width: 18px;
-    height: 18px;
-  }
+.scroll-up:hover {
+  color: orange;
 }
 
-@media screen and (min-width: 1440px) {
-  .top-btn {
-    width: 20px;
-    height: 20px;
-  }
+.scroll-up--active {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-up__svg-path {
+  box-sizing: border-box;
+  fill: none;
+  stroke: orange;
+  stroke-width: 4px;
+  transition: 0.2s;
+
 }
