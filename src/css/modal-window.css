@@ -191,7 +191,7 @@
   .swal2-show {
     /* Загальний контейнер */
     width: calc(100% - 30px);
-    height: calc(100% - 30px);
+    max-height: 535px;
   }
 }
 
