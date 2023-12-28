@@ -46,7 +46,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  color: #ff3d00;
+  color: #FDC152;
   animation: fill 1s ease-in infinite alternate;
   z-index: 9999;
 }

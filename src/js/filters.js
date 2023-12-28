@@ -51,26 +51,31 @@ async function initializeFilters() {
 function setupFilterEventListeners() {
   const filterForm = document.getElementById('search-form');
   const filterFormElements = filterForm.elements;
+  const searchBar = filterFormElements['item-search-value'];
+  const categorySelect = filterFormElements['category-select'];
+  const sortingSelect = filterFormElements['sorting-select'];
 
   filterForm.addEventListener('submit', async event => {
     event.preventDefault();
-    const keyword = filterFormElements['item-search-value'].value.trim();
+    const keyword = searchBar.value.trim();
     await handleFilterUpdate({ keyword: keyword || null });
   });
 
-  filterForm.addEventListener('change', async event => {
-    if (event.target.id === 'category-select' || event.target.id === 'sorting-select') {
-      const filters = {
-        category: filterFormElements['category-select'].value !== 'Show all' 
-                   ? filterFormElements['category-select'].value 
-                   : null,
-        byABC: filterFormElements['sorting-select'].value === 'byABC',
-        byPrice: filterFormElements['sorting-select'].value === 'byPrice',
-        byPopularity: filterFormElements['sorting-select'].value === 'byPopularity'
-      };
-      await handleFilterUpdate(filters);
-    }
-  });
+  // Додати слухачі для обох випадаючих списків і поля пошуку
+  categorySelect.addEventListener('change', updateFilters);
+  sortingSelect.addEventListener('change', updateFilters);
+  searchBar.addEventListener('input', updateFilters);
+
+  async function updateFilters() {
+    const filters = {
+      keyword: searchBar.value.trim() || null,
+      category: categorySelect.value !== 'Show all' ? categorySelect.value : null,
+      byABC: sortingSelect.value === 'byABC',
+      byPrice: sortingSelect.value === 'byPrice',
+      byPopularity: sortingSelect.value === 'byPopularity'
+    };
+    await handleFilterUpdate(filters);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
