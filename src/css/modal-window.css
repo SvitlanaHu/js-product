@@ -112,9 +112,9 @@
   /* Контейнер основної інформації */
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   width: 295px;
   margin: 0;
-  padding: 40px 20px 40px 0;
   text-align: start;
 }
 
