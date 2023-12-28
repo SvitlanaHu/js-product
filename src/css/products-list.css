@@ -163,15 +163,18 @@ margin-bottom: 40px;
   border: none;
   transition: background-color var(--animation);
 }
+.cart-btn-list-discount {
+  transition: background-color var(--animation);
+}
 .cart-btn-list:active,
-.cart-btn-list:active {
+.cart-btn-list-discount:active {
   background-color: var(--gray);
   border: 1px solid var(--white);
 }
 
 @media (hover: hover) {
   .cart-btn-list:hover,
-  .cart-btn-list:hover{
+  .cart-btn-list-discount:hover{
     background-color: var(--olive-hover);
 
   }
@@ -181,3 +184,11 @@ margin-bottom: 40px;
   fill: var(--main-background-color);
 }
 
+.photo-card-list, .popular-product-item, .photo-card-list-discount {
+  cursor: pointer;
+  transition: var(--animation);
+}
+
+.photo-card-list:hover, .popular-product-item:hover, .photo-card-list-discount:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.292); 
+}

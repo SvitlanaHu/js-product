@@ -46,6 +46,7 @@
   margin-bottom: 14px;
   flex-direction: column;
   margin: 0 auto;
+  gap: 14px;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1439px) {
@@ -62,6 +63,7 @@
 @media only screen and (min-width: 1440px) {
   .popular-product-list {
     margin-bottom: 40px;
+    gap: 13px;
   }
 }
 .popular-product-item {
@@ -70,7 +72,7 @@
   border-radius: 10px;
   background: var(--gray98);
   padding: 12px;
-  margin-bottom: 14px;
+  /* margin-bottom: 14px; */
 }
 @media only screen and (min-width: 768px) and (max-width: 1439px) {
   .popular-product-item {
@@ -84,7 +86,7 @@
     margin-bottom: 0;
   }
   .popular-product-item {
-    margin-bottom: 13px;
+    /* margin-bottom: 13px; */
   }
 }
 
@@ -99,7 +101,7 @@
   height: 74px;
   border-radius: 10px;
   background-color: var(--main-background-color);
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 .popular-photo-item {
   margin: 0 auto;
@@ -168,4 +170,19 @@
   .popular-cart-btn {
     margin-left: 0;
   }
+}
+
+.popular-cart-btn .olive {
+  transition: fill var(--animation);
+}
+.popular-cart-btn {
+  transition: background-color var(--animation);
+}
+
+.popular-cart-btn:hover .olive, .popular-cart-btn:active .olive {
+  fill: var(--main-background-color);
+}
+
+.popular-cart-btn:hover, .popular-cart-btn:active {
+  background-color: var(--olive-hover);
 }
