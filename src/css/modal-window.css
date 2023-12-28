@@ -66,18 +66,24 @@
 }
 
 /* Phone screens */
-/* Вікно на продуктову картку */
+/**
+  |============================
+  | Вікно на продуктову картку
+  |============================
+*/
 .swal2-show {
   display: block;
   background: var(--gray98);
   border-radius: 20px;
   margin: 0;
-  padding: 22px 0px 84px 0px;
+  padding: 20px 40px;
 }
-/* .swal2-html-container {
+
+#swal2-html-container,
+.swal2-html-container {
   margin: 0;
   padding: 0;
-} */
+}
 
 .modal-product-container {
   /* контейнер усього контенту */
@@ -90,8 +96,7 @@
 .modal-image-container {
   /* контейнер картинки */
   position: relative;
-  padding: 26px 67px;
-  width: 295px;
+  max-width: 295px;
   height: 212px;
   border-radius: 10px;
 }
@@ -101,10 +106,16 @@
   display: flex;
   flex-direction: column;
   width: 295px;
+  margin: 0;
+  padding: 40px 20px;
+  text-align: start;
 }
 
 .modal-img {
+  /* Картинка */
+  display: block;
   height: 160px;
+  margin: auto;
 }
 
 .modal-product-title {
@@ -132,8 +143,9 @@
 .modal-product-description {
   /* Опис товару */
   display: block;
-
-  text-overflow: ellipsis;
+  max-width: 295px;
+  height: 94px;
+  text-overflow: ellipsis ' [..]';
   color: var(--paragraf-text);
   font-size: 14px;
   font-style: normal;
@@ -253,6 +265,18 @@
   justify-content: space-between;
   align-items: flex-end;
 }
+.modal-add-to-cart-btn {
+  gap: 10px;
+  padding: 10px 28px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25; /* 125% */
+  text-wrap: nowrap;
+  color: var(--main-background-color);
+  fill: var(--main-background-color);
+}
 
 /* Підписка на нові продукти */
 .modal-new-products {
@@ -357,6 +381,11 @@
     position: absolute;
     top: 26px;
     right: 40px;
+  }
+
+  .modal-add-to-cart-btn {
+    /* Кнопка Add to */
+    font-size: 14px;
   }
 
   .modal-close-sharp-box {

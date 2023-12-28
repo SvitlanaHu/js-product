@@ -180,7 +180,7 @@ function showProductDetails(product, results) {
       <div class="modal-price-button-container">
         <p class="modal-product-price">$${product.price}</p>
         <button class='modal-add-to-cart-btn' type="button" data-product-id="${product._id}">
-          Add to 
+         Add to <span class="modal-button-text">Add to</span> 
           <svg class="modal-add-to-cart-svg" width="18" height="18">
             <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
           </svg>
