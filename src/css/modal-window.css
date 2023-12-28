@@ -85,6 +85,10 @@
   padding: 0;
 }
 
+.swal2-modal {
+  max-width: 295px;
+}
+
 .modal-product-container {
   /* контейнер усього контенту */
   display: flex;
