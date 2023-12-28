@@ -74,6 +74,8 @@
 
 .modal-product-container {
   /* контейнер усього контенту */
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-image-container {
@@ -312,7 +314,11 @@
   margin-bottom: 14px;
 }
 
-/* Tablet screens */
+/**
+  |============================
+  | Tablet screens
+  |============================
+*/
 @media screen and (min-width: 768px) {
   /* Вікно на продуктову картку */
   .swal2-show {
@@ -323,6 +329,7 @@
   }
 
   .modal-product-container {
+    flex-direction: row;
     height: 380px;
     padding: 40px;
   }
