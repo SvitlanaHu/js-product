@@ -1,6 +1,8 @@
 import axios from 'axios';
 import icons from '../img/icone/symbol-defs.svg';
 import { updateCartButtonIcons, setCartButtonEventListeners } from './local-storage';
+import Swal from 'sweetalert2';
+import { getProductById } from './products-api'
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -29,6 +31,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 
                 discountProductsContainer.innerHTML += card;
             });
+            discountProducts.forEach(product => {
+                const productElement = document.querySelector(`[data-product-id="${product._id}"]`);
+                productElement.addEventListener('click', () => fetchAndShowProductDetails(product._id, discountProducts));
+              });
             updateCartButtonIcons(discountProducts, '.cart-btn-list-discount', icons); // Використання уніфікованої функції
             setCartButtonEventListeners(discountProducts, '.cart-btn-list-discount', icons); // Використання уніфікованої функції
         } catch (error) {
@@ -45,16 +51,16 @@ document.addEventListener("DOMContentLoaded", function () {
         const shouldShowFullText = longText.length > maxLength && screenWidth >= 1440;
         const truncatedText = truncateText(longText, maxLength);
            return `
-        <li class="card-container-list-discount" id="${product._id}">
+        <li class="card-container-list-discount" id="${product._id}" data-product-id="${product._id}">
         <div class="photo-card-list-discount">
-                <a class="product-modal-list-discount" href="#">
+                <div class="product-modal-list-discount">
                     <div class="img-container-list-discount">
                         <svg width="60" height="60" class="product-image-discount">
                             <use href="${icons}#icon-discount-green"></use>
                          </svg>
                         <img class="product-image-list-discount" src="${product.img}" alt="${product.name} photo" width=114 height=114 loading="lazy" />
                     </div>
-                    </a>
+                    </div>
                     <div class="product-info-list">
                         <div class="price-and-btn-list-discount">
                         <h2 class="product-name-list-discount${shouldShowFullText ? ' show-full-text' : ''}" title="${shouldShowFullText ? longText : ''}">${truncatedText}</h2>
@@ -76,17 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const screenWidth = window.innerWidth;
         return screenWidth >= 1440 && text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
     }
-    // Функція для додавання продукту до кошика
-
-
-
-
-
-
-
-
-
-    // 
 
 
 })
@@ -100,5 +95,46 @@ discountProductsContainer.addEventListener("mouseout", function () {
     discountProductsContainer.style.overflowY = "hidden";
 });
 
-
+async function fetchAndShowProductDetails(productId, discountProductsContainer) {
+    try {
+      const product = await getProductById(productId);
+      showProductDetails(product, discountProductsContainer);
+    } catch (error) {
+      console.error('Error fetching product details:', error);
+    }
+  }
+function showProductDetails(product, discountProductsContainer) {
+    Swal.fire({
+      html: `
+        <div class="modal-product-container">
+          <div class="modal-image-container">
+            <img src="${product.img}" alt="${product.name}">
+          </div>
+          <div class="modal-product-info">
+            <h2 class="modal-product-title">${product.name}</h2>
+            <p><span class="modal-product-text">Category:</span> <span class="modal-product-value">${product.category}</span></p>
+            <p><span class="modal-product-text">Size:</span> <span class="modal-product-value">${product.size}</span></p>
+            <p><span class="modal-product-text">Popularity:</span> <span class="modal-product-value">${product.popularity}</span></p>
+            <p class="modal-product-description">${product.desc}</p>
+          </div>
+        </div>
+        <div class="modal-price-button-container">
+          <p class="modal-product-price">$${product.price}</p>
+          <button class='modal-add-to-cart-btn' type="button" data-product-id="${product._id}">
+            Add to 
+            <svg class="list-cart-svg-list" width="18" height="18">
+              <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
+            </svg>
+          </button>
+        </div>
+      `,
+      showConfirmButton: false,
+      customClass: {
+        container: 'custom-swal'
+      }
+    });
+    setCartButtonEventListeners(discountProductsContainer, '.modal-add-to-cart-btn', icons);
+    updateCartButtonIcons(discountProductsContainer, '.modal-add-to-cart-btn', icons);
+  }
+  
 //  <img class="product-image-discount" src="./img/discount-green.svg" alt="Discount" width="60" height="60"></img>

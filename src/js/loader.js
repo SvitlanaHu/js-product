@@ -10,11 +10,11 @@ function scrollToFilters() {
 
 export function showLoader() {
   loader.removeAttribute('hidden');
-  mainContent.style.display = 'none';
+  mainContent.style.filter = 'blur(5px) grayscale(1)';
 }
 
 export function hideLoader() {
   loader.setAttribute('hidden', '');
-  mainContent.style.display = 'block';
+  mainContent.style.filter = 'none';
   scrollToFilters();
 }

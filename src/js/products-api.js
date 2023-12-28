@@ -31,14 +31,13 @@ export function getProductsByCategory(page, limit, category) {
   });
 }
 
-// Додайте цю функцію до вашого файлу products-api.js
 export async function getCategories() {
   try {
     const response = await axios.get(`${BASE_URL}/categories`);
-    return response.data; // Повертає масив категорій
+    return response.data;
   } catch (error) {
     console.error('Error fetching categories:', error);
-    throw error; // Передає помилку далі для обробки
+    throw error;
   }
 }
 
@@ -62,4 +61,14 @@ export function getFilteredProducts({
   };
 
   return axios.get(`${BASE_URL}`, { params });
+}
+
+export async function getProductById(id) {
+  try {
+    const response = await axios.get(`${BASE_URL}/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching product by id:', error);
+    throw error;
+  }
 }

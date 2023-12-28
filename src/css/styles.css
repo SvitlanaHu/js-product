@@ -19,6 +19,7 @@
 @import url('./products-list.css');
 @import url('./popular.css');
 @import url('./cart-page.css');
+@import url('./modal-cart.css');
 
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;

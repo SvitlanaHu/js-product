@@ -97,6 +97,7 @@ export function handleCartButtonClick(productId, arr, buttonClass, icons) {
   updateCartButtonIcons(arr, '.cart-btn-list', icons);
   updateCartButtonIcons(arr, '.popular-cart-btn', icons);
   updateCartButtonIcons(arr, '.cart-btn-list-discount', icons);
+  updateCartButtonIcons(arr, '.modal-add-to-cart-btn', icons);
   // Оновлення кількості товарів у кошику
   updateCartCount();
 }
@@ -137,6 +138,7 @@ export function updateCartButtonIcons(arr, buttonClass, icons) {
 export function setCartButtonEventListeners(arr, buttonClass, icons) {
   document.querySelectorAll(buttonClass).forEach(button => {
     button.addEventListener('click', e => {
+      e.stopPropagation();
       const productId = e.currentTarget.dataset.productId;
       handleCartButtonClick(productId, arr, buttonClass, icons);
     });

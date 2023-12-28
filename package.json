@@ -20,6 +20,7 @@
     "normalize.css": "^8.0.1",
     "notiflix": "^3.2.6",
     "simplelightbox": "^2.14.2",
+    "sweetalert2": "^11.10.2",
     "tui-pagination": "^3.4.1",
     "vite-plugin-full-reload": "^1.0.5",
     "vite-plugin-html-inject": "^1.0.1"

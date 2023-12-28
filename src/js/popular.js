@@ -4,6 +4,8 @@ import {
   updateCartButtonIcons,
   setCartButtonEventListeners,
 } from './local-storage';
+import Swal from 'sweetalert2';
+import { getProductById } from './products-api'
 
 const POPULAR_URL = 'https://food-boutique.b.goit.study/api/products/popular';
 
@@ -30,7 +32,7 @@ function renderPopularProducts(products) {
         .join(' ');
 
       listItem.innerHTML = `
-        <a class="popular-modal">
+        <a class="popular-modal"  data-product-id="${product._id}">
           <div class="popular-img">
             <img class="popular-photo-item" src="${product.img}" alt="${product.name}" width="56" height="56" loading="lazy">
           </div>  
@@ -50,8 +52,13 @@ function renderPopularProducts(products) {
       productList.appendChild(listItem);
     });
   }
+  products.forEach(product => {
+    const productElement = document.querySelector(`[data-product-id="${product._id}"]`);
+    productElement.addEventListener('click', () => fetchAndShowProductDetails(product._id, products));
+  });
   updateCartButtonIcons(products, '.popular-cart-btn', icons);
   setCartButtonEventListeners(products, '.popular-cart-btn', icons);
+  
 }
 
 fetchProducts()
@@ -61,3 +68,46 @@ fetchProducts()
   .catch(error => {
     console.error('Error:', error);
   });
+
+  async function fetchAndShowProductDetails(productId, products) {
+    try {
+      const product = await getProductById(productId);
+      showProductDetails(product, products);
+    } catch (error) {
+      console.error('Error fetching product details:', error);
+    }
+  }
+  function showProductDetails(product, products) {
+    Swal.fire({
+      html: `
+        <div class="modal-product-container">
+          <div class="modal-image-container">
+            <img src="${product.img}" alt="${product.name}">
+          </div>
+          <div class="modal-product-info">
+            <h2 class="modal-product-title">${product.name}</h2>
+            <p><span class="modal-product-text">Category:</span> <span class="modal-product-value">${product.category}</span></p>
+            <p><span class="modal-product-text">Size:</span> <span class="modal-product-value">${product.size}</span></p>
+            <p><span class="modal-product-text">Popularity:</span> <span class="modal-product-value">${product.popularity}</span></p>
+            <p class="modal-product-description">${product.desc}</p>
+          </div>
+        </div>
+        <div class="modal-price-button-container">
+          <p class="modal-product-price">$${product.price}</p>
+          <button class='modal-add-to-cart-btn' type="button" data-product-id="${product._id}">
+            Add to 
+            <svg class="list-cart-svg-list" width="18" height="18">
+              <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
+            </svg>
+          </button>
+        </div>
+      `,
+      showConfirmButton: false,
+      customClass: {
+        container: 'custom-swal'
+      }
+    });
+    setCartButtonEventListeners(products, '.modal-add-to-cart-btn', icons);
+    updateCartButtonIcons(products, '.modal-add-to-cart-btn', icons);
+  }
+  
