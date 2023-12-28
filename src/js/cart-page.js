@@ -268,7 +268,8 @@ function modalImage() {
 function takeImage(arr) {
   const images = arr.map(({ img, name }) => ({ img, name }));
   if (images.length === 1) {
-    const modalImg = `<img src="${images.img}" alt="${images.name}" width="140" height="140">`;
+    const array = images[0];
+    const modalImg = `<img src="${array.img}" alt="${array.name}" width="140" height="140">`;
     imageForModal.insertAdjacentHTML('beforeend', modalImg);
   } else {
     const modalImg = `<svg class="success-svg" width="140" height="140"><use href="./img/icone/symbol-defs.svg#icon-order-placed-purchased-icon"></use></svg>`;
