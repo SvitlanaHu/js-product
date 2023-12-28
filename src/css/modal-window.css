@@ -68,7 +68,7 @@
 
 /* Вікно на продуктову картку */
 .modal-food {
-  display: none;
+  display: block;
   background: var(--gray98);
   width: 335px;
   height: 535px;
@@ -111,6 +111,30 @@
   font-style: normal;
   font-weight: 500;
   line-height: 1.11; /* 111.111% */
+}
+
+.modal-text-box {
+  display: inline-flex;
+  column-gap: 8px;
+  row-gap: 9px;
+}
+
+.modal-info-id {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-text-id {
+  color: var(--add-text-color);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.17; /* 116.667% */
+}
+
+.modal-text-span-id {
+  color: var(--main-text-color);
 }
 
 /* Підписка на нові продукти */
