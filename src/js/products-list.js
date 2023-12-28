@@ -18,6 +18,7 @@ let pagination;
 
 window.addEventListener('resize', updatePageSize);
 
+//викликаємо у renderProducts самою першою, щоб оновити розміри сторінки та перезаписати limits
 function updatePageSize() {
   let limit;
   if (window.innerWidth >= 1440) {
@@ -30,7 +31,7 @@ function updatePageSize() {
   const currentFilters = getFilters();
   if (currentFilters.limit !== limit) {
     updateFilter('page', 1);
-    renderProducts();
+    updateFilter('limit', limit); //оновлюємо ліміти, НЕ ВИДАЛЯТИ
   }
 }
 
@@ -62,6 +63,9 @@ export async function renderProducts() {
     if (results.length === 0) {
       noSearchDivContainerElement.classList.remove('visually-hidden');
       productsListContainer.innerHTML = '';
+       //НЕ ВИДАЛЯТИ, забирає контейнер, коли в картках нічого не знайдено
+      const containerPagination = document.getElementById('tui-pagination-container');
+      containerPagination.classList.add('visually-hidden');
       return;
     }
 
