@@ -70,7 +70,7 @@
   display: block;
   background: var(--gray98);
   border-radius: 20px;
-  padding: 22px 11px 84px 11px;
+  padding: 22px 0px 84px 0px;
 }
 
 .modal-product-container {
@@ -138,6 +138,8 @@
   .swal2-show {
     /* Загальний контейнер */
     width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    padding: 22px 0px 84px 0px;
   }
 }
 
@@ -327,6 +329,7 @@
     width: 600px;
     height: 380px;
     border-radius: 20px;
+    padding: 22px 11px 84px 11px;
   }
 
   .modal-product-container {
