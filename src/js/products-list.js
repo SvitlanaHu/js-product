@@ -174,7 +174,7 @@ function showProductDetails(product, results) {
               <span class="modal-product-text">Popularity:</span> <span class="modal-product-value">${product.popularity}</span>
             </p>
           </div>
-          <p class="modal-product-description">${product.desc}</p>  
+          <p id="modal-product-description" class="modal-product-description">${product.desc}</p>  
         </div>
       </div>
       <div class="modal-price-button-container">

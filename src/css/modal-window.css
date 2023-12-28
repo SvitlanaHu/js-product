@@ -132,7 +132,7 @@
   display: inline-flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: flex-start;
 }
 
 .text-box {
@@ -140,11 +140,29 @@
   display: block;
 }
 
+#modal-product-description {
+  max-height: 114px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  /* Для Firefox */
+  scrollbar-color: transparent;
+  /* Для Firefox */
+  -ms-overflow-style: none;
+  /* Для Internet Explorer та Edge */
+  scrollbar-width: none;
+  /* Для браузерів на основі WebKit (Chrome, Safari) */
+}
+
+#modal-product-description::-webkit-scrollbar {
+  display: none;
+  /* Для браузерів на основі WebKit (Chrome, Safari) */
+}
+
 .modal-product-description {
   /* Опис товару */
   display: block;
   max-width: 295px;
-  height: 94px;
+  max-height: 94px;
   text-overflow: ellipsis ' [..]';
 
   color: var(--paragraf-text);
@@ -278,6 +296,7 @@
   text-wrap: nowrap;
   color: var(--main-background-color);
   fill: var(--main-background-color);
+  cursor: pointer;
 }
 
 /* Підписка на нові продукти */
