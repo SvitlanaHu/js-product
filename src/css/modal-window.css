@@ -85,10 +85,6 @@
   padding: 0;
 }
 
-.swal2-modal {
-  max-width: 295px;
-}
-
 .modal-product-container {
   /* контейнер усього контенту */
   display: flex;
@@ -202,6 +198,9 @@
 /* Mobile 375 */
 @media screen and (min-width: 375px) and (max-width: 767px) {
   /* Вікно на продуктову картку */
+  .swal2-modal {
+    max-width: 295px;
+  }
 }
 
 .modal-product-container {
