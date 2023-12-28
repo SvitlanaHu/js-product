@@ -32,6 +32,7 @@ function updatePageSize() {
   if (currentFilters.limit !== limit) {
     updateFilter('page', 1);
     updateFilter('limit', limit); //оновлюємо ліміти, НЕ ВИДАЛЯТИ
+    renderProducts()
   }
 }
 
@@ -48,8 +49,6 @@ function removeAndRecreatePaginationContainer() {
 }
 
 export async function renderProducts() {
-  updatePageSize();
-
   const filters = getFilters();
   let page = filters.page || 1;
   let limit = filters.limit || 6;
@@ -101,6 +100,9 @@ function setupPagination(totalItems, currentPage, itemsPerPage) {
       updateFilter('page', event.page);
       renderProducts();
     });
+  } else {
+    //НЕ ВИДАЛЯТИ ЦЕЙ ELSE, бо хоч його візуально не видно, він займає місце на сторінці. Видаляємо контейнер зі сторінки, коли відмальовується лише 1 сторінка з картками
+    container.classList.add('visually-hidden');
   }
 }
 
