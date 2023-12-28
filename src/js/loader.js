@@ -10,11 +10,19 @@ function scrollToFilters() {
 
 export function showLoader() {
   loader.removeAttribute('hidden');
-  mainContent.style.filter = 'blur(5px) grayscale(1)';
+  Array.from(mainContent.children).forEach(child => {
+    // Перевірка, чи child містить .search-container
+    const searchContainer = child.querySelector('.search-container');
+    if (!searchContainer) {
+      child.style.filter = 'blur(5px) grayscale(1)';
+    }
+  });
 }
 
 export function hideLoader() {
   loader.setAttribute('hidden', '');
-  mainContent.style.filter = 'none';
+  Array.from(mainContent.children).forEach(child => {
+    child.style.filter = 'none';
+  });
   scrollToFilters();
 }

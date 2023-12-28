@@ -111,12 +111,10 @@ function getCartButtonIconHTML(productId, cart, icons, buttonClass) {
   // Перевірка, чи клас кнопки відповідає 'modal-add-to-cart-btn'
   if (buttonClass === '.modal-add-to-cart-btn') {
     return `
-      <button class="modal-add-to-cart-btn">
         Add to 
         <svg class="modal-add-to-cart-svg" width="${width}" height="${width}">
           <use href="${icons}#${iconId}"></use>
         </svg>
-      </button>
     `;
   }
 
