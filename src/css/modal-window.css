@@ -65,14 +65,37 @@
 }
 
 /* Phone screens */
-
 /* Вікно на продуктову картку */
-.modal-food {
+.swal2-show {
   display: block;
   background: var(--gray98);
-  width: 335px;
-  height: 535px;
+  border-radius: 20px;
+}
+
+.modal-product-container {
   padding: 40px 20px;
+}
+
+/* Mobile 320 */
+@media screen and (max-width: 374px) {
+  .modal-food,
+  .modal-new-products,
+  .modal-email,
+  .modal-order-succes,
+  .swal2-show {
+    /* Загальний контейнер */
+    width: calc(100% - 30px);
+  }
+}
+
+/* Mobile 375 */
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  /* Вікно на продуктову картку */
+  .swal2-show {
+    width: 335px;
+    height: 535px;
+    padding: 40px 20px;
+  }
 }
 
 .modal-close-sharp-box {
@@ -240,19 +263,17 @@
   margin-bottom: 14px;
 }
 
-/* Mobile 320 */
-@media screen and (max-width: 374px) {
-  .modal-food,
-  .modal-new-products,
-  .modal-email,
-  .modal-order-succes {
-    width: calc(100% - 30px);
-  }
-}
-
 /* Tablet screens */
 @media screen and (min-width: 768px) {
-  .modal-food {
+  /* Вікно на продуктову картку */
+  .swal2-show {
+    /* Загальний контейнер */
+    width: 600px;
+    height: 380px;
+    border-radius: 20px;
+  }
+
+  .modal-product-container {
     height: 380px;
     padding: 40px;
   }
