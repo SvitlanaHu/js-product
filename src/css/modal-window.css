@@ -88,7 +88,7 @@
 .modal-product-container {
   /* контейнер усього контенту */
   display: flex;
-  flex-direction: column;
+
   margin: 0;
   padding: 0;
 }
@@ -146,6 +146,7 @@
   max-width: 295px;
   height: 94px;
   text-overflow: ellipsis ' [..]';
+
   color: var(--paragraf-text);
   font-size: 14px;
   font-style: normal;
@@ -183,6 +184,7 @@
 
 .modal-product-container {
   padding: 0;
+  flex-direction: column;
 }
 
 .modal-close-sharp-box {
@@ -259,7 +261,7 @@
   line-height: 1.28; /* 128.571% */
 }
 
-.modal-nav {
+.modal-price-button-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -361,8 +363,10 @@
   }
 
   .modal-product-container {
+    display: flex;
     flex-direction: row;
-    height: 380px;
+    justify-content: start;
+    height: 230px;
   }
 
   .modal-img {
