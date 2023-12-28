@@ -70,6 +70,7 @@
   display: block;
   background: var(--gray98);
   border-radius: 20px;
+  padding: 22px 11px 84px 11px;
 }
 
 .modal-product-container {
@@ -151,7 +152,7 @@
 }
 
 .modal-product-container {
-  padding: 26px 40px;
+  padding: 0;
 }
 
 .modal-close-sharp-box {
@@ -331,7 +332,6 @@
   .modal-product-container {
     flex-direction: row;
     height: 380px;
-    padding: 40px;
   }
 
   .modal-img {
