@@ -101,21 +101,21 @@
   border-radius: 10px;
 }
 
+.modal-img {
+  /* Картинка */
+  display: block;
+  height: 160px;
+  margin: auto;
+}
+
 .modal-product-info {
   /* Контейнер основної інформації */
   display: flex;
   flex-direction: column;
   width: 295px;
   margin: 0;
-  padding: 40px 20px;
+  padding: 40px 20px 40px 0;
   text-align: start;
-}
-
-.modal-img {
-  /* Картинка */
-  display: block;
-  height: 160px;
-  margin: auto;
 }
 
 .modal-product-title {
@@ -153,6 +153,16 @@
   line-height: 1.28;
 }
 
+.modal-price-button-container {
+  /* Навігація внизу модалки */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+  max-width: 100vw;
+  padding: 0;
+}
+
 /* Mobile 320 */
 @media screen and (max-width: 374px) {
   .modal-food,
@@ -163,18 +173,12 @@
     /* Загальний контейнер */
     width: calc(100% - 30px);
     height: calc(100% - 30px);
-    padding: 22px 0px 84px 0px;
   }
 }
 
 /* Mobile 375 */
 @media screen and (min-width: 375px) and (max-width: 767px) {
   /* Вікно на продуктову картку */
-  .swal2-show {
-    width: 335px;
-    height: 535px;
-    padding: 40px 20px;
-  }
 }
 
 .modal-product-container {
@@ -226,10 +230,6 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-
-.modal-product-title,
-.modal-name-id {
 }
 
 .modal-text-box {
@@ -310,14 +310,6 @@
   line-height: 1.28; /* 128.571% */
 }
 
-.modal-img {
-  display: block;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 160px;
-}
-
 /* Вікно у футері */
 .modal-email {
   display: none;
@@ -331,7 +323,7 @@
   display: block;
   width: 335px;
   height: 428px;
-  padding: 220px 20px 60px 20px;
+  padding: 20px 20px 60px 20px;
 }
 
 .modal-success-img {
@@ -365,7 +357,7 @@
     width: 600px;
     height: 380px;
     border-radius: 20px;
-    padding: 22px 11px 84px 11px;
+    padding: 40px;
   }
 
   .modal-product-container {
@@ -377,10 +369,7 @@
     /* Картинка */
     display: block;
     width: 160px;
-    height: 160px;
-    position: absolute;
-    top: 26px;
-    right: 40px;
+    margin: auto;
   }
 
   .modal-add-to-cart-btn {
@@ -412,10 +401,6 @@
 
   .modal-new-products-text {
     font-size: 16px;
-  }
-
-  .modal-img {
-    width: 490px;
   }
 
   .modal-order-success {
