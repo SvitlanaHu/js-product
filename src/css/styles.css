@@ -48,6 +48,7 @@
   border-radius: 50%;
   color: #ff3d00;
   animation: fill 1s ease-in infinite alternate;
+  z-index: 9999;
 }
 
 .loader::before,
