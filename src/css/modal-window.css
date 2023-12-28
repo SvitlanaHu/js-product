@@ -68,7 +68,7 @@
 
 /* Вікно на продуктову картку */
 .modal-food {
-  display: none;
+  display: block;
   background: var(--gray98);
   width: 335px;
   height: 535px;
@@ -91,18 +91,76 @@
   scale: 0.8;
 }
 
+.modal-main-block,
+.modal-info-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .modal-product-img-box {
+  position: relative;
+  display: block;
   background-color: var(--main-background-color);
-  width: 295px;
+  max-width: 295px;
   height: 212px;
   border-radius: 10px;
 }
 
 .modal-product-img {
+  position: absolute;
   width: 160px;
   height: 160px;
-  top: 50%;
-  left: 50%;
+  top: 10%;
+  left: 20%;
+  z-index: 2;
+}
+
+.modal-info-id {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-name-id {
+  color: var(--main-text-color);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.11; /* 111.111% */
+}
+
+.modal-text-box {
+  display: inline-flex;
+  column-gap: 8px;
+  row-gap: 9px;
+}
+
+.modal-text-box-item .modal-text-id {
+  color: var(--add-text-color);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.17; /* 116.667% */
+}
+
+.modal-text-span-id {
+  color: var(--main-text-color);
+}
+
+.modal-product-descr {
+  color: var(--paragraf-text);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.28; /* 128.571% */
+}
+
+.modal-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 /* Підписка на нові продукти */
