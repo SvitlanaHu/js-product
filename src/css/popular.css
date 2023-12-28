@@ -160,10 +160,7 @@
   border: none;
     margin-left: auto;
 }
-.list-cart-svg-list{
-  width: 100%; /* Займає увесь простір кнопки */
-  height: auto; /* Зберігає пропорції */
-}
+
 .olive{
   fill: var(--olive); /* Колір іконки, якщо потрібно */
 }

@@ -94,25 +94,36 @@ export function handleCartButtonClick(productId, arr, buttonClass, icons) {
   } else if (product) {
     addToCart(product);
   }
+  updateCartButtonIcons(arr, '.modal-add-to-cart-btn', icons);
   updateCartButtonIcons(arr, '.cart-btn-list', icons);
   updateCartButtonIcons(arr, '.popular-cart-btn', icons);
   updateCartButtonIcons(arr, '.cart-btn-list-discount', icons);
-  updateCartButtonIcons(arr, '.modal-add-to-cart-btn', icons);
   // Оновлення кількості товарів у кошику
   updateCartCount();
 }
 
-// Функція для генерації HTML іконки
 function getCartButtonIconHTML(productId, cart, icons, buttonClass) {
   const productInCart = cart.find(item => item._id === productId);
   const iconId = productInCart
     ? 'icon-check'
     : 'icon-heroicons-solid_shopping-cart-18x18';
-  const width = buttonClass === '.popular-cart-btn' ? '12' : '18'; // Припустимо, що для .popular-cart-btn ширина інша
+  const width = buttonClass === '.popular-cart-btn' ? '12' : '18';
+console.log(buttonClass)
+  // Перевірка, чи клас кнопки відповідає 'modal-add-to-cart-btn'
+  if (buttonClass === '.modal-add-to-cart-btn') {
+    return `
+      <button class="modal-add-to-cart-btn">
+        Add to 
+        <svg class="modal-add-to-cart-svg" width="${width}" height="${width}">
+          <use href="${icons}#${iconId}"></use>
+        </svg>
+      </button>
+    `;
+  }
+
+  // Для інших класів повертаємо тільки SVG
   return `
-    <svg class="list-cart-svg-list ${
-      buttonClass === '.popular-cart-btn' ? 'olive' : ''
-    }" width="${width}" height="${width}">
+    <svg class="${buttonClass === '.popular-cart-btn' ? 'olive' : 'list-cart-svg-list'}" width="${width}" height="${width}">
       <use href="${icons}#${iconId}"></use>
     </svg>
   `;

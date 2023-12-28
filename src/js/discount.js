@@ -103,7 +103,7 @@ async function fetchAndShowProductDetails(productId, discountProductsContainer) 
       console.error('Error fetching product details:', error);
     }
   }
-function showProductDetails(product, discountProductsContainer) {
+  function showProductDetails(product, results) {
     Swal.fire({
       html: `
         <div class="modal-product-container">
@@ -122,19 +122,26 @@ function showProductDetails(product, discountProductsContainer) {
           <p class="modal-product-price">$${product.price}</p>
           <button class='modal-add-to-cart-btn' type="button" data-product-id="${product._id}">
             Add to 
-            <svg class="list-cart-svg-list" width="18" height="18">
+            <svg class="modal-add-to-cart-svg" width="18" height="18">
               <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
             </svg>
           </button>
         </div>
+        <svg class="custom-close-icon" width="28" height="28">
+          <use href="${icons}#icon-close-sharp"></use>
+        </svg>
       `,
       showConfirmButton: false,
       customClass: {
-        container: 'custom-swal'
-      }
+        container: 'custom-swal',
+      },
     });
-    setCartButtonEventListeners(discountProductsContainer, '.modal-add-to-cart-btn', icons);
-    updateCartButtonIcons(discountProductsContainer, '.modal-add-to-cart-btn', icons);
+    
+    setCartButtonEventListeners(results, '.modal-add-to-cart-btn', icons);
+    updateCartButtonIcons(results, '.modal-add-to-cart-btn', icons);
+    document.querySelector('.custom-close-icon').addEventListener('click', () => {
+      Swal.close();
+    });
   }
   
 //  <img class="product-image-discount" src="./img/discount-green.svg" alt="Discount" width="60" height="60"></img>
