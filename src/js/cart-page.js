@@ -8,7 +8,7 @@ import './modal-window';
 const BASE_URL = 'https://food-boutique.b.goit.study/api/orders ';
 
 const orderForm = document.querySelector('.order-form');
-const imageForModal = document.querySelector(".image-container-modal-cart");
+const imageForModal = document.querySelector(".img-cart-modal");
 const openCartModal = document.querySelector(".order-btn-submit");
 const closeCartModal = document.querySelector(".close-svg");
 const cartModal = document.querySelector(".checkout-modal");
@@ -266,13 +266,12 @@ function modalImage() {
 }
 
 function takeImage(arr) {
-  if (arr.length === 1) {
-    const imageForModal = 
+  const images = arr.map(({ img, name }) => ({ img, name }));
+  if (images.length === 1) {
+    const modalImg = `<img src="${images.img}" alt="${images.name}" width="140" height="140">`;
+    imageForModal.insertAdjacentHTML('beforeend', modalImg);
+  } else {
+    const modalImg = `<svg class="success-svg" width="140" height="140"><use href="./img/icone/symbol-defs.svg#icon-order-placed-purchased-icon"></use></svg>`;
+    imageForModal.insertAdjacentHTML('beforeend', modalImg);
   }
 }
-
-<svg class="success-svg" width="140" height="140">
-      <use
-        href="./img/icone/symbol-defs.svg#icon-order-placed-purchased-icon"
-      ></use>
-    </svg>
