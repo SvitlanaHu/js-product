@@ -14,9 +14,9 @@
     <title>Food Boutique</title>
     
     <script type="module" crossorigin src="/js-product/commonHelpers2.js"></script>
-    <link rel="modulepreload" crossorigin href="/js-product/assets/scrollup-86a8610e.js">
+    <link rel="modulepreload" crossorigin href="/js-product/assets/scrollup-ce395434.js">
     <link rel="modulepreload" crossorigin href="/js-product/assets/vendor-f5f845be.js">
-    <link rel="stylesheet" href="/js-product/assets/scrollup-ea91e724.css">
+    <link rel="stylesheet" href="/js-product/assets/scrollup-00285a3a.css">
     <link rel="stylesheet" href="/js-product/assets/vendor-a0b14d8a.css">
   </head>
   <body class="index-body">
@@ -56,11 +56,7 @@
   </nav>
 </header>
 
-    <button class="top-btn">
-      <svg width="40">
-        <use href="/js-product/assets/symbol-defs-2260a6ca.svg#icon-up-arrow"></use>
-      </svg>
-    </button>
+
     <!-- Централізований лоадер для всіх AJAX-запитів -->
     <main class="main-container intro-content">
       <div class="loader" hidden></div>
@@ -340,5 +336,26 @@
   </div>
 </div>
 <!-- Loads the specified .html file -->
+    <div class="scroll-up">
+      <!-- <button class="top-btn">
+  <svg width="40">
+    <use href="./img/icone/symbol-defs.svg#icon-up-arrow"></use>
+  </svg>
+</button> -->
+<!-- 
+<div class="scroll-up">
+  <picture>
+    <source srcset="img/Home/smallRocket.webp" type="image/webp" />
+    <img src="img/Home/smallRocket.png" alt="Rocket" />
+  </picture> -->
+
+<svg class="scroll-up__svg" viewBox="-2 -2 52 52">
+  <path
+    class="scroll-up__svg-path"
+    d="M24, 0 a24, 24 0 0, 1 0, 48 a24, 24 0 0, 1 0, -48"
+  />
+</svg>
+
+    </div>
   </body>
 </html>
