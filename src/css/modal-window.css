@@ -73,7 +73,54 @@
 }
 
 .modal-product-container {
-  padding: 40px 20px;
+  /* контейнер усього контенту */
+}
+
+.modal-image-container {
+  /* контейнер картинки */
+  padding: 26px 67px;
+  width: 295px;
+  height: 212px;
+  border-radius: 10px;
+}
+
+.modal-product-info {
+  /* Контейнер основної інформації */
+  display: flex;
+  flex-direction: column;
+  width: 295px;
+}
+
+.modal-product-title {
+  /* Назва продукту */
+  color: var(--main-text-color);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.11; /* 111.111% */
+  text-align: start;
+}
+
+.modal-product-main-info {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.text-box {
+  /* Контейнер параграфа */
+  display: block;
+}
+
+.modal-product-description {
+  /* Опис товару */
+  text-overflow: ellipsis;
+  color: var(--paragraf-text);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.28;
 }
 
 /* Mobile 320 */
@@ -96,6 +143,10 @@
     height: 535px;
     padding: 40px 20px;
   }
+}
+
+.modal-product-container {
+  padding: 26px 40px;
 }
 
 .modal-close-sharp-box {
@@ -147,11 +198,6 @@
 
 .modal-product-title,
 .modal-name-id {
-  color: var(--main-text-color);
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.11; /* 111.111% */
 }
 
 .modal-text-box {
