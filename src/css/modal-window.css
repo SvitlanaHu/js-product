@@ -139,7 +139,7 @@
   /* Контейнер параграфа */
   display: block;
 }
-
+/* Скрол до опису товару */
 #modal-product-description {
   max-height: 114px;
   overflow-y: auto;
