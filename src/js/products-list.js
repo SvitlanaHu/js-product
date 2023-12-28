@@ -167,18 +167,25 @@ function showProductDetails(product, results) {
         <p class="modal-product-price">$${product.price}</p>
         <button class='modal-add-to-cart-btn' type="button" data-product-id="${product._id}">
           Add to 
-          <svg class="list-cart-svg-list" width="18" height="18">
+          <svg class="modal-add-to-cart-svg" width="18" height="18">
             <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
           </svg>
         </button>
       </div>
+      <svg class="custom-close-icon" width="28" height="28">
+        <use href="${icons}#icon-close-sharp"></use>
+      </svg>
     `,
     showConfirmButton: false,
     customClass: {
-      container: 'custom-swal'
-    }
+      container: 'custom-swal',
+    },
   });
-
+  
   setCartButtonEventListeners(results, '.modal-add-to-cart-btn', icons);
   updateCartButtonIcons(results, '.modal-add-to-cart-btn', icons);
+  document.querySelector('.custom-close-icon').addEventListener('click', () => {
+    Swal.close();
+  });
 }
+

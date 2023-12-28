@@ -32,22 +32,23 @@ function renderPopularProducts(products) {
         .join(' ');
 
       listItem.innerHTML = `
-        <a class="popular-modal"  data-product-id="${product._id}">
-          <div class="popular-img">
-            <img class="popular-photo-item" src="${product.img}" alt="${product.name}" width="56" height="56" loading="lazy">
-          </div>  
-          <ul class="about-popular">
-            <li class="name-popular-product">${product.name}</li>
-            <li class="subname-popular-product">Category: <span class="id-subname">${popularCategoryWithoutUnderscore}</span></li>
-            <li class="subname-popular-product">Size: <span class="id-subname">${product.size}</span></li>
-            <li class="subname-popular-product">Popularity: <span class="id-subname">${product.popularity}</span></li>
-          </ul>
-          <button class='popular-cart-btn' type="button" data-product-id="${product._id}">
-            <svg class="list-cart-svg-list" width="18" height="18">
-              <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
-            </svg>
-          </button>
-        </a>
+      <div class="popular-modal"  data-product-id="${product._id}">
+      <div class="popular-img">
+        <img class="popular-photo-item" src="${product.img}" alt="${product.name}" width="56" height="56" loading="lazy">
+      </div>  
+      <ul class="about-popular">
+        <li class="name-popular-product">${product.name}</li>
+        <li class="subname-popular-product">Category: <span class="id-subname">${popularCategoryWithoutUnderscore}</span></li>
+        <li class="subname-popular-product">Size: <span class="id-subname">${product.size}</span></li>
+        <li class="subname-popular-product">Popularity: <span class="id-subname">${product.popularity}</span></li>
+      </ul>
+      <button class='popular-cart-btn' type="button" data-product-id="${product._id}">
+        <svg class="list-cart-svg-list" width="18" height="18">
+          <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
+        </svg>
+      </button>
+    </div>
+    
       `;
       productList.appendChild(listItem);
     });
@@ -77,7 +78,7 @@ fetchProducts()
       console.error('Error fetching product details:', error);
     }
   }
-  function showProductDetails(product, products) {
+  function showProductDetails(product, results) {
     Swal.fire({
       html: `
         <div class="modal-product-container">
@@ -96,18 +97,25 @@ fetchProducts()
           <p class="modal-product-price">$${product.price}</p>
           <button class='modal-add-to-cart-btn' type="button" data-product-id="${product._id}">
             Add to 
-            <svg class="list-cart-svg-list" width="18" height="18">
+            <svg class="modal-add-to-cart-svg" width="18" height="18">
               <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
             </svg>
           </button>
         </div>
+        <svg class="custom-close-icon" width="28" height="28">
+          <use href="${icons}#icon-close-sharp"></use>
+        </svg>
       `,
       showConfirmButton: false,
       customClass: {
-        container: 'custom-swal'
-      }
+        container: 'custom-swal',
+      },
     });
-    setCartButtonEventListeners(products, '.modal-add-to-cart-btn', icons);
-    updateCartButtonIcons(products, '.modal-add-to-cart-btn', icons);
+    
+    setCartButtonEventListeners(results, '.modal-add-to-cart-btn', icons);
+    updateCartButtonIcons(results, '.modal-add-to-cart-btn', icons);
+    document.querySelector('.custom-close-icon').addEventListener('click', () => {
+      Swal.close();
+    });
   }
   
