@@ -2,8 +2,10 @@ import { getCategories } from './products-api';
 import { updateFilter, getFilters } from './local-storage';
 import { renderProducts } from './products-list';
 
-async function handleFilterUpdate(key, value) {
-  updateFilter(key, value);
+async function handleFilterUpdate(filters) {
+  for (const key in filters) {
+    updateFilter(key, filters[key]);
+  }
   updateFilter('page', 1); // Повернення на першу сторінку при зміні фільтра
   await renderProducts();
 }
@@ -43,33 +45,31 @@ async function initializeFilters() {
         : 'byPopularity';
   }
 
-
   await renderProducts();
 }
 
 function setupFilterEventListeners() {
-  const searchForm = document.getElementById('search-form');
-  const categorySelect = document.getElementById('category-select');
-  const sortSelect = document.getElementById('sorting-select');
+  const filterForm = document.getElementById('search-form');
+  const filterFormElements = filterForm.elements;
 
-  searchForm.addEventListener('submit', async event => {
+  filterForm.addEventListener('submit', async event => {
     event.preventDefault();
-    const keyword = event.target.elements['item-search-value'].value.trim();
-    handleFilterUpdate('keyword', keyword || null);
+    const keyword = filterFormElements['item-search-value'].value.trim();
+    await handleFilterUpdate({ keyword: keyword || null });
   });
 
-  categorySelect.addEventListener('change', event => {
-    handleFilterUpdate(
-      'category',
-      event.target.value !== 'Show all' ? event.target.value : null
-    );
-  });
-
-  sortSelect.addEventListener('change', event => {
-    const sortType = event.target.value;
-    handleFilterUpdate('byABC', sortType === 'byABC');
-    handleFilterUpdate('byPrice', sortType === 'byPrice');
-    handleFilterUpdate('byPopularity', sortType === 'byPopularity');
+  filterForm.addEventListener('change', async event => {
+    if (event.target.id === 'category-select' || event.target.id === 'sorting-select') {
+      const filters = {
+        category: filterFormElements['category-select'].value !== 'Show all' 
+                   ? filterFormElements['category-select'].value 
+                   : null,
+        byABC: filterFormElements['sorting-select'].value === 'byABC',
+        byPrice: filterFormElements['sorting-select'].value === 'byPrice',
+        byPopularity: filterFormElements['sorting-select'].value === 'byPopularity'
+      };
+      await handleFilterUpdate(filters);
+    }
   });
 }
 
