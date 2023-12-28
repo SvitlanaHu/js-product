@@ -262,14 +262,17 @@ closeCartModal.addEventListener("click", function () {
 function modalImage() {
   const arrayForImage = getCart();
 
-  // takeImage(arrayForImage);
+  takeImage(arrayForImage);
 }
 
-// function takeImage(arr) {
-//   const images = arr.map(({ img, name }) => ({ img, name }));
-//   const randomIndex = Math.floor(Math.random() * images.length);
-//   const randomImage = images[randomIndex];
-//   const modalImg = `<img src="${randomImage.img}" alt="${randomImage.name}" width="140" height="140">`;
+function takeImage(arr) {
+  if (arr.length === 1) {
+    const imageForModal = 
+  }
+}
 
-//   imageForModal.insertAdjacentHTML('beforeend', modalImg);
-// }
+<svg class="success-svg" width="140" height="140">
+      <use
+        href="./img/icone/symbol-defs.svg#icon-order-placed-purchased-icon"
+      ></use>
+    </svg>
