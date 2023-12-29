@@ -5,6 +5,7 @@ import axios from 'axios';
 import { updateCartCount } from "./local-storage";
 import './modal-window';
 
+
 const BASE_URL = 'https://food-boutique.b.goit.study/api/orders ';
 
 const orderForm = document.querySelector('.order-form');
@@ -164,7 +165,7 @@ async function onOrderFormSubmit(evt) {
   checkOnValidateEmail(email);
   evt.currentTarget.reset();
 
-    //Відправляємо озамовлення на сервер
+    //Відправляємо замовлення на сервер
   const productsInCart = getCart();
   const productsData = productsInCart.map(({ _id }) => ({
     productId: _id,
@@ -219,45 +220,10 @@ function openModal(){
 function checkOnValidateEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
-    alert('Please, enter valid Email!');
+    // alert('Please, enter valid Email!');
     return;
   }
 }
-
-
-
-
-
-// // POST запит на API
-// async function postProductApi(email) {
-//   const [{ _id, quantity }] = getCart();
-
-//   const formData = {
-//     email: email,
-//     products: [{ productId: _id, amount: quantity }],
-//   };
-
-//   const options = {
-//     method: 'post',
-//     data: formData,
-//   };
-
-//   try {
-//     await axios(
-//       `${BASE_URL}
-// `,
-//       options
-//     );
-//     cartProductList.innerHTML = '';
-//     alert('Your order is accepted!');
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-
-closeCartModal.addEventListener("click", function () {
-  cartModal.classList.remove("open");
-})
 
 function modalImage() {
   const arrayForImage = getCart();
@@ -272,7 +238,7 @@ function takeImage(arr) {
     const modalImg = `<img src="${array.img}" alt="${array.name}" width="140" height="140">`;
     imageForModal.insertAdjacentHTML('beforeend', modalImg);
   } else {
-    const modalImg = `<svg class="success-svg" width="140" height="140"><use href="./img/icone/symbol-defs.svg#icon-order-placed-purchased-icon"></use></svg>`;
+    const modalImg = `<svg class="success-svg" width="140" height="140"><use href="${icons}#icon-order-placed-purchased-icon"></use></svg>`;
     imageForModal.insertAdjacentHTML('beforeend', modalImg);
   }
 }
