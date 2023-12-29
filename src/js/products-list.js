@@ -156,6 +156,7 @@ async function fetchAndShowProductDetails(productId, results) {
 }
 
 function showProductDetails(product, results) {
+  const categoryWithoutUnderscoreModal = product.category.split('_').join(' ');
   Swal.fire({
     html: `
       <div class="modal-product-container">
@@ -166,7 +167,7 @@ function showProductDetails(product, results) {
           <h2 class="modal-product-title">${product.name}</h2>
           <div class="modal-product-main-info">
             <p class="text-box">
-              <span class="modal-product-text">Category:</span> <span class="modal-product-value">${product.category}</span>
+              <span class="modal-product-text">Category:</span> <span class="modal-product-value">${categoryWithoutUnderscoreModal}</span>
             </p>
             <p class="text-box">
               <span class="modal-product-text">Size:</span> <span class="modal-product-value">${product.size}</span>
