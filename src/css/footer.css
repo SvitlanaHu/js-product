@@ -412,7 +412,7 @@ body.modal-open {
   font-style: normal;
   font-weight: 400;
   line-height: 1.28;
-  width: 248px;
+  max-width: 248px;
 }
 
 .failure-modal {
@@ -529,7 +529,7 @@ body.modal-open {
     font-size: 24px;
   }
   .success-p {
-    width: 328px;
+    max-width: 328px;
     font-size: 16px;
     line-height: 20px;
   }
