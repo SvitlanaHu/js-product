@@ -1,4 +1,5 @@
-document.getElementById("close-my-modal-btn").addEventListener("click", closeModal)
+document.getElementById("close-my-modal-btn").addEventListener("click", closeModal);
+const body = document.body;
 
 // Закрити модальне вікно
 function closeModal() {
