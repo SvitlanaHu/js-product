@@ -91,7 +91,7 @@ fetchProducts()
             <h2 class="modal-product-title">${product.name}</h2>
             <div class="modal-product-main-info">
               <p class="text-box">
-                <span class="modal-product-text">Category:</span> <span class="modal-product-value">${categoryWithoutUnderscoreModal}</span>
+                <span class="modal-product-text">Category:</span> <span class="modal-product-value" >${categoryWithoutUnderscoreModal}</span>
               </p>
               <p class="text-box">
                 <span class="modal-product-text">Size:</span> <span class="modal-product-value">${product.size}</span>
