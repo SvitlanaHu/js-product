@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const successModal = document.querySelector('.success-modal');
   const failureModal = document.querySelector('.failure-modal');
   const closeFooterModals = document.querySelectorAll('.close-svg');
+  const body = document.body;
 
   subscriptionForm.addEventListener('submit', async e => {
     e.preventDefault();
@@ -34,8 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (response.ok) {
         const data = await response.json();
         successModal.classList.add('open');
+        body.classList.add('modal-open');
       } else if (response.status === 409) {
         failureModal.classList.add('open');
+        body.classList.add('modal-open');
       } else {
         throw new Error('Failed to subscribe.');
       }
@@ -49,8 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeModal() {
     if (failureModal.classList.contains('open')) {
       failureModal.classList.remove('open');
+      body.classList.remove('modal-open');
     } else if (successModal.classList.contains('open')) {
       successModal.classList.remove('open');
+      body.classList.remove('modal-open');
     }
   }
 
