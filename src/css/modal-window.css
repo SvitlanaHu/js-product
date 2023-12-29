@@ -155,7 +155,7 @@
   /* Опис товару */
   display: block;
   max-width: 295px;
-  max-height: 114px;
+  max-height: 124px;
   text-overflow: ellipsis ' [..]';
 
   color: var(--paragraf-text);
@@ -554,4 +554,3 @@
     right: 24px;
   }
 }
-
