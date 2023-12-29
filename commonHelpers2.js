@@ -1,4 +1,4 @@
-import{a as u,i,b as p,d as b,e as m}from"./assets/scrollup-dffa643a.js";import{a as h,S as d,P as z}from"./assets/vendor-f5f845be.js";const $="https://food-boutique.b.goit.study/api/products";async function q(){try{return(await h.get(`${$}/categories`)).data}catch(t){throw console.error("Error fetching categories:",t),t}}function k({page:t,limit:e,keyword:o,category:n,byABC:s,byPrice:c,byPopularity:a}){const r={page:t,limit:e,...o&&{keyword:o},...n&&{category:n},...s&&{byABC:s},...c&&{byPrice:c},...a&&{byPopularity:a}};return h.get(`${$}`,{params:r})}async function w(t){try{return(await h.get(`${$}/${t}`)).data}catch(e){throw console.error("Error fetching product by id:",e),e}}const x=document.querySelector(".loader"),_=document.getElementById("main-content");function F(){const t=document.getElementById("filters-section");t&&t.scrollIntoView({behavior:"smooth"})}function B(){x.removeAttribute("hidden"),Array.from(_.children).forEach(t=>{t.querySelector(".search-container")||(t.style.filter="blur(5px) grayscale(1)")})}function A(){x.setAttribute("hidden",""),Array.from(_.children).forEach(t=>{t.style.filter="none"}),F()}document.addEventListener("DOMContentLoaded",function(){const t=document.getElementById("discount-products");document.getElementById("pagination");async function e(s){try{const a=(await h.get("https://food-boutique.b.goit.study/api/products/discount?page=${page}&limit=${itemsPerPage}`")).data;t.innerHTML="",a.forEach(r=>{const l=o(r);t.innerHTML+=l}),a.forEach(r=>{document.querySelector(`[data-product-id="${r._id}"]`).addEventListener("click",()=>T(r._id,a))}),u(a,".cart-btn-list-discount",i),p(a,".cart-btn-list-discount",i)}catch(c){console.error("Error fetching discount products:",c)}}e();function o(s){const c=s.name,a=12,r=window.innerWidth,l=c.length>a&&r>=1440,E=n(c,a);return`
+import{a as u,i,b as p,d as b,e as m}from"./assets/scrollup-dffa643a.js";import{a as h,S as d,P as z}from"./assets/vendor-f5f845be.js";const $="https://food-boutique.b.goit.study/api/products";async function q(){try{return(await h.get(`${$}/categories`)).data}catch(t){throw console.error("Error fetching categories:",t),t}}function k({page:t,limit:e,keyword:o,category:a,byABC:s,byPrice:c,byPopularity:n}){const r={page:t,limit:e,...o&&{keyword:o},...a&&{category:a},...s&&{byABC:s},...c&&{byPrice:c},...n&&{byPopularity:n}};return h.get(`${$}`,{params:r})}async function w(t){try{return(await h.get(`${$}/${t}`)).data}catch(e){throw console.error("Error fetching product by id:",e),e}}const S=document.querySelector(".loader"),_=document.getElementById("main-content");function F(){const t=document.getElementById("filters-section");t&&t.scrollIntoView({behavior:"smooth"})}function B(){S.removeAttribute("hidden"),Array.from(_.children).forEach(t=>{t.querySelector(".search-container")||(t.style.filter="blur(5px) grayscale(1)")})}function A(){S.setAttribute("hidden",""),Array.from(_.children).forEach(t=>{t.style.filter="none"}),F()}document.addEventListener("DOMContentLoaded",function(){const t=document.getElementById("discount-products");document.getElementById("pagination");async function e(s){try{const n=(await h.get("https://food-boutique.b.goit.study/api/products/discount?page=${page}&limit=${itemsPerPage}`")).data;t.innerHTML="",n.forEach(r=>{const l=o(r);t.innerHTML+=l}),n.forEach(r=>{document.querySelector(`[data-product-id="${r._id}"]`).addEventListener("click",()=>W(r._id,n))}),u(n,".cart-btn-list-discount",i),p(n,".cart-btn-list-discount",i)}catch(c){console.error("Error fetching discount products:",c)}}e();function o(s){const c=s.name,n=12,r=window.innerWidth,l=c.length>n&&r>=1440,E=a(c,n);return`
         <li class="card-container-list-discount" id="${s._id}" data-product-id="${s._id}">
         <div class="photo-card-list-discount">
                 <div class="product-modal-list-discount">
@@ -22,23 +22,31 @@ import{a as u,i,b as p,d as b,e as m}from"./assets/scrollup-dffa643a.js";import{
                     </div>
             </div>
         </li>
-        `}function n(s,c){return window.innerWidth>=1440&&s.length>c?`${s.slice(0,c)}...`:s}});const g=document.getElementById("discount-products");g.addEventListener("mouseover",function(){g.style.overflowY="auto"});g.addEventListener("mouseout",function(){g.style.overflowY="hidden"});async function T(t,e){try{const o=await w(t);D(o,e)}catch(o){console.error("Error fetching product details:",o)}}function D(t,e){d.fire({html:`
+        `}function a(s,c){return window.innerWidth>=1440&&s.length>c?`${s.slice(0,c)}...`:s}});const g=document.getElementById("discount-products");g.addEventListener("mouseover",function(){g.style.overflowY="auto"});g.addEventListener("mouseout",function(){g.style.overflowY="hidden"});async function W(t,e){try{const o=await w(t);M(o,e)}catch(o){console.error("Error fetching product details:",o)}}function M(t,e){const o=t.category.split("_").join(" ");d.fire({html:`
         <div class="modal-product-container">
           <div class="modal-image-container">
-            <img src="${t.img}" alt="${t.name}">
+            <img class="modal-img" src="${t.img}" alt="${t.name}">
           </div>
           <div class="modal-product-info">
             <h2 class="modal-product-title">${t.name}</h2>
-            <p><span class="modal-product-text">Category:</span> <span class="modal-product-value">${t.category}</span></p>
-            <p><span class="modal-product-text">Size:</span> <span class="modal-product-value">${t.size}</span></p>
-            <p><span class="modal-product-text">Popularity:</span> <span class="modal-product-value">${t.popularity}</span></p>
-            <p class="modal-product-description">${t.desc}</p>
+            <div class="modal-product-main-info">
+              <p class="text-box">
+                <span class="modal-product-text">Category:</span> <span class="modal-product-value">${o}</span>
+              </p>
+              <p class="text-box">
+                <span class="modal-product-text">Size:</span> <span class="modal-product-value">${t.size}</span>
+              </p>
+              <p class="text-box">
+                <span class="modal-product-text">Popularity:</span> <span class="modal-product-value">${t.popularity}</span>
+              </p>
+            </div>
+            <p id="modal-product-description" class="modal-product-description">${t.desc}</p>  
           </div>
         </div>
         <div class="modal-price-button-container">
           <p class="modal-product-price">$${t.price}</p>
           <button class='modal-add-to-cart-btn' type="button" data-product-id="${t._id}">
-            Add to 
+           Add to <span class="modal-button-text">Add to</span> 
             <svg class="modal-add-to-cart-svg" width="18" height="18">
               <use href="${i}#icon-heroicons-solid_shopping-cart-18x18"></use>
             </svg>
@@ -47,7 +55,7 @@ import{a as u,i,b as p,d as b,e as m}from"./assets/scrollup-dffa643a.js";import{
         <svg class="custom-close-icon" width="28" height="28">
           <use href="${i}#icon-close-sharp"></use>
         </svg>
-      `,showConfirmButton:!1,customClass:{container:"custom-swal"}}),p(e,".modal-add-to-cart-btn",i),u(e,".modal-add-to-cart-btn",i),document.querySelector(".custom-close-icon").addEventListener("click",()=>{d.close()})}const W="https://food-boutique.b.goit.study/api/products/popular";async function H(){try{return(await h.get(`${W}`)).data}catch(t){throw console.error("Error fetching popular products:",t),t}}function M(t){const e=document.querySelector(".popular-product-list");e&&t.forEach(o=>{const n=document.createElement("li");n.classList.add("popular-product-item");const s=o.category.split("_").join(" ");n.innerHTML=`
+      `,showConfirmButton:!1,customClass:{container:"custom-swal"}}),p(e,".modal-add-to-cart-btn",i),u(e,".modal-add-to-cart-btn",i),document.querySelector(".custom-close-icon").addEventListener("click",()=>{d.close()})}const T="https://food-boutique.b.goit.study/api/products/popular";async function D(){try{return(await h.get(`${T}`)).data}catch(t){throw console.error("Error fetching popular products:",t),t}}function H(t){const e=document.querySelector(".popular-product-list");e&&t.forEach(o=>{const a=document.createElement("li");a.classList.add("popular-product-item");const s=o.category.split("_").join(" ");a.innerHTML=`
       <div class="popular-modal"  data-product-id="${o._id}">
       <div class="popular-img">
         <img class="popular-photo-item" src="${o.img}" alt="${o.name}" width="56" height="56" loading="lazy">
@@ -65,23 +73,31 @@ import{a as u,i,b as p,d as b,e as m}from"./assets/scrollup-dffa643a.js";import{
       </button>
     </div>
     
-      `,e.appendChild(n)}),t.forEach(o=>{document.querySelector(`[data-product-id="${o._id}"]`).addEventListener("click",()=>U(o._id,t))}),u(t,".popular-cart-btn",i),p(t,".popular-cart-btn",i)}H().then(t=>{M(t)}).catch(t=>{console.error("Error:",t)});async function U(t,e){try{const o=await w(t);R(o,e)}catch(o){console.error("Error fetching product details:",o)}}function R(t,e){d.fire({html:`
+      `,e.appendChild(a)}),t.forEach(o=>{document.querySelector(`[data-product-id="${o._id}"]`).addEventListener("click",()=>U(o._id,t))}),u(t,".popular-cart-btn",i),p(t,".popular-cart-btn",i)}D().then(t=>{H(t)}).catch(t=>{console.error("Error:",t)});async function U(t,e){try{const o=await w(t);j(o,e)}catch(o){console.error("Error fetching product details:",o)}}function j(t,e){const o=t.category.split("_").join(" ");d.fire({html:`
         <div class="modal-product-container">
           <div class="modal-image-container">
-            <img src="${t.img}" alt="${t.name}">
+            <img class="modal-img" src="${t.img}" alt="${t.name}">
           </div>
           <div class="modal-product-info">
             <h2 class="modal-product-title">${t.name}</h2>
-            <p><span class="modal-product-text">Category:</span> <span class="modal-product-value">${t.category}</span></p>
-            <p><span class="modal-product-text">Size:</span> <span class="modal-product-value">${t.size}</span></p>
-            <p><span class="modal-product-text">Popularity:</span> <span class="modal-product-value">${t.popularity}</span></p>
-            <p class="modal-product-description">${t.desc}</p>
+            <div class="modal-product-main-info">
+              <p class="text-box">
+                <span class="modal-product-text">Category:</span> <span class="modal-product-value">${o}</span>
+              </p>
+              <p class="text-box">
+                <span class="modal-product-text">Size:</span> <span class="modal-product-value">${t.size}</span>
+              </p>
+              <p class="text-box">
+                <span class="modal-product-text">Popularity:</span> <span class="modal-product-value">${t.popularity}</span>
+              </p>
+            </div>
+            <p id="modal-product-description" class="modal-product-description">${t.desc}</p>  
           </div>
         </div>
         <div class="modal-price-button-container">
           <p class="modal-product-price">$${t.price}</p>
           <button class='modal-add-to-cart-btn' type="button" data-product-id="${t._id}">
-            Add to 
+           Add to <span class="modal-button-text">Add to</span> 
             <svg class="modal-add-to-cart-svg" width="18" height="18">
               <use href="${i}#icon-heroicons-solid_shopping-cart-18x18"></use>
             </svg>
@@ -90,7 +106,7 @@ import{a as u,i,b as p,d as b,e as m}from"./assets/scrollup-dffa643a.js";import{
         <svg class="custom-close-icon" width="28" height="28">
           <use href="${i}#icon-close-sharp"></use>
         </svg>
-      `,showConfirmButton:!1,customClass:{container:"custom-swal"}}),p(e,".modal-add-to-cart-btn",i),u(e,".modal-add-to-cart-btn",i),document.querySelector(".custom-close-icon").addEventListener("click",()=>{d.close()})}const y=document.getElementById("products-list-container"),P=document.querySelector(".no-results-container");let L;window.addEventListener("resize",I);function I(){let t;window.innerWidth>=1440?t=9:window.innerWidth>=768?t=8:t=6,b().limit!==t&&(m("page",1),m("limit",t),v())}function j(){const t=document.getElementById("tui-pagination-container");t&&t.remove();const e=document.createElement("div");e.id="tui-pagination-container",e.className="tui-pagination",y.after(e)}async function v(){I();const t=b();let e=t.page||1,o=t.limit||6;B();try{const n=await k(t),{perPage:s,totalPages:c,results:a}=n.data,r=s*c;if(a.length===0){P.classList.remove("visually-hidden"),y.innerHTML="",document.getElementById("tui-pagination-container").classList.add("visually-hidden");return}y.innerHTML=Y(a),P.classList.add("visually-hidden"),a.forEach(l=>{document.querySelector(`[data-product-id="${l._id}"]`).addEventListener("click",()=>N(l._id,a))}),O(r,e,o),p(a,".cart-btn-list",i),u(a,".cart-btn-list",i)}catch(n){console.error("Error fetching products",n)}finally{A()}}function O(t,e,o){j();const n=document.getElementById("tui-pagination-container");if(t>o){const s=window.innerWidth<768?2:4;L=new z(n,{totalItems:t,itemsPerPage:o,visiblePages:s,centerAlign:!0,page:e}),L.on("beforeMove",c=>{m("page",c.page),v()})}else n.classList.add("visually-hidden")}function Y(t){return`<ul class="card-container-list">${t.map(e=>{const o=e.category.split("_").join(" ");return`
+      `,showConfirmButton:!1,customClass:{container:"custom-swal"}}),p(e,".modal-add-to-cart-btn",i),u(e,".modal-add-to-cart-btn",i),document.querySelector(".custom-close-icon").addEventListener("click",()=>{d.close()})}const y=document.getElementById("products-list-container"),x=document.querySelector(".no-results-container");let P;window.addEventListener("resize",I);function I(){let t;window.innerWidth>=1440?t=9:window.innerWidth>=768?t=8:t=6,b().limit!==t&&(m("page",1),m("limit",t),v())}function R(){const t=document.getElementById("tui-pagination-container");t&&t.remove();const e=document.createElement("div");e.id="tui-pagination-container",e.className="tui-pagination",y.after(e)}async function v(){I();const t=b();let e=t.page||1,o=t.limit||6;B();try{const a=await k(t),{perPage:s,totalPages:c,results:n}=a.data,r=s*c;if(n.length===0){x.classList.remove("visually-hidden"),y.innerHTML="",document.getElementById("tui-pagination-container").classList.add("visually-hidden");return}y.innerHTML=Y(n),x.classList.add("visually-hidden"),n.forEach(l=>{document.querySelector(`[data-product-id="${l._id}"]`).addEventListener("click",()=>N(l._id,n))}),O(r,e,o),p(n,".cart-btn-list",i),u(n,".cart-btn-list",i)}catch(a){console.error("Error fetching products",a)}finally{A()}}function O(t,e,o){R();const a=document.getElementById("tui-pagination-container");if(t>o){const s=window.innerWidth<768?2:4;P=new z(a,{totalItems:t,itemsPerPage:o,visiblePages:s,centerAlign:!0,page:e}),P.on("beforeMove",c=>{m("page",c.page),v()})}else a.classList.add("visually-hidden")}function Y(t){return`<ul class="card-container-list">${t.map(e=>{const o=e.category.split("_").join(" ");return`
         <li class="photo-card-list" data-product-id="${e._id}">
           <div class="img-container-list">
             <img class="product-image-list" src="${e.img}" alt="${e.name} photo" width=140 height=140 loading="lazy" />
@@ -117,16 +133,16 @@ import{a as u,i,b as p,d as b,e as m}from"./assets/scrollup-dffa643a.js";import{
               </button>
             </div>
           </div>
-        </li>`}).join("")}</ul>`}async function N(t,e){try{B();const o=await w(t);V(o,e)}catch(o){console.error("Error fetching product details:",o)}finally{A()}}function V(t,e){d.fire({html:`
+        </li>`}).join("")}</ul>`}async function N(t,e){try{B();const o=await w(t);V(o,e)}catch(o){console.error("Error fetching product details:",o)}finally{A()}}function V(t,e){const o=t.category.split("_").join(" ");d.fire({html:`
       <div class="modal-product-container">
         <div class="modal-image-container">
           <img class="modal-img" src="${t.img}" alt="${t.name}">
         </div>
         <div class="modal-product-info">
           <h2 class="modal-product-title">${t.name}</h2>
-          <div class="modal-product-main-info>
+          <div class="modal-product-main-info">
             <p class="text-box">
-              <span class="modal-product-text">Category:</span> <span class="modal-product-value">${t.category}</span>
+              <span class="modal-product-text">Category:</span> <span class="modal-product-value">${o}</span>
             </p>
             <p class="text-box">
               <span class="modal-product-text">Size:</span> <span class="modal-product-value">${t.size}</span>
@@ -150,5 +166,5 @@ import{a as u,i,b as p,d as b,e as m}from"./assets/scrollup-dffa643a.js";import{
       <svg class="custom-close-icon" width="28" height="28">
         <use href="${i}#icon-close-sharp"></use>
       </svg>
-    `,showConfirmButton:!1,customClass:{container:"custom-swal"}}),p(e,".modal-add-to-cart-btn",i),u(e,".modal-add-to-cart-btn",i),document.querySelector(".custom-close-icon").addEventListener("click",()=>{d.close()})}async function C(t){for(const e in t)m(e,t[e]);m("page",1),await v()}async function G(){try{const t=await q(),e=document.getElementById("category-select");t.forEach(o=>{const n=document.createElement("option");n.value=o,n.textContent=o.replace(/_/g," "),e.appendChild(n)})}catch(t){console.error("Error fetching categories:",t)}}async function J(){const t=b();if(t.keyword&&(document.getElementById("search-bar-id").value=t.keyword),await G(),t.category&&(document.getElementById("category-select").value=t.category),t.byABC||t.byPrice||t.byPopularity){const e=document.getElementById("sorting-select");e.value=t.byABC?"byABC":t.byPrice?"byPrice":"byPopularity"}await v()}function K(){const t=document.getElementById("search-form"),e=t.elements,o=e["item-search-value"],n=e["category-select"],s=e["sorting-select"];t.addEventListener("submit",async a=>{a.preventDefault();const r=o.value.trim();await C({keyword:r||null})}),n.addEventListener("change",c),s.addEventListener("change",c),o.addEventListener("input",c);async function c(){const a={keyword:o.value.trim()||null,category:n.value!=="Show all"?n.value:null,byABC:s.value==="byABC",byPrice:s.value==="byPrice",byPopularity:s.value==="byPopularity"};await C(a)}}document.addEventListener("DOMContentLoaded",()=>{J(),K()});window.onscroll=()=>f();window.addEventListener("scroll",S(f,250)),window.addEventListener("resize",S(f,250));async function f(){const t=document.querySelector("body"),e=document.body.offsetHeight,o=window.innerHeight,n=window.scrollY,s=e-o/4;n+o>s?t.classList.add("body--no-transparency"):t.classList.remove("body--no-transparency")}function S(t,e){let o=null;return function(...s){o||(o=setTimeout(()=>{t(...s),clearTimeout(o),o=null},e))}}
+    `,showConfirmButton:!1,customClass:{container:"custom-swal"}}),p(e,".modal-add-to-cart-btn",i),u(e,".modal-add-to-cart-btn",i),document.querySelector(".custom-close-icon").addEventListener("click",()=>{d.close()})}async function L(t){for(const e in t)m(e,t[e]);m("page",1),await v()}async function G(){try{const t=await q(),e=document.getElementById("category-select");t.forEach(o=>{const a=document.createElement("option");a.value=o,a.textContent=o.replace(/_/g," "),e.appendChild(a)})}catch(t){console.error("Error fetching categories:",t)}}async function J(){const t=b();if(t.keyword&&(document.getElementById("search-bar-id").value=t.keyword),await G(),t.category&&(document.getElementById("category-select").value=t.category),t.byABC||t.byPrice||t.byPopularity){const e=document.getElementById("sorting-select");e.value=t.byABC?"byABC":t.byPrice?"byPrice":"byPopularity"}await v()}function K(){const t=document.getElementById("search-form"),e=t.elements,o=e["item-search-value"],a=e["category-select"],s=e["sorting-select"];t.addEventListener("submit",async n=>{n.preventDefault();const r=o.value.trim();await L({keyword:r||null})}),a.addEventListener("change",c),s.addEventListener("change",c),o.addEventListener("input",c);async function c(){const n={keyword:o.value.trim()||null,category:a.value!=="Show all"?a.value:null,byABC:s.value==="byABC",byPrice:s.value==="byPrice",byPopularity:s.value==="byPopularity"};await L(n)}}document.addEventListener("DOMContentLoaded",()=>{J(),K()});window.onscroll=()=>f();window.addEventListener("scroll",C(f,250)),window.addEventListener("resize",C(f,250));async function f(){const t=document.querySelector("body"),e=document.body.offsetHeight,o=window.innerHeight,a=window.scrollY,s=e-o/4;a+o>s?t.classList.add("body--no-transparency"):t.classList.remove("body--no-transparency")}function C(t,e){let o=null;return function(...s){o||(o=setTimeout(()=>{t(...s),clearTimeout(o),o=null},e))}}
 //# sourceMappingURL=commonHelpers2.js.map
