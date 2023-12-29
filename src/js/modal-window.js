@@ -1,14 +1,17 @@
-document.getElementById("close-my-modal-btn").addEventListener("click", closeModal)
+document.getElementById("close-my-modal-btn").addEventListener("click", closeModal);
+const body = document.body;
 
 // Закрити модальне вікно
 function closeModal() {
-    document.getElementById("my-modal").classList.remove("open")
+    document.getElementById("my-modal").classList.remove("open");
+    body.classList.remove('modal-open');
 }
 
 // Закрити модальне вікно на Esc
 window.addEventListener('keydown', (e) => {
     if (e.key === "Escape") {
-        document.getElementById("my-modal").classList.remove("open")
+        document.getElementById("my-modal").classList.remove("open");
+        body.classList.remove('modal-open');
     }
 });
 
@@ -19,4 +22,5 @@ document.querySelector("#my-modal .modal__box").addEventListener('click', event 
 document.getElementById("my-modal").addEventListener('click', event => {
     if (event._isClickWithInModal) return;
     event.currentTarget.classList.remove('open');
+    body.classList.remove('modal-open');
 });
