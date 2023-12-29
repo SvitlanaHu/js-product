@@ -385,6 +385,7 @@
   text-align: center;
   margin-top: 100px;
   gap: 14px;
+  margin-bottom: 23px;
 }
 
 .success-title {
@@ -443,6 +444,10 @@
   justify-content: center;
   visibility: hidden;
   opacity: 0;
+}
+
+.modal-img img {
+  height: 144px;
 }
 
 .failure-modal-interface {
@@ -508,7 +513,7 @@
 @media only screen and (max-width: 374px) {
   .failure-modal-interface,
   .success-modal-interface {
-    width: calc(100% - 30px);
+    width: calc(100% - 40px);
   }
 }
 
@@ -520,12 +525,13 @@
   .success-text {
     gap: 20px;
     margin-top: 90px;
+      margin-bottom: -7px;
   }
   .success-title {
     font-size: 24px;
   }
   .success-p {
-    width: 328px;
+    max-width: 328px;
     font-size: 16px;
     line-height: 20px;
   }
@@ -550,5 +556,8 @@
     height: 28px;
     top: 24px;
     right: 24px;
+  }
+  .modal-img img {
+height: 159px;
   }
 }

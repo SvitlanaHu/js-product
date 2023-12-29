@@ -101,13 +101,6 @@
   border-radius: 10px;
 }
 
-.modal-img {
-  /* Картинка */
-  display: block;
-  height: 160px;
-  margin: auto;
-}
-
 .modal-product-info {
   /* Контейнер основної інформації */
   display: flex;
@@ -395,13 +388,6 @@
     height: 230px;
   }
 
-  .modal-img {
-    /* Картинка */
-    display: block;
-    width: 160px;
-    margin: auto;
-  }
-
   .modal-add-to-cart-btn {
     /* Кнопка Add to */
     font-size: 14px;
@@ -568,3 +554,4 @@
     right: 24px;
   }
 }
+
