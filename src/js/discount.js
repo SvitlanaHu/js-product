@@ -105,6 +105,7 @@ async function fetchAndShowProductDetails(productId, discountProductsContainer) 
   }
   function showProductDetails(product, results) {
     const categoryWithoutUnderscoreModal = product.category.split('_').join(' ');
+    
     Swal.fire({
       html: `
         <div class="modal-product-container">
