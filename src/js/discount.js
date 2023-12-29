@@ -3,6 +3,8 @@ import icons from '../img/icone/symbol-defs.svg';
 import { updateCartButtonIcons, setCartButtonEventListeners } from './local-storage';
 import Swal from 'sweetalert2';
 import { getProductById } from './products-api'
+import SimpleBar from 'simplebar';
+import 'simplebar/dist/simplebar.css';
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -105,15 +107,15 @@ async function fetchAndShowProductDetails(productId, discountProductsContainer) 
   }
   function showProductDetails(product, results) {
     const categoryWithoutUnderscoreModal = product.category.split('_').join(' ');
-    
     Swal.fire({
       html: `
         <div class="modal-product-container">
           <div class="modal-image-container">
-            <img class="modal-img" src="${product.img}" alt="${product.name}">
+            <img src="${product.img}" alt="${product.name}">
           </div>
           <div class="modal-product-info">
             <h2 class="modal-product-title">${product.name}</h2>
+
             <div class="modal-product-main-info">
               <p class="text-box">
                 <span class="modal-product-text">Category:</span> <span class="modal-product-value" >${categoryWithoutUnderscoreModal}</span>
@@ -126,12 +128,16 @@ async function fetchAndShowProductDetails(productId, discountProductsContainer) 
               </p>
             </div>
             <p id="modal-product-description" class="modal-product-description">${product.desc}</p>  
+            <p><span class="modal-product-text">Category:</span> <span class="modal-product-value">${product.category}</span></p>
+            <p><span class="modal-product-text">Size:</span> <span class="modal-product-value">${product.size}</span></p>
+            <p><span class="modal-product-text">Popularity:</span> <span class="modal-product-value">${product.popularity}</span></p>
+            <p class="modal-product-description">${product.desc}</p>
           </div>
         </div>
         <div class="modal-price-button-container">
           <p class="modal-product-price">$${product.price}</p>
           <button class='modal-add-to-cart-btn' type="button" data-product-id="${product._id}">
-           Add to <span class="modal-button-text">Add to</span> 
+            Add to 
             <svg class="modal-add-to-cart-svg" width="18" height="18">
               <use href="${icons}#icon-heroicons-solid_shopping-cart-18x18"></use>
             </svg>
@@ -145,8 +151,11 @@ async function fetchAndShowProductDetails(productId, discountProductsContainer) 
       customClass: {
         container: 'custom-swal',
       },
+      didOpen: (element) => {
+        new SimpleBar(element.querySelector('.modal-product-description'));
+      }
     });
-  
+    
     setCartButtonEventListeners(results, '.modal-add-to-cart-btn', icons);
     updateCartButtonIcons(results, '.modal-add-to-cart-btn', icons);
     document.querySelector('.custom-close-icon').addEventListener('click', () => {
