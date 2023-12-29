@@ -13,6 +13,7 @@ const imageForModal = document.querySelector(".img-cart-modal");
 const openCartModal = document.querySelector(".order-btn-submit");
 const closeCartModal = document.querySelector(".close-svg");
 const cartModal = document.querySelector(".checkout-modal");
+const body = document.body;
 
 const refs = {
   cartProductList: document.querySelector('.js-cart-list'),
@@ -178,8 +179,9 @@ async function onOrderFormSubmit(evt) {
   };
 try {
   // Відкрити модальне вікно
-function openModal(){
-    document.getElementById("my-modal").classList.add("open")
+  function openModal(){
+    document.getElementById("my-modal").classList.add("open");
+    body.classList.add('modal-open');
   }
   const openModalBtn = document.getElementById('open-modal-btn')
   openModalBtn.addEventListener("click", openModal);

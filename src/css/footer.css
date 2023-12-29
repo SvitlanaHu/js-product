@@ -1,3 +1,7 @@
+body.modal-open {
+  overflow: hidden;
+}
+
 .footer {
   background-color: var(--olive);
   height: 652px;
