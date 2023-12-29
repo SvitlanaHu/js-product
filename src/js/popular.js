@@ -92,7 +92,7 @@ fetchProducts()
             <h2 class="modal-product-title">${product.name}</h2>
             <div class="modal-product-main-info">
               <p class="text-box">
-                <span class="modal-product-text">Category:</span> <span class="modal-product-value" >${categoryWithoutUnderscoreModal}</span>
+                <span class="modal-product-text">Category:</span> <span class="modal-product-value">${categoryWithoutUnderscoreModal}</span>
               </p>
               <p class="text-box">
                 <span class="modal-product-text">Size:</span> <span class="modal-product-value">${product.size}</span>
@@ -101,11 +101,7 @@ fetchProducts()
                 <span class="modal-product-text">Popularity:</span> <span class="modal-product-value">${product.popularity}</span>
               </p>
             </div>
-            <p id="modal-product-description" class="modal-product-description">${product.desc}</p>  
-            <p><span class="modal-product-text">Category:</span> <span class="modal-product-value">${product.category}</span></p>
-            <p><span class="modal-product-text">Size:</span> <span class="modal-product-value">${product.size}</span></p>
-            <p><span class="modal-product-text">Popularity:</span> <span class="modal-product-value">${product.popularity}</span></p>
-            <p class="modal-product-description">${product.desc}</p>
+            <p id="modal-product-description" class="modal-product-description">${product.desc}</p>
           </div>
         </div>
         <div class="modal-price-button-container">
