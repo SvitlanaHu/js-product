@@ -112,6 +112,10 @@ margin-bottom: 40px;
       gap: 40px;
       justify-content: space-between;
     }
+    .card-container-list {
+      height: 1169px;
+      width: 925px;
+    }
 }
 
 .product-name-list {
