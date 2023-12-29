@@ -89,4 +89,14 @@
     fill: var(--main-text-color);
     cursor: pointer;
   }
-  
+  .modal-product-desc-cont{
+    max-width: 100%;
+  }
+  .simplebar-content{
+    width: 190px;
+  }
+  @media screen and (min-width: 768px) {
+    .simplebar-content{
+      width: 250px;
+    }
+  }
