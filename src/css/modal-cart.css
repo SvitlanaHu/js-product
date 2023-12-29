@@ -93,7 +93,7 @@
     max-width: 100%;
   }
   .simplebar-content{
-    width: 200px;
+    width: 190px;
   }
   @media screen and (min-width: 768px) {
     .simplebar-content{
